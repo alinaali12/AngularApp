@@ -8,12 +8,23 @@ import { Component, OnInit } from "@angular/core";
 })
 export class MoviesComponent implements OnInit {
   movies: Object;
-  constructor(private data: DataService) {}
+  config: any;
+  constructor(private data: DataService) {
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: this.data.getCount()
+    };
+  }
 
   ngOnInit() {
-    this.data.getUsers().subscribe(data => {
+    console.log("count", this.data.getCount());
+    this.data.getMovies().subscribe(data => {
       this.movies = data;
       console.log(this.movies);
     });
+  }
+  pageChanged(event: any) {
+    this.config.currentPage = event;
   }
 }

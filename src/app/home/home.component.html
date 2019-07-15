@@ -1,1 +1,92 @@
-<p>home works!</p>
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+  <h5 *ngIf="success">Your form is valid</h5>
+
+  <label>
+    Title:
+    <input type="text" formControlName="title" />
+    <div *ngIf="submitted && messageForm.controls.title.errors" class="errors">
+      <div *ngIf="messageForm.controls.title.errors.required">
+        Title is required.
+      </div>
+    </div>
+  </label>
+
+  <label>
+    Director:
+    <input formControlName="director" />
+    <div
+      *ngIf="submitted && messageForm.controls.director.errors"
+      class="errors"
+    >
+      <div *ngIf="messageForm.controls.director.errors.required">
+        Director is required.
+      </div>
+    </div>
+  </label>
+
+  <label>
+    Genre:
+    <input formControlName="genre" />
+    <div *ngIf="submitted && messageForm.controls.genre.errors" class="errors">
+      <div *ngIf="messageForm.controls.genre.errors.required">
+        Genre is required.
+      </div>
+    </div>
+  </label>
+
+  <label>
+    Release Date:
+    <input formControlName="releaseDate" />
+    <div
+      *ngIf="submitted && messageForm.controls.releaseDate.errors"
+      class="errors"
+    >
+      <div *ngIf="messageForm.controls.releaseDate.errors.required">
+        Release Date is required.
+      </div>
+    </div>
+  </label>
+
+  <label>
+    Description:
+    <textarea formControlName="description"></textarea>
+    <div
+      *ngIf="submitted && messageForm.controls.description.errors"
+      class="errors"
+    >
+      <div *ngIf="messageForm.controls.description.errors.required">
+        Description is required.
+      </div>
+    </div>
+  </label>
+  <label>
+    Poster:
+    <input type="text" formControlName="poster" />
+    <div *ngIf="submitted && messageForm.controls.poster.errors" class="errors">
+      <div *ngIf="messageForm.controls.poster.errors.required">
+        Poster is required.
+      </div>
+    </div>
+  </label>
+  <input type="submit" value="Create" class="cta" />
+</form>
+
+<div *ngIf="submitted" class="results">
+  <strong>Title: </strong>
+  <span>{{ messageForm.controls.title.value }}</span>
+
+  <strong>Director: </strong>
+  <span>{{ messageForm.controls.director.value }}</span>
+
+  <strong>Genre: </strong>
+  <span>{{ messageForm.controls.genre.value }}</span>
+
+  <strong>Release Date: </strong>
+  <span>{{ messageForm.controls.releaseDate.value }}</span>
+
+  <strong>Descrition: </strong>
+  <span>{{ messageForm.controls.description.value }}</span>
+
+  <strong>Poster: </strong>
+  <span>{{ messageForm.controls.poster.value }}</span>
+</div>
