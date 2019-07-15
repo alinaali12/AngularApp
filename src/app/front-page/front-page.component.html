@@ -1,0 +1,68 @@
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+
+<div class="container">
+    <div class="header">
+      <div class="row">
+        
+        <div class="col-10 ">
+            <h1>Link in with us to get updated!</h1>
+        </div>
+    
+      </div>
+     
+    </div>
+    <div class="main">
+    <p>please fill in the details</p><br>
+    <form action="">
+      <div class="row">
+          <img src="assets/images/user.png" alt="Avatar" class="avatar">
+          <br>
+        </div>
+      
+        <div class="file"><input required type="file" name="myFile"></div> 
+        <br>
+        <div class="row">
+            <div class="col-md-4">Name</div>
+            <div class="col-md-8"><input requried type="text" placeholder="Enter name" [value]='name' (input)='name=$event.target.value'></div>
+          </div>
+          <br>
+        <div class="row">
+            <div class="col-md-4" >Email</div>
+            <div class="col-md-8"><input required type="text" placeholder="Enter Email" [value]='email' (input)='email=$event.target.value' ></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4" >Choices</div>
+            <div class="col-md-8"><select [(ngModel)]="model.choice" name="abc">
+                <option value="lilies">lilies</option>
+                <option value="roses">roses</option>
+                <option value="fillers">fillers</option>
+              </select></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4" >Comments</div>
+            <div class="col-md-8"><textarea width=100%; [value]='comments' (input)='comments=$event.target.value' ></textarea></div>
+          </div>
+          <br>
+          <a  [routerLink] = "['/showresult']"><button class="btn btn-success pull-right" (click)="SendData()" >save user</button></a>
+         
+      </form>
+      <p id="data">{{name}}{{email}}{{choices}}{{Comments}}</p>
+      
+    
+    </div>
+    
+    </div>
+    <footer>
+    copyrights are reserved
+   
+    </footer>
+    
