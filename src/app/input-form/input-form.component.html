@@ -1,0 +1,78 @@
+<head><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" id="bootstrap-css">
+    <link rel="StyleSheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"></head>
+
+<div class="container" align="center">
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Create Account</h4>
+            <p class="text-center">Get started with your free account</p>
+            <form #userForm="ngForm" onsubmit="onSubmit()"> 
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input class="form-control" placeholder="Full name" type="text" name="username"
+                     #name="ngModel" [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="userModel.name">
+                    <small [class.d-none]="name.valid || name.untouched">Name is required</small>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input class="form-control" placeholder="Email address" type="email" name="email"
+                    #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="[\w-]+@([\w-]+\.)+[\w-]+" [(ngModel)]="userModel.email_address">
+                    <small [class.d-none]="email.valid || email.untouched">Email is required</small>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    <select class="custom-select" style="max-width: 120px;">
+                        <option selected="">+92</option>
+                        <option value="1">+92</option>
+                    </select>
+                    <input class="form-control" placeholder="Phone number" type="text" name="phonenum" 
+                    #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="userModel.phonenumber">
+                    <small [class.d-none]="phone.valid || phone.untouched">Phone number is required</small>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                    </div>
+                    <select class="form-control" name="job" [(ngModel)]="userModel.job_type">
+                        <option selected=""> Select job type</option>
+                        <option>Designer</option>
+                        <option>Manager</option>
+                        <option>Accounting</option>
+                    </select>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input class="form-control" placeholder="Create password" type="password" name="password" 
+                    #password="ngModel" pattern="^.{4,8}$" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="userModel.password">
+                    <small [class.d-none]="password.valid || password.untouched">Password is required</small>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input class="form-control" placeholder="Repeat password" type="password">
+                    
+                </div>
+                <div>
+                    <input type="file" class="btn btn-success btn-block" name="filename" [(ngModel)]="userModel.file_name" />
+                    <button type="submit" class="btn btn-primary btn-block"> Validate  </button>
+                </div>
+            </form>
+            <br>
+            <br>
+            <br>
+            <form>
+                <button type="submit" class="btn btn-primary btn-block"> Table View  </button>
+            </form>
+
+        </article>
+    </div>
+</div>
