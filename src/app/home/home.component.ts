@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 }
 export class Movie {
+  id?: Number;
   title: string;
   director: string;
 
