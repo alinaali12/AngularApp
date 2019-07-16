@@ -14,10 +14,7 @@
   <label>
     Director:
     <input formControlName="director" />
-    <div
-      *ngIf="submitted && messageForm.controls.director.errors"
-      class="errors"
-    >
+    <div *ngIf="submitted && messageForm.controls.director.errors" class="errors">
       <div *ngIf="messageForm.controls.director.errors.required">
         Director is required.
       </div>
@@ -37,10 +34,7 @@
   <label>
     Release Date:
     <input formControlName="releaseDate" />
-    <div
-      *ngIf="submitted && messageForm.controls.releaseDate.errors"
-      class="errors"
-    >
+    <div *ngIf="submitted && messageForm.controls.releaseDate.errors" class="errors">
       <div *ngIf="messageForm.controls.releaseDate.errors.required">
         Release Date is required.
       </div>
@@ -50,10 +44,7 @@
   <label>
     Description:
     <textarea formControlName="description"></textarea>
-    <div
-      *ngIf="submitted && messageForm.controls.description.errors"
-      class="errors"
-    >
+    <div *ngIf="submitted && messageForm.controls.description.errors" class="errors">
       <div *ngIf="messageForm.controls.description.errors.required">
         Description is required.
       </div>
