@@ -16,7 +16,6 @@ export class LoginService {
   Token:any;
 
   constructor(private http:HttpClient) { 
-    debugger;
     this._url = "https://localhost:44347/api/Logins";
     const headerSettings: {[name:string]: string | string[];} = {};
     this.Header = new HttpHeaders(headerSettings);
@@ -24,10 +23,8 @@ export class LoginService {
 
   public validateLogin(username:string,stringpassword:string ) {
     console.log(stringpassword,username);
-    debugger;
-
-   
-    var response= this.http.get(this._url, {
+    
+    var response= this.http.get<boolean>(this._url, {
       params: {
         userName: username,
         stringPassword:stringpassword
