@@ -1,9 +1,10 @@
 export class Usermodel {
-    name: string;
-    email: string;
-    comments: string;
-    choice: string;
-    fileNames: string;
+    id = 0;
+    name = '';
+    email = '';
+    comments = '';
+    choice = '';
+    fileNames = '';
     constructor() {
 
     }
