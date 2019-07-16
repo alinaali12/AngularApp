@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RegisteredUser} from "../shared/models/registereduser.model";
+import { RegisterService } from '../register.service';
 
 @Component({
   selector: 'app-table',
@@ -9,12 +9,35 @@ import {RegisteredUser} from "../shared/models/registereduser.model";
 })
 export class TableComponent implements OnInit {
 
-  user: RegisteredUser[];
-  constructor() { 
-    
-  }
+  user: Object;
+  TotalPages:any;
+  fakearray;
+  constructor(private _registerservice:RegisterService) {}
 
   ngOnInit() {
+    this._registerservice.ViewAll().subscribe(data => {
+      this.user = data
+    });
+    this._registerservice.GetCount().subscribe(data=> {
+      this.TotalPages=data
+      this.fakearray=new Array(Math.ceil(this.TotalPages/5))
+    }) 
+  }
+  Sort(value:string){
+    this._registerservice.SortBy(value).subscribe(data => {
+      this.user = data
+    }); 
+  }
+  GetPage(pageno:number){
+    this._registerservice.GetPage(pageno).subscribe(data => {
+      this.user = data
+    });
+  }
+
+  DeleteEntry(id:number){
+    this._registerservice.Delete(id).subscribe(data=>{console.log(data)
+    this.ngOnInit()
+    });
   }
   
 }

@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RegisteredUser } from '../shared/models/registereduser.model';
 import { RegisterService } from '../register.service';
 
-
 @Component({
-  selector: 'app-input-form',
-  templateUrl: './input-form.component.html',
-  styleUrls: ['./input-form.component.scss']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss']
 })
-export class InputFormComponent implements OnInit {
+export class EditComponent implements OnInit {
 
   userModel=new RegisteredUser(); 
   base64:string;
@@ -17,12 +16,11 @@ export class InputFormComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(){
-    this._registerservice.Register(this.userModel).subscribe(
+    this._registerservice.Update(this.userModel,this.userModel.id).subscribe(
       data=>console.log('success',data),
       error=>console.log('error', error)
     )
   }
-
   onFileChange(event) {
     let reader = new FileReader();
     if(event.target.files && event.target.files.length > 0) {
@@ -61,5 +59,4 @@ export class InputFormComponent implements OnInit {
     return blob;
  }
 
-  
 }

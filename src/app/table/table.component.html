@@ -1,1 +1,37 @@
 
+
+<body>
+<form>
+    <button type="submit" class="btn btn-success" routerLink="/input"> Register User </button>
+</form>
+<table class="container" id="myTable">
+    <thead>
+    <tr>
+        <th ><a >Id</a></th>
+        <th ><a (click)="Sort('name')"> Name</a></th>
+        <th ><a (click)="Sort('email_address')">Email Address</a></th>
+        <th ><a (click)="Sort('phone_number')">Phone Number</a></th>
+        <th ><a (click)="Sort('job_type')">Job Type</a></th>
+        <th ><a (click)="Sort('fileName')">File Name</a></th>
+    </tr>
+    </thead>
+    <tbody id="myTableBody">
+             <tr *ngFor="let u of user">
+                 <td>{{u.id}}</td>
+                 <td>{{u.name}}</td>
+                 <td>{{u.email_address}}</td>
+                 <td>{{u.phone_number}}</td>
+                 <td>{{u.job_type}}</td>
+                 <td><a>{{u.fileName}}</a></td>
+                 <td><a (click)="DeleteEntry(u.id)">delete</a></td>
+                 <td><a routerLink="/edit">edit</a></td>
+             </tr>
+    </tbody>
+    <table cellspacing="50">
+        <th *ngFor="let x of fakearray; let index = index"><a (click)="GetPage(index+1)">{{index+1}}</a></th>
+    </table>
+</table>
+
+</body>
+
+

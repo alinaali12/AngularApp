@@ -4,8 +4,7 @@
 <div class="container" align="center">
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
-            <h4 class="card-title mt-3 text-center">Create Account</h4>
-            <p class="text-center">Get started with your free account</p>
+            <h4 class="card-title mt-3 text-center">Edit Account</h4>
             <form #userForm="ngForm" (ngSubmit)="onSubmit()"> 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -63,7 +62,7 @@
                 </div>
                 <div>
                     <input type="file" class="btn btn-success btn-block" name="filename" [(ngModel)]="userModel.fileName" (change)="onFileChange($event)" #fileInput/>
-                    <button type="submit" class="btn btn-primary btn-block" routerLink="/table"> Validate  </button>
+                    <button type="submit" class="btn btn-primary btn-block" routerLink="/table"> Update  </button>
                 </div>
             </form>
             <br>
@@ -72,7 +71,6 @@
             <form>
                 <button type="submit" class="btn btn-primary btn-block" routerLink="/table">Table Views</button>
             </form>
-
         </article>
     </div>
 </div>

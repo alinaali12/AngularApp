@@ -7,5 +7,8 @@ export class RegisteredUser {
   public password: string;
   public file_name: string;
 
- 
+  public deserialize(input: any) {
+    Object.assign(this, input);
+    return this;
+  }
 }
