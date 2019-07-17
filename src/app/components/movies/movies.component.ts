@@ -13,6 +13,7 @@ export class MoviesComponent implements OnInit {
   config: any;
   sortColumn = 'Id';
   messageForm: FormGroup;
+  pageActual: number = 1;
   constructor(private dataService: DataService) {
     this.config = {
       itemsPerPage: 5,

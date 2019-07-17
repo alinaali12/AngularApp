@@ -54,6 +54,25 @@ export class HomeComponent implements OnInit {
     this.data.postMovie(movie).subscribe(() => console.log('ok')
     );
   }
+  onFileChange(event) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.messageForm.patchValue({
+          file: reader.result
+        });
+        console.log(file);
+
+
+        // need to run CD since file load runs outside of zone
+        // this.cd.markForCheck();
+      };
+    }
+  }
 
 
 

@@ -26,7 +26,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let movie of movies">
+    <tr *ngFor="let movie of movies | paginate:{itemsPerPage:5,currentPage:pageActual}">
       <th scope="row">{{ movie.id }}</th>
       <td>{{ movie.title }}</td>
       <td>{{ movie.director }}</td>
@@ -49,5 +49,5 @@
   </ul>
 </nav> -->
 <div class="pagination">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </div>
