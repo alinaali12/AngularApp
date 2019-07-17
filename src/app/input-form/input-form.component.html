@@ -6,14 +6,14 @@
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">Create Account</h4>
             <p class="text-center">Get started with your free account</p>
-            <form #userForm="ngForm" (ngSubmit)="onSubmit()"> 
+            <form #userForm="ngForm" (ngSubmit)="onSubmit()" > 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
                     <input required class="form-control" placeholder="Full name" type="text" name="username" 
                      #name="ngModel"  pattern="^.{2,20}$" [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="userModel.name">
-                    <small [class.d-none]="name.valid || name.untouched">Name is incorrect</small>
+                    <small [class.d-none]="name.valid || name.untouched">Name is either empty or incorrect</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -21,7 +21,7 @@
                     </div>
                     <input required class="form-control" placeholder="Email address" type="email" name="email" 
                     #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="[\w-]+@([\w-]+\.)+[\w-]+" [(ngModel)]="userModel.email_address">
-                    <small [class.d-none]="email.valid || email.untouched">Email is incorrect</small>
+                    <small [class.d-none]="email.valid || email.untouched">Email is either empty or incorrect</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -33,7 +33,7 @@
                     </select>
                     <input class="form-control" placeholder="Phone number" type="text" name="phonenum" required
                     #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="userModel.phone_number">
-                    <small [class.d-none]="phone.valid || phone.untouched">Phone number is incorrect</small>
+                    <small [class.d-none]="phone.valid || phone.untouched">Phone number is either empty or incorrect</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -52,18 +52,18 @@
                     </div>
                     <input class="form-control" placeholder="Create password" type="password" name="password" required
                     #password="ngModel" pattern="^.{4,8}$" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="userModel.password">
-                    <small [class.d-none]="password.valid || password.untouched">Password is incorrect</small>
+                    <small [class.d-none]="password.valid || password.untouched">Password is either empty or incorrect</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control"  required placeholder="Repeat password" type="password">
+                    <input required class="form-control"  required placeholder="Repeat password" type="password">
                     
                 </div>
                 <div>
                     <input type="file"  required class="btn btn-success btn-block" name="filename" [(ngModel)]="userModel.fileName" (change)="onFileChange($event)" #fileInput/>
-                    <button type="submit" class="btn btn-primary btn-block"> Validate  </button>
+                    <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-primary btn-block" > Validate  </button>
                 </div>
             </form>
             <br>
