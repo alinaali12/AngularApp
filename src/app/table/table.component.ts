@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
+
+
 import { RegisterService } from '../register.service';
 import { EditService } from '../edit.service';
 
@@ -13,6 +16,13 @@ export class TableComponent implements OnInit {
   user: Object;
   TotalPages:any;
   fakearray;
+  nameh=false;
+  emailh=false;
+  phoneh=false;
+  jobh=false;
+  fileh=false;
+ 
+
   constructor(private _registerservice:RegisterService, private _idservice:EditService) {}
 
   ngOnInit() {
@@ -24,7 +34,32 @@ export class TableComponent implements OnInit {
       this.fakearray=new Array(Math.ceil(this.TotalPages/5))
     }) 
   }
+  
+  Download(filename:string){
+    var filepath="C:/Users/mhas/Downloads/Compressed/WebAPI/WebApiProject/Uploads/"+filename;
+    
+  }
   Sort(value:string){
+    this.nameh=false;
+    this.emailh=false;
+    this.phoneh=false;
+    this.jobh=false;
+    this.fileh=false;
+    if(value=="name"){
+      this.nameh=true;
+    }
+    if(value=="email_address"){
+      this.emailh=true;
+    }
+    if(value=="phone_number"){
+      this.phoneh=true;
+    }
+    if(value=="job_type"){
+      this.jobh=true;
+    }
+    if(value=="fileName"){
+      this.fileh=true;
+    }
     this._registerservice.SortBy(value).subscribe(data => {
       this.user = data
     }); 

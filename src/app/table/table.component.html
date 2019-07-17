@@ -1,35 +1,36 @@
 
-
+<head><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></head>
 <body>
 <form>
     <button type="submit" class="btn btn-success" routerLink="/input"> Register User </button>
 </form>
-<table class="container" id="myTable">
+<table class="w3-table-all" id="myTable">
     <thead>
-    <tr>
+    <tr class="w3-light-grey">
         <th ><a >Id</a></th>
-        <th ><a (click)="Sort('name')"> Name</a></th>
-        <th ><a (click)="Sort('email_address')">Email Address</a></th>
-        <th ><a (click)="Sort('phone_number')">Phone Number</a></th>
-        <th ><a (click)="Sort('job_type')">Job Type</a></th>
-        <th ><a (click)="Sort('fileName')">File Name</a></th>
+        <th [class.headerSortDown]="nameh"><a (click)="Sort('name')"> Name</a></th>
+        <th [class.headerSortDown]="emailh"><a (click)="Sort('email_address')">Email Address</a></th>
+        <th [class.headerSortDown]="phoneh"><a (click)="Sort('phone_number')">Phone Number</a></th>
+        <th [class.headerSortDown]="jobh"><a (click)="Sort('job_type')">Job Type</a></th>
+        <th [class.headerSortDown]="fileh"><a (click)="Sort('fileName')">File Name</a></th>
     </tr>
     </thead>
     <tbody id="myTableBody">
-             <tr *ngFor="let u of user">
+             <tr class="w3-hover-green" *ngFor="let u of user">
                  <td>{{u.id}}</td>
                  <td>{{u.name}}</td>
                  <td>{{u.email_address}}</td>
                  <td>{{u.phone_number}}</td>
                  <td>{{u.job_type}}</td>
-                 <td><a>{{u.fileName}}</a></td>
+                 <td><a [href]="'file:///C:/Users/mhas/Downloads/Compressed/WebAPI/WebApiProject/Uploads/'+u.fileName | safeUrl" download>{{u.fileName}}</a></td>
+                 <!--<td><a (click)="Download(u.fileName)">{{u.fileName}}</a></td> -->
                  <td><a (click)="DeleteEntry(u.id)">delete</a></td>
                  <td><a (click)="set_edit(u.id)"  routerLink="/edit">edit</a></td>
              </tr>
     </tbody>
-    <table cellspacing="50">
+    <div class="pagination">
         <th *ngFor="let x of fakearray; let index = index"><a (click)="GetPage(index+1)">{{index+1}}</a></th>
-    </table>
+    </div>
 </table>
 
 </body>

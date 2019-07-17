@@ -11,7 +11,7 @@ import { RegisterService } from '../register.service';
 export class InputFormComponent implements OnInit {
 
   userModel=new RegisteredUser(); 
-  base64="empty";
+  base64:string;
   constructor(private _registerservice:RegisterService) { }
 
   ngOnInit() {
@@ -24,24 +24,25 @@ export class InputFormComponent implements OnInit {
   }
 
   onFileChange(event) {
-    let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      //reader.readAsDataURL(file);
-      console.log(file.name);
-      console.log(file.type);
-      reader.onload = () => {
-        //console.log(reader.result);
-      };
-      reader.readAsDataURL(file);
-      this.base64=reader.result as string;
+    this.FiletoBase64(event.target);
       
-    }
-    
-    
+      
   }
-
+  FiletoBase64(inputValue: any){
+    var file:File = inputValue.files[0];
+    var myReader:FileReader = new FileReader();
   
-
-  
+    myReader.onloadend = (e) => {
+      this.base64+=file.name;
+      this.base64+=";";
+      this.base64 += myReader.result as string;
+      this.userModel.fileName=this.base64;
+      //this.onSubmit();
+    }
+    myReader.readAsDataURL(file);
+  }
+    
 }
+
+  
+

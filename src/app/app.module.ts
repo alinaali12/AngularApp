@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { InputFormComponent } from './input-form/input-form.component';
 import { TableComponent } from './table/table.component';
 import { EditComponent } from './edit/edit.component';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 
 
@@ -17,7 +18,8 @@ import { EditComponent } from './edit/edit.component';
     HeaderComponent,
     InputFormComponent,
     TableComponent,
-    EditComponent,    
+    EditComponent,
+    SafeUrlPipe,    
   ],
   imports: [
     BrowserModule,

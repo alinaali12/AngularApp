@@ -5,7 +5,7 @@ import { InputFormComponent } from './input-form/input-form.component';
 import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
-  {path:'',component: InputFormComponent},
+  {path:'',component: TableComponent},
   { path: 'input', component: InputFormComponent },
   { path: 'table', component: TableComponent },
   { path: 'edit', component: EditComponent}

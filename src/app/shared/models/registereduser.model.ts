@@ -5,7 +5,7 @@ export class RegisteredUser {
   public phone_number: number;
   public job_type: string;
   public password: string;
-  public file_name: string;
+  public fileName: string;
 
   public deserialize(input: any) {
     Object.assign(this, input);

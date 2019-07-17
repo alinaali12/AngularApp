@@ -62,7 +62,7 @@
                     
                 </div>
                 <div>
-                    <input type="file"  required class="btn btn-success btn-block" name="filename" [(ngModel)]="userModel.fileName" (change)="onFileChange($event)" #fileInput/>
+                    <input type="file"  required class="btn btn-success btn-block" name="filename"  (change)="onFileChange($event)" #fileInput/>
                     <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-primary btn-block" > Validate  </button>
                 </div>
             </form>
