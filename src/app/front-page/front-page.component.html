@@ -20,27 +20,27 @@
     </div>
     <div class="main">
     <p>please fill in the details</p><br>
-    <form action="">
+    <form ngNativeValidate (ngSubmit)="SendData()">
       <div class="row">
           <img src="assets/images/user.png" alt="Avatar" class="avatar">
           <br>
         </div>
       
-        <div class="file"><input required type="file" name="myFile"></div> 
+        <div class="file"><input type="file" name="image" (change)="onFileChanged($event)"></div> 
         <br>
         <div class="row">
             <div class="col-md-4">Name</div>
-            <div class="col-md-8"><input requried type="text" placeholder="Enter name" [value]='name' (input)='name=$event.target.value'></div>
+            <div class="col-md-8"><input required type="text" placeholder="Enter name" [value]='name' (input)='name=$event.target.value'></div>
           </div>
           <br>
         <div class="row">
             <div class="col-md-4" >Email</div>
-            <div class="col-md-8"><input required type="text" placeholder="Enter Email" [value]='email' (input)='email=$event.target.value' ></div>
+            <div class="col-md-8"><input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="text" placeholder="Enter Email" [value]='email' (input)='email=$event.target.value' ></div>
           </div>
           <br>
           <div class="row">
             <div class="col-md-4" >Choices</div>
-            <div class="col-md-8"><select [(ngModel)]="model.choice" name="abc">
+            <div class="col-md-8"><select required [(ngModel)]="model.choice" name="abc">
                 <option value="lilies">lilies</option>
                 <option value="roses">roses</option>
                 <option value="fillers">fillers</option>
@@ -49,10 +49,10 @@
           <br>
           <div class="row">
             <div class="col-md-4" >Comments</div>
-            <div class="col-md-8"><textarea width=100%; [value]='comments' (input)='comments=$event.target.value' ></textarea></div>
+            <div class="col-md-8"><textarea required width=100%; [value]='comments' (input)='comments=$event.target.value' ></textarea></div>
           </div>
           <br>
-          <a  [routerLink] = "['/showresult']"><button class="btn btn-success pull-right" (click)="SendData()" >save user</button></a>
+          <input type="submit" class="btn btn-success pull-right" value="save user">
          
       </form>
       <p id="data">{{name}}{{email}}{{choices}}{{Comments}}</p>

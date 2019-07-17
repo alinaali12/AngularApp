@@ -4,7 +4,7 @@ export class Usermodel {
     email = '';
     comments = '';
     choice = '';
-    fileNames = '';
+    FileNames = '';
     constructor() {
 
     }

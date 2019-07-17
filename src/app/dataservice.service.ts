@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class DataserviceService {
+
    url = 'https://localhost:44347/api/UserModels';
   constructor(private http: HttpClient) {
   }
@@ -33,7 +34,10 @@ export class DataserviceService {
    getPageCount() {
     return this.http.get(this.url + '/' + 'count');
   }
-  saveEditedUser(editedUser: Usermodel){
+  saveEditedUser(editedUser: Usermodel) {
     return this.http.put(this.url + '/' + editedUser.id , editedUser);
+  }
+  saveFile(userfile: Usermodel) {
+    return this.http.post(this.url + '/file', userfile);
   }
 }

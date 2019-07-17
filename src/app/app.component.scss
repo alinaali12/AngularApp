@@ -1,7 +1,25 @@
 .center {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+  float: right;
     width: 30%;
     height: 30%;
+  }
+  li:hover {
+    background-color: #B384C2;
+  }
+  .navbar {
+    background-color: #8D5A9E;
+  }
+ul li a{
+    color: white;
+  }
+.navbar-header a
+  {
+    color: white;
+  }
+  .bgimg {
+    background-position: center;
+    background-size: cover;
+    background-image: url('../assets/images/hotel.jpg');
+    min-height : 75%;
   }

@@ -13,5 +13,4 @@ export class EditDataComponent implements OnInit {
 
   ngOnInit() {
   }
-  
 }

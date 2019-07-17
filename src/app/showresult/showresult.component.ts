@@ -18,6 +18,7 @@ export class ShowresultComponent implements OnInit {
   comments;
   putres;
   editedUser: Usermodel;
+  toggle = 'notshow';
   constructor(private dataservice: DataserviceService) { }
 
   ngOnInit() {
@@ -65,6 +66,7 @@ export class ShowresultComponent implements OnInit {
      this.dataservice.EditUserData(id).subscribe(data => {
       this.edituser = data;
       console.log('s', this.edituser);
+      this.toggle = 'show';
       });
    }
   savechanges() {
@@ -74,7 +76,11 @@ export class ShowresultComponent implements OnInit {
       this.putres = data;
       console.log('s', this.putres);
       this.ngOnInit();
+      this.toggle = 'notshow';
     }
     );
+   }
+  cancel() {
+     this.toggle = 'notshow';
    }
 }
