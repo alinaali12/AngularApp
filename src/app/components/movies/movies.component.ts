@@ -25,6 +25,8 @@ export class MoviesComponent implements OnInit {
     this.get(this.sortColumn);
   }
   pageChanged(event: any) {
+    console.log(event);
+
     this.config.currentPage = event;
   }
   get(sort: string) {

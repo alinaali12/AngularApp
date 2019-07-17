@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
       poster: ['', Validators.required]
     });
   }
+  ngOnInit() { }
   onSubmit() {
     this.submitted = true;
     if (this.messageForm.invalid) {
@@ -54,7 +55,8 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  ngOnInit() { }
+
+
 }
 export class Movie {
   id?: number;
