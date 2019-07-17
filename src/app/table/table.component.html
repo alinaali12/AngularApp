@@ -24,7 +24,7 @@
                  <td>{{u.job_type}}</td>
                  <td><a>{{u.fileName}}</a></td>
                  <td><a (click)="DeleteEntry(u.id)">delete</a></td>
-                 <td><a routerLink="/edit">edit</a></td>
+                 <td><a (click)="set_edit(u.id)"  routerLink="/edit">edit</a></td>
              </tr>
     </tbody>
     <table cellspacing="50">

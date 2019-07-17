@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
+import { EditService } from '../edit.service';
 
 @Component({
   selector: 'app-table',
@@ -12,7 +13,7 @@ export class TableComponent implements OnInit {
   user: Object;
   TotalPages:any;
   fakearray;
-  constructor(private _registerservice:RegisterService) {}
+  constructor(private _registerservice:RegisterService, private _idservice:EditService) {}
 
   ngOnInit() {
     this._registerservice.ViewAll().subscribe(data => {
@@ -40,4 +41,7 @@ export class TableComponent implements OnInit {
     });
   }
   
+  set_edit(id:number){
+    this._idservice.set_id(id);
+  }
 }

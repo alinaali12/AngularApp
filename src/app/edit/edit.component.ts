@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisteredUser } from '../shared/models/registereduser.model';
 import { RegisterService } from '../register.service';
+import { EditService } from '../edit.service';
 
 @Component({
   selector: 'app-edit',
@@ -11,11 +12,12 @@ export class EditComponent implements OnInit {
 
   userModel=new RegisteredUser(); 
   base64:string;
-  constructor(private _registerservice:RegisterService) { }
+  constructor(private _registerservice:RegisterService, private _idservice: EditService) { }
 
   ngOnInit() {
   }
   onSubmit(){
+    this.userModel.id=this._idservice.get_id();
     this._registerservice.Update(this.userModel,this.userModel.id).subscribe(
       data=>console.log('success',data),
       error=>console.log('error', error)
@@ -37,9 +39,7 @@ export class EditComponent implements OnInit {
       }
       if(file.type=="image/jpeg"){
         reader.readAsDataURL(file);
-        localStorage.setItem('myTest', reader.result as string);
-        var reReadItem = localStorage.getItem('myTest');
-        console.log(reReadItem);
+        //console.log(reReadItem);
       }
       
       
