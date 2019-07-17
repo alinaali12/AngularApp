@@ -35,7 +35,12 @@ export class EditComponent implements OnInit {
       };
       if(file.type=="text/plain"){
         reader.readAsText(file);
-        console.log(reader.result);
+        let content=reader.result;
+        let data = new Blob([content], { type: 'text/plain' });
+        let arrayOfBlob = new Array<Blob>();
+        arrayOfBlob.push(data);
+        let applicationZip = new File(arrayOfBlob, file.name, { type: 'text/plain' });
+        console.log(applicationZip);
       }
       if(file.type=="image/jpeg"){
         reader.readAsDataURL(file);

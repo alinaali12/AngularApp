@@ -11,7 +11,7 @@ import { RegisterService } from '../register.service';
 export class InputFormComponent implements OnInit {
 
   userModel=new RegisteredUser(); 
-  base64:string;
+  base64="empty";
   constructor(private _registerservice:RegisterService) { }
 
   ngOnInit() {
@@ -33,33 +33,15 @@ export class InputFormComponent implements OnInit {
       reader.onload = () => {
         //console.log(reader.result);
       };
-      if(file.type=="text/plain"){
-        reader.readAsText(file);
-        console.log(reader.result);
-      }
-      if(file.type=="image/jpeg"){
-        reader.readAsDataURL(file);
-        localStorage.setItem('myTest', reader.result as string);
-        var reReadItem = localStorage.getItem('myTest');
-        console.log(reReadItem);
-      }
-      
+      reader.readAsDataURL(file);
+      this.base64=reader.result as string;
       
     }
     
     
   }
 
-  dataURItoBlob(dataURI) {
-    const byteString = window.atob(dataURI);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const int8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-      int8Array[i] = byteString.charCodeAt(i);
-    }
-    const blob = new Blob([int8Array], { type: 'image/jpeg' });    
-    return blob;
- }
+  
 
   
 }

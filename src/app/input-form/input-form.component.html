@@ -11,17 +11,17 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Full name" type="text" name="username"
-                     #name="ngModel" [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="userModel.name">
-                    <small [class.d-none]="name.valid || name.untouched">Name is required</small>
+                    <input required class="form-control" placeholder="Full name" type="text" name="username" 
+                     #name="ngModel"  pattern="^.{2,20}$" [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="userModel.name">
+                    <small [class.d-none]="name.valid || name.untouched">Name is incorrect</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Email address" type="email" name="email"
+                    <input required class="form-control" placeholder="Email address" type="email" name="email" 
                     #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="[\w-]+@([\w-]+\.)+[\w-]+" [(ngModel)]="userModel.email_address">
-                    <small [class.d-none]="email.valid || email.untouched">Email is required</small>
+                    <small [class.d-none]="email.valid || email.untouched">Email is incorrect</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -31,9 +31,9 @@
                         <option selected="">+92</option>
                         <option value="1">+92</option>
                     </select>
-                    <input class="form-control" placeholder="Phone number" type="text" name="phonenum" 
+                    <input class="form-control" placeholder="Phone number" type="text" name="phonenum" required
                     #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="userModel.phone_number">
-                    <small [class.d-none]="phone.valid || phone.untouched">Phone number is required</small>
+                    <small [class.d-none]="phone.valid || phone.untouched">Phone number is incorrect</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -50,19 +50,19 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Create password" type="password" name="password" 
+                    <input class="form-control" placeholder="Create password" type="password" name="password" required
                     #password="ngModel" pattern="^.{4,8}$" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="userModel.password">
-                    <small [class.d-none]="password.valid || password.untouched">Password is required</small>
+                    <small [class.d-none]="password.valid || password.untouched">Password is incorrect</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Repeat password" type="password">
+                    <input class="form-control"  required placeholder="Repeat password" type="password">
                     
                 </div>
                 <div>
-                    <input type="file" class="btn btn-success btn-block" name="filename" [(ngModel)]="userModel.fileName" (change)="onFileChange($event)" #fileInput/>
+                    <input type="file"  required class="btn btn-success btn-block" name="filename" [(ngModel)]="userModel.fileName" (change)="onFileChange($event)" #fileInput/>
                     <button type="submit" class="btn btn-primary btn-block"> Validate  </button>
                 </div>
             </form>
@@ -72,7 +72,6 @@
             <form>
                 <button type="submit" class="btn btn-primary btn-block" routerLink="/table">Table Views</button>
             </form>
-
         </article>
     </div>
 </div>
