@@ -9,6 +9,8 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginService } from './login-service.service';
 import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
+import { APP_ROUTES } from './app.routes';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(APP_ROUTES)
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
