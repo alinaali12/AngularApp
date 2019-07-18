@@ -17,8 +17,12 @@ export class ShowresultComponent implements OnInit {
   edituser: Usermodel;
   comments;
   putres;
+  fileres: Usermodel;
   editedUser: Usermodel;
+  fileUser: Usermodel = new Usermodel();
   toggle = 'notshow';
+  filebase64;
+  active;
   constructor(private dataservice: DataserviceService) { }
 
   ngOnInit() {
@@ -32,6 +36,8 @@ export class ShowresultComponent implements OnInit {
     });
   }
   getPageData(page: number) {
+    this.active = page;
+    console.log('activepage', this.active);
     this.dataservice.getUsers(page).subscribe((userData) => {
       this.Users = userData;
       console.log('s', this.Users);
@@ -83,4 +89,39 @@ export class ShowresultComponent implements OnInit {
   cancel() {
      this.toggle = 'notshow';
    }
+  DownloadUserFile(file) {
+    this.fileUser.fileNames = file;
+    console.log( this.fileUser.fileNames);
+    this.dataservice.downloadFile(this.fileUser).subscribe(data => {
+      this.filebase64 = data.fileNames;
+      console.log('downloaduser', data);
+      const name = this.filebase64.split(',');
+      const ext = this.filebase64.split('.');
+      console.log('base', name[0]);
+      console.log('name', name[1]);
+      console.log('extension', ext[1]);
+      const obj = this.base64ToBlob(name[0], ext[1]);
+      const url = window.URL.createObjectURL(obj);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = name[1];
+      link.click();
+    });
+  }
+  base64ToBlob(b64Data, contentType = '', sliceSize= 512) {
+    console.log(b64Data);
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+        const byteNumbers = new Array(slice.length);
+        for (let i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+    }
+    return new Blob(byteArrays, {type: contentType});
+}
 }

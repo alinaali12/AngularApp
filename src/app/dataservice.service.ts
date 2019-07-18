@@ -40,4 +40,9 @@ export class DataserviceService {
   saveFile(userfile: Usermodel) {
     return this.http.post(this.url + '/file', userfile);
   }
+  downloadFile(downloadFile: Usermodel): Observable<Usermodel> {
+    console.log('s', downloadFile.fileNames);
+    return this.http.post('https://localhost:44347/api/UserModels/download', downloadFile)
+    .map((response: Response) => response as unknown as Usermodel);
+  }
 }

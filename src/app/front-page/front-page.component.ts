@@ -29,7 +29,7 @@ export class FrontPageComponent implements OnInit {
   this.model.email = this.email;
 
   this.model.comments = this.comments;
-  this.model.FileNames = this.fileNames;
+  this.model.fileNames = this.fileNames;
   this.Serviceobj.sendData(this.model).subscribe(
     data => console.log('success', data),
     error => console.log('error', error)
@@ -43,7 +43,7 @@ onFileChanged(event) {
     this.fileName = file.name + ' ' + file.type;
     reader.onloadend = (e) => {
       console.log(reader.result);
-      this.userfile.FileNames = reader.result as string + ',' + file.name + ',' + file.type;
+      this.userfile.fileNames = reader.result as string + ',' + file.name + ',' + file.type;
       this.Serviceobj.saveFile(this.userfile).subscribe(
         data => console.log('success', data),
         error => console.log('error', error)
