@@ -42,8 +42,8 @@ onFileChanged(event) {
     reader.readAsDataURL(file);
     this.fileName = file.name + ' ' + file.type;
     reader.onloadend = (e) => {
-      console.log(this.fileName);
-      this.userfile.FileNames = reader.result as string;
+      console.log(reader.result);
+      this.userfile.FileNames = reader.result as string + ',' + file.name + ',' + file.type;
       this.Serviceobj.saveFile(this.userfile).subscribe(
         data => console.log('success', data),
         error => console.log('error', error)

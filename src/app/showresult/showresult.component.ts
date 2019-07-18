@@ -62,7 +62,7 @@ export class ShowresultComponent implements OnInit {
       } );
    }
    passId(id: number) {
-     console.log('s', id);
+     console.log('passid', id);
      this.dataservice.EditUserData(id).subscribe(data => {
       this.edituser = data;
       console.log('s', this.edituser);
