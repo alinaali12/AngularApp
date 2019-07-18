@@ -18,7 +18,8 @@ import { APP_ROUTES } from './app.routes';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
