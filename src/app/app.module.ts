@@ -1,18 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { InputViewComponent } from './input-view/input-view.component';
+import { DefaultpageComponent } from './defaultpage/defaultpage.component';
+import { OutputviewComponent } from './outputview/outputview.component';
+import { FocuschangeDirective } from './focuschange.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { SiblingCommunicatorService } from './sibling-communicator.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InputViewComponent,
+    DefaultpageComponent,
+    OutputviewComponent,
+    FocuschangeDirective    
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [SiblingCommunicatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
