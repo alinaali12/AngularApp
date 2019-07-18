@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
    onClickSubmit(formData) {
      this._loginServive.validateLogin(formData.username, formData.pwd).subscribe((data)=>{
-     
+      this.isValidatedUser = data;
       if (this.isValidatedUser) {
         this.currentUser = new User(formData.username, formData.pwd);
         this._loginServive.startNewSession(formData.username, formData.pwd);

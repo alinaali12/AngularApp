@@ -29,11 +29,8 @@ export class LoginService {
   }
 
   public validateLogin(username:string,stringpassword:string ) {
-    console.log(stringpassword,username);
-    debugger;
 
-   
-    var response= this.http.get(this._url, {
+    var response= this.http.get<boolean>(this._url, {
       params: {
         userName: username,
         stringPassword:stringpassword
