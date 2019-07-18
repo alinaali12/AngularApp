@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit {
 
    onClickSubmit(formData) {
      this._loginServive.validateLogin(formData.username, formData.pwd).subscribe((data)=>{
-      console.log('response result',data);
-      this.isValidatedUser = data; //returns true or false
+     
       if (this.isValidatedUser) {
         this.currentUser = new User(formData.username, formData.pwd);
         this._loginServive.startNewSession(formData.username, formData.pwd);

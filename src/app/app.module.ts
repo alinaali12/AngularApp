@@ -8,16 +8,17 @@ import { LoginComponent } from './login/login.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginService } from './login-service.service';
+
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    HomeComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
