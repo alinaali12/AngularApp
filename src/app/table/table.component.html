@@ -1,8 +1,16 @@
 
-<head><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></head>
+<head><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"></head>
 <body>
+    <br>
+    <br>
+    <br>
 <form>
-    <button type="submit" class="btn btn-success" routerLink="/input"> Register User </button>
+    <div style="text-align:center;">
+        <button type="submit" class="button" routerLink="/input"> Register User </button>
+    </div>
 </form>
 <table class="w3-table-all" id="myTable">
     <thead>
@@ -16,22 +24,25 @@
     </tr>
     </thead>
     <tbody id="myTableBody">
-             <tr class="w3-hover-green" *ngFor="let u of user">
+             <tr class="w3-hover-green" *ngFor="let u of user;let i = index">
                  <td>{{u.id}}</td>
                  <td>{{u.name}}</td>
                  <td>{{u.email_address}}</td>
                  <td>{{u.phone_number}}</td>
                  <td>{{u.job_type}}</td>
-                 <td><a [href]="'file:///C:/Users/mhas/Downloads/Compressed/WebAPI/WebApiProject/Uploads/'+u.fileName | safeUrl" download>{{u.fileName}}</a></td>
-                 <!--<td><a (click)="Download(u.fileName)">{{u.fileName}}</a></td> -->
+                 <td><a (click)="Download(u.fileName)">{{displaynames[i]}}</a></td>
                  <td><a (click)="DeleteEntry(u.id)">delete</a></td>
                  <td><a (click)="set_edit(u.id)"  routerLink="/edit">edit</a></td>
              </tr>
     </tbody>
-    <div class="pagination">
-        <th *ngFor="let x of fakearray; let index = index"><a (click)="GetPage(index+1)">{{index+1}}</a></th>
-    </div>
 </table>
+<div class="container" style="text-align: center">
+    <nav aria-label="Page navigation example">
+            <ul class="pagination" *ngFor="let x of fakearray; let index = index" >
+                <li class="page-item" [ngClass]="{'active': (index+1)==pagenum}"><a class="page-link" (click)= GetPage(index+1) >{{index+1}}</a></li>
+            </ul>
+    </nav>
+</div>
 
 </body>
 

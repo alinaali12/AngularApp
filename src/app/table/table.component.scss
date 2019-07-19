@@ -1,6 +1,7 @@
 table td,
 table th {
   border: 1px solid silver;
+  cursor: pointer;
 }
 
 .headerSortDown:after,
@@ -13,7 +14,7 @@ table th {
 
 .headerSortDown:after {
   top: 10px;
-  border-top-color: silver;
+  border-top-color: rgb(192, 192, 192);
 }
 
 .headerSortUp:after {
@@ -24,4 +25,27 @@ table th {
 .headerSortDown,
 .headerSortUp {
   padding-right: 10px;
+}
+table#myTable {
+  width:70%; 
+  margin-left:15%; 
+  margin-right:15%;
+}
+.button {
+  background-color: #1569C7;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.active a{
+  background-color: green;
+}
+a:hover{
+  background-color: grey !important;
 }
