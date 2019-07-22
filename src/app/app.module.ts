@@ -10,6 +10,7 @@ import { FocuschangeDirective } from './focuschange.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { SiblingCommunicatorService } from './sibling-communicator.service';
 import { ClasschangerDirective } from './classchanger.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,12 +23,15 @@ import { ClasschangerDirective } from './classchanger.directive';
    
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
   ],
   providers: [SiblingCommunicatorService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+  
 })
 export class AppModule { }

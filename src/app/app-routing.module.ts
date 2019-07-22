@@ -6,10 +6,10 @@ import { DefaultpageComponent } from './defaultpage/defaultpage.component';
 import { OutputviewComponent } from './outputview/outputview.component';
 
 const routes: Routes = [
-  {path:'defaultpage',component:DefaultpageComponent},
-  {path:'',component:DefaultpageComponent},
-  {path:'inputview',component:InputViewComponent},
-  {path:'outputview',component:OutputviewComponent}
+  {path:'defaultpage',component:DefaultpageComponent, data : {state: 'default'}},
+  {path:'',component:DefaultpageComponent, data : {state: 'default'}},
+  {path:'inputview',component:InputViewComponent, data : {state: 'input'}},
+  {path:'outputview',component:OutputviewComponent, data : {state: 'output'}}
 ];
 
 @NgModule({

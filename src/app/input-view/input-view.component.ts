@@ -23,6 +23,7 @@ export class InputViewComponent implements OnInit {
   _fileType : string = null;
   Student :StudentRegisterationModel;
   CurrentFile: FileBase = new FileBase();
+
   constructor(private _apiHandler: ApiHanlderService, private sharedService : SiblingCommunicatorService, private _fileManager : FileDownloaderService )  { }
  
   ngOnInit() {
@@ -53,6 +54,7 @@ export class InputViewComponent implements OnInit {
     fileReader.readAsDataURL(file);
 
     fileReader.onloadend= (event) => {
+      
       this.filePreview(fileReader.result);
       //console.log(fileReader.result);
       this.CurrentFile.file=fileReader.result;
@@ -80,7 +82,7 @@ export class InputViewComponent implements OnInit {
   showFile(){
     if (this._fileType)
        this._fileManager.OpenFile(this.previewUrl,this.Student.filename);
-    //this.downloadService.downloadFile(File.file,File.filename);
+    
   }
   onSubmit(){ // Click on Create/Update Record
  

@@ -2,9 +2,13 @@
 
 $common_color : #e31768;
 
+main {
+ 
+    position: relative;
+}
 .container img{
-    max-height: 80px;
-    max-width: 80px;
+    max-height: 100px;
+    max-width: 100px;
     border: 2px solid lightcyan;
     transition: 0.3s;
 }
