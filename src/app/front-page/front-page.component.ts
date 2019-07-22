@@ -12,7 +12,7 @@ export class FrontPageComponent implements OnInit {
   email = '';
   comments = '';
   choice = '';
-  fileNames = 'dummy';
+  fileN;
   file;
   basestring;
   model = new Usermodel();
@@ -20,16 +20,18 @@ export class FrontPageComponent implements OnInit {
   fileName: string;
   filePreview: string;
   userfile: Usermodel = new Usermodel();
+  status;
   constructor(private Serviceobj: DataserviceService) { }
   ngOnInit() {
     this.model.choice = '';
   }
   SendData() {
+  this.status = 'clicked';
+  console.log(this.status);
   this.model.name = this.name;
   this.model.email = this.email;
-
   this.model.comments = this.comments;
-  this.model.fileNames = this.fileNames;
+  this.model.fileNames = this.fileN;
   this.Serviceobj.sendData(this.model).subscribe(
     data => console.log('success', data),
     error => console.log('error', error)
@@ -40,10 +42,11 @@ onFileChanged(event) {
   if (event.target.files && event.target.files.length > 0) {
     const file = event.target.files[0];
     reader.readAsDataURL(file);
-    this.fileName = file.name + ' ' + file.type;
+    this.fileN = file.name;
     reader.onloadend = (e) => {
       console.log(reader.result);
       this.userfile.fileNames = reader.result as string + ',' + file.name + ',' + file.type;
+      console.log('file', this.userfile.fileNames);
       this.Serviceobj.saveFile(this.userfile).subscribe(
         data => console.log('success', data),
         error => console.log('error', error)

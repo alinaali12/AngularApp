@@ -27,8 +27,8 @@ export class DataserviceService {
     console.log(this.url + '/' + id);
     return this.http.delete(this.url + '/' + id);
   }
-  sortData(name: string) {
-    return this.http.get(this.url + '?page=1&limit=5&sort=' + name)
+  sortData(name: string, page: number) {
+    return this.http.get(this.url + '?page=' + page + '&limit=5&sort=' + name)
     .map((response: Response) => response as unknown as Usermodel[]);
   }
    getPageCount() {

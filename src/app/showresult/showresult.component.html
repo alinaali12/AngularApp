@@ -1,13 +1,15 @@
-
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
 <div class="container">
 <table class="table table-bordered table-hover table-responsive ">
         <thead>
-            <th>Id</th>
-          <th><a (click) = "sort('Name')">Name</a></th>
-          <th><a (click) = "sort('Email')">Email</a></th>
-          <th><a (click) = "sort('Choice')">Choices</a></th>
-          <th><a (click) = "sort('Comments')">Comments</a></th>
-          <th><a (click) = "sort('FileNames')">FileNames</a></th>
+            <th [ngClass]="{'sortactive': status=='Id'}"><i class="fa fa-fw fa-sort" (click) = "sort('Id',active)"></i>Id</th>
+          <th [ngClass]="{'sortactive': status=='Name'}"><i class="fa fa-fw fa-sort" (click) = "sort('Name',active)"></i>Name</th>
+          <th [ngClass]="{'sortactive': status=='Email'}"><i class="fa fa-fw fa-sort" (click) = "sort('Email',active)"></i>Email</th>
+          <th [ngClass]="{'sortactive': status=='Choice'}"><i class="fa fa-fw fa-sort" (click) = "sort('Choice',active)"></i>Choices</th>
+          <th [ngClass]="{'sortactive': status=='Comments'}"><i class="fa fa-fw fa-sort" (click) = "sort('Comments',active)"></i>Comments</th>
+          <th [ngClass]="{'sortactive': status=='FileNames'}"><i class="fa fa-fw fa-sort" (click) = "sort('FileNames',active)"></i>Files</th>
           <th>Options</th>
         </thead>
         <tbody>
@@ -22,21 +24,26 @@
           </tr>
         </tbody>
       </table>
+     
       <table class="table table-striped table-bordered" *ngIf="toggle==='show'">
           <th>Change Data</th>
+  
           <tbody>
-                <tr>
+                <tr class="margin">
+                    <div class="container">
                   Name<input [(ngModel)]="edituser.name"> 
                   Email<input [(ngModel)]="edituser.email"> 
                   Comments<input [(ngModel)]="edituser.comments"> 
                   choices<input [(ngModel)]="edituser.choice"> 
+                </div>
                 </tr>
               </tbody>
+          
               <button style="float: right;" class="btn btn-danger" (click)=cancel()>Cancel</button>
               <button style="float: right;" class="btn btn-success" (click)=savechanges()>Save Changes</button>
              
       </table>
- 
+
       <nav aria-label="Page navigation example">
             <ul class="pagination" *ngFor="let page of pagesArray; let x = index" >
               <li class="page-item" [ngClass]="{'active': (x+1)==active}"><a class="page-link" (click)= getPageData(x+1) >{{x+1}}</a></li>

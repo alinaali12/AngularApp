@@ -3,6 +3,7 @@ import { DataserviceService } from '../dataservice.service';
 import { Usermodel } from '../usermodel';
 import { EditDataComponent } from '../edit-data/edit-data.component';
 import { ChangeDetectorRef } from '@angular/core';
+import { stat } from 'fs';
 @Component({
   selector: 'app-showresult',
   templateUrl: './showresult.component.html',
@@ -22,7 +23,8 @@ export class ShowresultComponent implements OnInit {
   fileUser: Usermodel = new Usermodel();
   toggle = 'notshow';
   filebase64;
-  active;
+  active = 1;
+  status = 'Id';
   constructor(private dataservice: DataserviceService) { }
 
   ngOnInit() {
@@ -52,8 +54,10 @@ export class ShowresultComponent implements OnInit {
    }
    );
   }
-  sort(name: string) {
-    this.dataservice.sortData(name).subscribe(data => {
+  sort(name: string, page: number = 1) {
+    this.status = name;
+    console.log('sort', name + page);
+    this.dataservice.sortData(name, page).subscribe(data => {
       this.Users = data;
     }
     );
