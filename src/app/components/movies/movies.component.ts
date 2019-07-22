@@ -9,11 +9,6 @@ import { Movie } from '../home/home.component';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
-  movies: Array<Movie>;
-  config: any;
-  sortColumn = 'Id';
-  messageForm: FormGroup;
-  pageActual = 1;
   constructor(private dataService: DataService) {
     this.config = {
       itemsPerPage: 5,
@@ -21,8 +16,16 @@ export class MoviesComponent implements OnInit {
       totalItems: this.dataService.getCount()
     };
   }
+  movies: Array<Movie>;
+  config: any;
+  sortColumn = 'Id';
+  messageForm: FormGroup;
+  pageActual = 1;
+  count = 0;
 
   ngOnInit() {
+
+    this.getCount();
     this.get(this.sortColumn);
   }
   pageChanged(event: any) {
@@ -30,8 +33,13 @@ export class MoviesComponent implements OnInit {
 
     this.config.currentPage = event;
   }
+  getCount() {
+    this.dataService.getCount().subscribe(data => {
+      this.count = data;
+    });
+  }
   get(sort: string) {
-    this.dataService.getMovies(1, 20, sort).subscribe(data => {
+    this.dataService.getMovies(1, 42, sort).subscribe(data => {
       this.movies = Object.keys(data).map(k => data[k]);
       console.log(this.movies);
     });

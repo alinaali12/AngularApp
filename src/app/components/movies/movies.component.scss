@@ -22,3 +22,14 @@
 //     }
 //   }
 // }
+table {
+    // table-layout: fixed;
+    word-wrap: break-word;
+
+    td#poster {
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
