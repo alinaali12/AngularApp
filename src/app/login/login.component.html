@@ -52,38 +52,12 @@
 </div> -->
 
 <!-- Updated UI -->
+<!-- <div class="background"></div> -->
 <div class="container container-table">
   <div class="row h-100 justify-content-center">
     <div class="signin">
       <div class="card-group">
-        <div class="card"> 
-            <div class="card-body text-center">
-              <h4>Welcome to an Amazing place </h4>
-              <h2>SIGN IN</h2>
-              <p class="last-heading">Welcome to flop UI</p>
-              <form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value)" >
-                  
-                    <div class="form-group">
-                      <label class="col-md-12 control-label" for="Username">Username:</label>
-                      <div class="col-md-12 inputs">
-                        <input class="form-control" type = "text" name = "username" placeholder = "username" ngModel>
-                      </div>
-                    </div>
-  
-                    <div class="form-group">
-                      <label class="col-md-12 control-label" for="password">Password:</label>
-                      <div class="col-md-12">
-                        <input class="form-control" type = "password" name = "pwd" placeholder = "password" ngModel>
-                      </div>
-                    </div>
-                  
-                    <div class="col-md-12">
-                      <input  class="btn btn-primary" type = "submit" value = "submit">
-                    </div> 
-                  
-              </form>
-            </div>
-        </div>
+        
         <div class="card orange-pic"> 
           <!-- picture here -->
           <div class="card-body text-center">
@@ -91,6 +65,48 @@
             <p class="right-side">Learning to build website.</p>
             <p class="right-side">Implementing back-end and front-end</p>
           </div>
+        </div>
+
+        <div class="card"> 
+            <div class="card-body text-center">
+              <h4>Welcome to an Amazing place </h4>
+              <h2>SIGN IN</h2>
+              <p class="last-heading">Welcome to First Design</p>
+              <form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value)" ng-model="currentUser">
+                  
+                    <div class="form-group">
+                      <label class="col-md-12 control-label" for="Username">Username:</label>
+                      <div class="col-md-12 inputs">
+                        <input class="form-control" type = "text" name = "username" placeholder = "username"  [(ngModel)]="currentUser.userName" required>
+                      </div>
+                    </div>
+  
+                    <div class="form-group">
+                      <label class="col-md-12 control-label" for="password">Password:</label>
+                      <div class="col-md-12">
+                        <input class="form-control" type = "password" name = "pwd" placeholder = "password"  [(ngModel)]="currentUser.plainPassword" >
+                      </div>
+
+                      <!-- <div *ngIf="login.pwd.invalid && (login.pwd.dirty || login.pwd.touched)" class="alert alert-danger">
+                        <div *ngIf="login.pwd.errors.required">
+                          Password is required.
+                        </div>
+                      </div> -->
+                    </div>
+                  
+                    <div >
+                        <input type="checkbox" class="remember-me"  name="rememberme"
+                        [(ngModel)]="rememberMe"
+                        [ngModelOptions]="{standalone: true}"/>
+                        <label class="remember-me-label">Remember Me!</label>
+                    </div>
+                   
+                    <div class="col-md-12">
+                      <input  class="btn btn-primary" type = "submit" value = "Login" >
+                    </div> 
+                  
+              </form>
+            </div>
         </div>
 
       </div>
