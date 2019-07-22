@@ -2,6 +2,7 @@ import { DataService } from '../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Movie } from '../home/home.component';
+import { callbackify } from 'util';
 
 @Component({
   selector: 'app-movies',
@@ -21,7 +22,7 @@ export class MoviesComponent implements OnInit {
   sortColumn = 'Id';
   messageForm: FormGroup;
   pageActual = 1;
-  count = 0;
+  count = 10;
   sortStyle: string;
   ngOnInit() {
 
@@ -30,7 +31,6 @@ export class MoviesComponent implements OnInit {
   }
   pageChanged(event: any) {
     console.log(event);
-
     this.config.currentPage = event;
   }
   getCount() {
@@ -39,7 +39,7 @@ export class MoviesComponent implements OnInit {
     });
   }
   get(sort: string) {
-    this.dataService.getMovies(1, 42, sort).subscribe(data => {
+    this.dataService.getMovies(1, 50, sort).subscribe(data => {
       this.movies = Object.keys(data).map(k => data[k]);
       this.sortStyle = 'sort-btn-change';
       console.log(this.movies);
