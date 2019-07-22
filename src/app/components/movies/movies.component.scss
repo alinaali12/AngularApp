@@ -22,14 +22,32 @@
 //     }
 //   }
 // }
+@mixin fixedColumnSize($property) {
+    max-width: $property;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 table {
     // table-layout: fixed;
     word-wrap: break-word;
 
     td#poster {
-        max-width: 100px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        @include fixedColumnSize(400px);
     }
+
+    td#description {
+        @include fixedColumnSize(300px);
+    }
+}
+.sort-btn-default {
+    color: white;
+    background-color: blue;
+
+}
+
+.sort-btn-change {
+    color: Red;
+    background-color: white;
 }

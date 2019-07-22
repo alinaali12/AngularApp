@@ -22,7 +22,7 @@ export class MoviesComponent implements OnInit {
   messageForm: FormGroup;
   pageActual = 1;
   count = 0;
-
+  sortStyle: string;
   ngOnInit() {
 
     this.getCount();
@@ -41,6 +41,7 @@ export class MoviesComponent implements OnInit {
   get(sort: string) {
     this.dataService.getMovies(1, 42, sort).subscribe(data => {
       this.movies = Object.keys(data).map(k => data[k]);
+      this.sortStyle = 'sort-btn-change';
       console.log(this.movies);
     });
   }
