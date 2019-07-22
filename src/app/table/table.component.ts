@@ -28,6 +28,7 @@ export class TableComponent implements OnInit {
   constructor(private _registerservice:RegisterService, private _idservice:EditService) {}
 
   ngOnInit() {
+    console.log("oninit");
     this._registerservice.ViewAll().subscribe(data => {
       this.user = data;
       for(var i=0;i<5;i++){
@@ -35,7 +36,7 @@ export class TableComponent implements OnInit {
         var tfn=tempfileName.substring(0,tempfileName.indexOf(";"));
         var filename=tfn.substring(9);
         this.displaynames[i]=filename;
-        //console.log(this.displaynames[i]);
+        console.log(this.displaynames[i]);
       
       }
     });
@@ -95,6 +96,7 @@ export class TableComponent implements OnInit {
   }
   GetPage(pageno:number){
     this.pagenum=pageno;
+    console.log("this.pagenum", this.pagenum, "pageno:");
     this._registerservice.GetPage(pageno).subscribe(data => {
       this.user = data
       for(var i=0;i<5;i++){

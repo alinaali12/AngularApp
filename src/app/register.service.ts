@@ -27,6 +27,7 @@ export class RegisterService {
   }
 
   GetPage(pageno:number){
+    console.log("pageno:", pageno);
     return this._http.get(this._url+"/GetAll?sortOrder="+this.sort+ "&pageIndex=" + pageno);
   }
 

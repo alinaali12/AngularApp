@@ -24,23 +24,23 @@
     </tr>
     </thead>
     <tbody id="myTableBody">
-             <tr class="w3-hover-green" *ngFor="let u of user;let i = index">
-                 <td>{{u.id}}</td>
-                 <td>{{u.name}}</td>
-                 <td>{{u.email_address}}</td>
-                 <td>{{u.phone_number}}</td>
-                 <td>{{u.job_type}}</td>
-                 <td><a (click)="Download(u.fileName)">{{displaynames[i]}}</a></td>
-                 <td><a (click)="DeleteEntry(u.id)">delete</a></td>
-                 <td><a (click)="set_edit(u.id)"  routerLink="/edit">edit</a></td>
-             </tr>
+        <tr class="w3-hover-green" *ngFor="let u of user;let i = index">
+            <td>{{u.id}}</td>
+            <td>{{u.name}}</td>
+            <td>{{u.email_address}}</td>
+            <td>{{u.phone_number}}</td>
+            <td>{{u.job_type}}</td>
+            <td><a (click)="Download(u.fileName)">{{displaynames[i]}}</a></td>
+            <td><a (click)="DeleteEntry(u.id)">delete</a></td>
+            <td><a (click)="set_edit(u.id)"  routerLink="/edit">edit</a></td>
+        </tr>
     </tbody>
 </table>
 <div class="container" style="text-align: center">
     <nav aria-label="Page navigation example">
-            <ul class="pagination" *ngFor="let x of fakearray; let index = index" >
-                <li class="page-item" [ngClass]="{'active': (index+1)==pagenum}"><a class="page-link" (click)= GetPage(index+1) >{{index+1}}</a></li>
-            </ul>
+        <ul class="pagination" *ngFor="let x of fakearray; let index = index" >
+            <li class="page-item" [ngClass]="{'active': (index+1)==pagenum}"><a class="page-link" (click)= GetPage(index+1) >{{index+1}}</a></li>
+        </ul>
     </nav>
 </div>
 
