@@ -1,1 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
+
+$common_color : #e31768;
+
+.container img{
+    max-height: 80px;
+    max-width: 80px;
+    border: 2px solid lightcyan;
+    transition: 0.3s;
+}
+.container img:hover{
+    background-color: $common_color;
+    border: 2px solid $common_color;
+}
+.background-picture{
+    background: url('assets/white-glitter-lights-background_batynrho__F0000.png');
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100%;
+    width: 100%;  
+  
+}
+
+.background-tabs{
+    background-image:  url('assets/white-abstract-wallpaper-4.jpg');
+}
+.card-picture{
+    background-image:  url('assets/b9bdkfck9dbcj8bj9cieggcejbgcebefdfbauArp.jpg');
+    border-radius: 50px;
+}
+.card-body{
+    padding-top: 5% !important;  
+}
+.PadIt{
+    padding-top: 70%;
+}
+.text-antiqua{
+   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif ;
+   font-size: 15px !important;
+}
+.text-antiqua-title{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif ;
+}
+.sariftext{
+    font-family: arial !important;
+    font-weight: 200;       
+    font-size: 15px !important ;
+    text-indent: 10px; 
+}
+.push-left{
+   padding-left: 60%;
+}
+.color-text{
+    font-family: sans-serif;
+    color: $common_color; 
+}
+.color-text-white{
+    color: white;
+    
+}
+.color-container{
+    background-color: $common_color;
+}
+.border-color{
+    border-color: $common_color;
+}
+.active a{
+    background-color: $common_color !important;
+    border-color: $common_color !important;
+}
+  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: $common_color !important;
+    border-color: $common_color !important;
+    height: 40px;
+}
+
+.border-left{
+    border-radius: 25px 0 0 25px !important;
+}
+.border-right{
+    border-radius: 0 25px 25px 0 !important;
+}
+.border-total{
+    border-radius: 20px !important;
+}
+ .border-total last-child first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.border-total last-child last-child {
+    border-bottom-right-radius: 10px;
+}

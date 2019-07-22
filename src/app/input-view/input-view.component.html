@@ -1,50 +1,71 @@
-<h2>Undergraduate Degree Program</h2>
-<hr/>
-<div class="row">
-    <div class="col-md-4">
+<br>
+<br>
+<br>
+<div  class="container" >
 
-        <form #studentForm="ngForm" method="post" enctype="multipart/form-data" novalidate (ngSubmit)="onSubmit()">
-          
-            <div class="form-group">
-                <label hidden id="tempLabel">Editing ID: {{Student.id}} </label>              
-                <input  hidden disabled name="id" [(ngModel)]="Student.id" ><br />
-                <label  class="control-label">Name:</label>
-                <input name="StudentName" #stdName="ngModel" required class="form-control" [(ngModel)] = "Student.name"
-                [class.is-invalid]="stdName.invalid && stdName.touched"
-                />
-                <small [class.d-none]="stdName.valid || stdName.untouched" class="text-danger" > Name is requried</small>               
-            </div>
+<div class="card-group  justify-content-center " >
+        <div class="card  col-md-4 background-tabs shadow p-4 mb-4 bg-white border-left" > 
+          <div class="card-body text-center " >
+                <h3 class="color-text">Student Registeration</h3>
+              
+                    <form #studentForm="ngForm" method="post" enctype="multipart/form-data" novalidate (ngSubmit)="onSubmit()">   
+                        <label hidden id="tempLabel">Editing ID: {{Student.id}} </label>              
+                        <input  hidden disabled name="id" [(ngModel)]="Student.id" ><br />     
+                        <div class="form-group ">
+                           
+                            <label  hidden class="control-label text">Name:</label>
+                            <input  class="sariftext form-control input-group-sm mb-3 border-total"  name="StudentName" #stdName="ngModel" placeholder=" Name..." required  [(ngModel)] = "Student.name"
+                            [class.is-invalid]="stdName.invalid && stdName.touched"
+                            />
+                            <small [class.d-none]="stdName.valid || stdName.untouched" class="text-danger" > Name is requried</small>                                  
+                  
+                            <label class="sariftext"  hidden class="control-label">Program:</label>
+                            <select  class="sariftext border-total form-control"  (blur)="checkError(prog.value)" (change)="checkError(prog.value)" required #prog="ngModel" name="Program"   [(ngModel)] = "Student.program"
+                            >
+                                <option class="sariftext"  value="default"    selected>Select a Program</option>
+                                <option class="sariftext" value="BS(CS)">BS(CS)</option>
+                                <option  class="sariftext" value="BS(EE)">BS(EE)</option>
+                                <option  class="sariftext" value="BBA">BBA</option>
+                            </select>
+                            <small [class.d-none]="!errorCheck || prog.untouched " class="text-danger" > Select a program</small>                            
+                        <br>                 
+                       
+                            <label class="sariftext"  hidden class="control-label">Details:</label>
+                            <textarea  class="sariftext form-control border-total" name="Details"  requried #details="ngModel" rows="4" cols="50"  placeholder="Enter details here..." [(ngModel)] = "Student.detail"
+                            [class.is-invalid]="details.invalid && details.touched"
+                            ></textarea>
+                            <small [class.d-none]="!details.empty || details.dirty" class="text-danger" > Enter a few details</small>      
+                        <br>                      
+                        <div class="input-group">
+                                <div class="custom-file">
+                                  <input [class.is-invalid]="Filefield.invalid && Filefield.touched"  name="Files" accept= "*" required  type="file" (change) ="fileUpload($event)" class="custom-file-input " id="inputGroupFile04" #Filefield = "ngModel"  [(ngModel)] = "Student.filename">
+                                  <label class=" custom-file-label border-total push-left" for="inputGroupFile04" placeholder="Choose File">{{Student.filename}}</label>
+                                </div>
+                              </div>    
+                                <small [class.d-none]="Filefield.valid || Filefield.untouched" class="text-danger" > Select a file to upload</small>                                                                    
+                              <br>    
+                              <br>             
+                            <button  class="btn btn-primary color-container color-text-white seriftext btn-block border-total" [disabled]="errorCheck || stdName.invalid || Filefield.invalid" (click)= "onSubmit()" routerLink = '/outputview'   > {{ButtonName}} </button>
+                       
+                        </div>
+                    </form>
+                </div>
+        </div>
 
-            <div class="form-group">
-                <label  class="control-label">Program:</label>
-                <select (blur)="checkError(prog.value)" (change)="checkError(prog.value)" required #prog="ngModel" name="Program" class="form-control"  [(ngModel)] = "Student.program"
-                [class.is-invalid]="prog.invalid && prog.touched">
-                    <option value="default"  hidden disabled selected>Select a Program</option>
-                    <option value="BS(CS)">BS(CS)</option>
-                    <option value="BS(EE)">BS(EE)</option>
-                    <option value="BBA">BBA</option>
-                </select>
-                <small [class.d-none]="!errorCheck || prog.untouched " class="text-danger" > Select a program</small>
-            </div>
+        <div class="card justify-content-center col-md-5 card-picture shadow p-4 mb-4 bg-white border-right" >
+          <div class="card-body ">
+              <h1 class="  text-center color-text-white text-antiqua-title" >Undergraduate Degree Program</h1>
+              <div *ngIf="previewUrl" class="container PadIt" style=" border-color: white !important">      
+                  <h4 class="text-antiqua color-text-white ">File Type: {{_fileType}}</h4> 
+                  
+                  <img  (click)="showFile()" [src]="previewUrl"  />                 
+              </div>
+           </div>        
+        </div>
+      
+        
+</div>  
+<br>
+</div>       
 
-            <div class="form-group">
-                <label class="control-label">Details:</label>
-                <textarea name="Details"  requried #details="ngModel" rows="4" cols="50" class=" form-control"  [(ngModel)] = "Student.detail"
-                [class.is-invalid]="details. invalid && details.touched"
-                ></textarea>
-                <small [class.d-none]="details.valid || details.untouched" class="text-danger" > Enter a few details</small>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">File Upload:</label>
-                <input name="Files" type="file"  (change) ="fileUpload($event)" accept= "*" required #Filefield = "ngModel" class="btn control-label" multiple  [(ngModel)] = "Student.filename"
-                [class.is-invalid]="Filefield.invalid && Filefield.touched" />
-                <small [class.d-none]="Filefield.valid || Filefield.untouched" class="text-danger" > Select a file to upload</small>
-            </div>
-
-            <div class="form-group">
-                <button [class.disabled]="" routerLink = '/outputview' (click) = "onSubmit()" type="button"  class="btn btn-info " > {{ButtonName}} </button>
-            </div>
-        </form>
-    </div>
-</div>
+<script src="https://unpkg.com/file-upload-with-preview@4.0.0/dist/file-upload-with-preview.min.js"></script>

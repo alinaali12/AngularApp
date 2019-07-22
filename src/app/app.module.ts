@@ -9,6 +9,7 @@ import { OutputviewComponent } from './outputview/outputview.component';
 import { FocuschangeDirective } from './focuschange.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { SiblingCommunicatorService } from './sibling-communicator.service';
+import { ClasschangerDirective } from './classchanger.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SiblingCommunicatorService } from './sibling-communicator.service';
     InputViewComponent,
     DefaultpageComponent,
     OutputviewComponent,
-    FocuschangeDirective    
+    FocuschangeDirective,
+    ClasschangerDirective    
    
   ],
   imports: [

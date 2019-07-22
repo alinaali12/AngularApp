@@ -4,6 +4,8 @@ import { ApiHanlderService } from '../api-hanlder.service';
 import { SiblingCommunicatorService } from '../sibling-communicator.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FileBase } from '../file-base';
+import  {FileDownloaderService} from '../file-downloader.service';
+
 
 @Component({
   selector: 'app-input-view',
@@ -17,9 +19,11 @@ export class InputViewComponent implements OnInit {
   ButtonName : string ="Create Record";
   errorCheck=true;
   EditCheck = false;
+  previewUrl : any = null;
+  _fileType : string = null;
   Student :StudentRegisterationModel;
   CurrentFile: FileBase = new FileBase();
-  constructor(private _apiHandler: ApiHanlderService, private sharedService : SiblingCommunicatorService )  { }
+  constructor(private _apiHandler: ApiHanlderService, private sharedService : SiblingCommunicatorService, private _fileManager : FileDownloaderService )  { }
  
   ngOnInit() {
     if (this.sharedService.Record!=null){
@@ -36,7 +40,7 @@ export class InputViewComponent implements OnInit {
   }
 
   checkError(value: string){
-    if (value==='default')
+    if (value==='default' || value=='' || value==null)
       this.errorCheck=true;
     else
      this.errorCheck=false;
@@ -45,15 +49,38 @@ export class InputViewComponent implements OnInit {
     var file:File = event.target.files[0];
     this.Student.filename=event.target.files[0].name;
     var fileReader:FileReader=new FileReader();
-    console.log(this.Student.filename);
+   
     fileReader.readAsDataURL(file);
+
     fileReader.onloadend= (event) => {
-    
-      console.log(fileReader.result);
+      this.filePreview(fileReader.result);
+      //console.log(fileReader.result);
       this.CurrentFile.file=fileReader.result;
       this.CurrentFile.filename=this.Student.filename;
       
     } 
+  }
+  
+  filePreview(result : string | ArrayBuffer ){
+
+    let RawData= result.toString();
+    let base64=RawData.substring(RawData.search(':')+1,RawData.search(';'));
+    this._fileType = this._fileManager.GetFileType(base64);
+    
+    if (this._fileType=='Image'){
+      this.previewUrl=result;
+    }else if (this._fileType=='Document' || this._fileType=='Spreadsheet'){
+      this.previewUrl=this._fileManager.GetDocumentImage();
+    }
+    else {
+      this.previewUrl= this._fileManager.GetDocumentImage();
+    }
+       
+  }
+  showFile(){
+    if (this._fileType)
+       this._fileManager.OpenFile(this.previewUrl,this.Student.filename);
+    //this.downloadService.downloadFile(File.file,File.filename);
   }
   onSubmit(){ // Click on Create/Update Record
  

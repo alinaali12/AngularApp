@@ -1,40 +1,51 @@
-<h2>{{Title}}</h2>
 <br>
-    <form >
-        <div class="form-group">
-            <button type="button" routerLink='/inputview' class="btn btn-info">Registeration</button>      
-        </div>
-    </form>
+<br>
+<br>
+<div  class="container">
+        <form >         
+            <div class="col-md-2 float-right">
+                <button routerLink='/inputview' class="btn btn-primary color-text-white sariftext btn-block rounded-0 ">Registeration</button>       
+            </div>
+        </form>
+        <br>
+        <h2 class="color-text">{{Title}}</h2>
+        <br>
+      
+            <table id="Tmain" class="table table-hover  sariftext shadow p-4 mb-4 bg-white" >
+                <thead class="color-container sariftext color-text-white ">
+                    <tr>
+                        <th class="sariftext" (click)="pageGet(_PageModel.CurrentPage,Id)" scope="col">#</th>
+                        <th class="sariftext" (click)="pageGet(_PageModel.CurrentPage,name)" scope="col">Name</th>
+                        <th class="sariftext" (click)="pageGet(_PageModel.CurrentPage,program)" scope="col">Program</th>
+                        <th class="sariftext" (click)="pageGet(_PageModel.CurrentPage,detail)"  scope="col">Details</th>
+                        <th class="sariftext" (click)="pageGet(_PageModel.CurrentPage,filename)" scope="col">File Name</th>
+                        <th class="sariftext" scope="col">Update Record</th>          
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr   *ngFor="let item of _PageModel.DataList">                
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.program}}</td>
+                            <td>{{item.detail}}</td>
+                            <td> <a (click)=GetFile(item.filename)>{{item.filename}}</a></td>
+                            <td> <a routerLink='/inputview' (click)="GoToEdit(item)" >Update</a> |
+                                <a routerLink='/outputview'(click)="DeleteData(item.id)" >Delete</a>
+                            </td>                                           
+                    </tr>           
+                </tbody>    
+            </table>
+       
+            <br>
+            <ul  class="pagination">
+            <div *ngFor="let i of _TotalPages; let x = index">
+                    <li   class="page-item " [ngClass] ="{'active' : _PageModel.CurrentPage==(x+1)}" >
+                        <a (click)="pageGet(x+1)" class="page-link" >{{x+1}}</a>     
+                    </li>
+                </div>
+            </ul>
 
-    <table id="Tmain" class="table table-hover">
-        <thead>
-            <tr>
-                <th (click)="pageGet(_PageModel.CurrentPage,Id)" scope="col">#</th>
-                <th (click)="pageGet(_PageModel.CurrentPage,name)" scope="col">Name</th>
-                <th (click)="pageGet(_PageModel.CurrentPage,program)" scope="col">Program</th>
-                <th (click)="pageGet(_PageModel.CurrentPage,detail)"  scope="col">Details</th>
-                <th (click)="pageGet(_PageModel.CurrentPage,filename)" scope="col">File Name</th>
-                <th scope="col">Update Record</th>          
-            </tr>
-        </thead>
-        <tbody>
-            <tr   *ngFor="let item of _PageModel.DataList">                
-                    <td>{{item.id}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.program}}</td>
-                    <td>{{item.detail}}</td>
-                    <td> <a (click)=GetFile(item.filename)>{{item.filename}}</a></td>
-                    <td> <a routerLink='/inputview' (click)="GoToEdit(item)" >Update</a> |
-                         <a routerLink='/outputview'(click)="DeleteData(item.id)" >Delete</a>
-                    </td>                                           
-            </tr>           
-        </tbody>    
-    </table>
-    <hr>
-    <ul  class="pagination">
-       <div *ngFor="let i of _TotalPages; let x = index">
-            <li   class="page-item" [ngClass] ="{'active' : _PageModel.CurrentPage==(x+1)}" >
-                <a (click)="pageGet(x+1)" class="page-link" >{{x+1}}</a>     
-            </li>
-        </div>
-    </ul>
+</div>
+<br>
+<br>
+<br>
