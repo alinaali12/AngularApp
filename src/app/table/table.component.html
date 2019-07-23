@@ -7,6 +7,25 @@
     <br>
     <br>
     <br>
+    <br>
+    <div>
+        <div style="text-align: center" >
+            <input (keydown)="Search($event)" type="text" name="search" placeholder="Search.." [(ngModel)]="SearchVal">
+            <select class="form-control" name="job" style="width: 200px" [(ngModel)]="SearchCol" id="searchbar"> 
+                <option value="" disabled hidden> Select column to search in</option>
+                <option  selected>Id</option>
+                <option >Name</option>
+                <option >Email_Address</option>
+                <option >Phone_Number</option>
+                <option >File_Name</option>
+            </select>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+    
+    
 <form>
     <div style="text-align:center;">
         <button type="submit" class="button" routerLink="/input"> Register User </button>
@@ -15,12 +34,13 @@
 <table class="w3-table-all" id="myTable">
     <thead>
     <tr class="w3-light-grey">
-        <th ><a >Id</a></th>
+        <th >Id</th>
         <th [class.headerSortDown]="nameh"><a (click)="Sort('name')"> Name</a></th>
         <th [class.headerSortDown]="emailh"><a (click)="Sort('email_address')">Email Address</a></th>
         <th [class.headerSortDown]="phoneh"><a (click)="Sort('phone_number')">Phone Number</a></th>
         <th [class.headerSortDown]="jobh"><a (click)="Sort('job_type')">Job Type</a></th>
         <th [class.headerSortDown]="fileh"><a (click)="Sort('fileName')">File Name</a></th>
+        <th>Options</th>
     </tr>
     </thead>
     <tbody id="myTableBody">
@@ -31,8 +51,8 @@
             <td>{{u.phone_number}}</td>
             <td>{{u.job_type}}</td>
             <td><a (click)="Download(u.fileName)">{{displaynames[i]}}</a></td>
-            <td><a (click)="DeleteEntry(u.id)">delete</a></td>
-            <td><a (click)="set_edit(u.id)"  routerLink="/edit">edit</a></td>
+            <td><a (click)="DeleteEntry(u.id)">delete | </a><a (click)="set_edit(u)"  routerLink="/edit">edit</a></td>
+            
         </tr>
     </tbody>
 </table>

@@ -13,7 +13,7 @@ import { RegisteredUser } from '../shared/models/registereduser.model';
   
 })
 export class TableComponent implements OnInit {
-
+  tempuser: RegisteredUser;;
   user: Object;
   TotalPages:any;
   fakearray;
@@ -24,6 +24,8 @@ export class TableComponent implements OnInit {
   fileh=false;
   displaynames:string[]=['placeholder', 'placeholder', 'placeholder','placeholder','placeholder'];
   pagenum=1;
+  SearchCol:string;
+  SearchVal:string;
 
   constructor(private _registerservice:RegisterService, private _idservice:EditService) {}
 
@@ -96,7 +98,7 @@ export class TableComponent implements OnInit {
   }
   GetPage(pageno:number){
     this.pagenum=pageno;
-    console.log("this.pagenum", this.pagenum, "pageno:");
+    //console.log("this.pagenum", this.pagenum, "pageno:");
     this._registerservice.GetPage(pageno).subscribe(data => {
       this.user = data
       for(var i=0;i<5;i++){
@@ -109,15 +111,42 @@ export class TableComponent implements OnInit {
   }
 
   DeleteEntry(id:number){
-    this._registerservice.Delete(id).subscribe(data=>{console.log(data)
-    this.ngOnInit()
-    });
+    if(confirm("Are you sure you want to delete this entry?")) {
+      this._registerservice.Delete(id).subscribe(data=>{console.log(data)
+        this.ngOnInit()
+        });
+    }
   }
   
-  set_edit(id:number){
-    this._idservice.set_id(id);
+  set_edit(Tuser:RegisteredUser){
+    this._idservice.set_id(Tuser.id);
+    this._idservice.set_user(Tuser);
+    this._registerservice.GetPage(this.pagenum).subscribe(data=>{
+      this.user=data;
+    });
   }
 
+  Search(event) {
+    if (event.key === "Enter") {
+      console.log(this.SearchCol,this.SearchVal)
+      this._registerservice.SearchWith(this.SearchVal,this.SearchCol).subscribe(data=>{
+        this.user=data;
+        for(var i=0;i<5;i++){
+          var tempfileName=this.user[i].fileName;
+          var tfn=tempfileName.substring(0,tempfileName.indexOf(";"));
+          var filename=tfn.substring(9);
+          this.displaynames[i]=filename;
+          console.log(this.displaynames[i]);
+        
+        }
+      });
+      this._registerservice.GetCount().subscribe(data=> {
+        this.TotalPages=data
+        this.fakearray=new Array(1)
+      }) 
+    }
+  }
+  
   public base64ToBlob(b64Data, contentType='', sliceSize=512) {
     b64Data = b64Data.replace(/\s/g, ''); 
     console.log(b64Data);

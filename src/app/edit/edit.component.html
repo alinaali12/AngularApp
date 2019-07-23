@@ -5,23 +5,23 @@
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">Edit Account</h4>
-            <form #userForm="ngForm" (ngSubmit)="onSubmit()"> 
+            <form #userForm="ngForm" (ngSubmit)="onSubmit()" > 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Full name" type="text" name="username"
-                     #name="ngModel" [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="userModel.name">
-                    <small [class.d-none]="name.valid || name.untouched">Name is required</small>
+                    <input required class="form-control" placeholder="Name" type="text" name="username" value="{{editU.name}}"
+                     #name="ngModel"  pattern="^.{2,20}$" [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="userModel.name" >
                 </div>
+                <small [class.d-none]="name.valid || name.untouched"><font color=red>Name is either empty or incorrect</font></small>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Email address" type="email" name="email"
+                    <input required class="form-control" placeholder="Email address" type="email" name="email" 
                     #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="[\w-]+@([\w-]+\.)+[\w-]+" [(ngModel)]="userModel.email_address">
-                    <small [class.d-none]="email.valid || email.untouched">Email is required</small>
                 </div>
+                <small [class.d-none]="email.valid || email.untouched"><font color=red>Email is either empty or incorrect</font></small>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -30,10 +30,10 @@
                         <option selected="">+92</option>
                         <option value="1">+92</option>
                     </select>
-                    <input class="form-control" placeholder="Phone number" type="text" name="phonenum" 
+                    <input class="form-control" placeholder="Phone number" type="text" name="phonenum" required
                     #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="userModel.phone_number">
-                    <small [class.d-none]="phone.valid || phone.untouched">Phone number is required</small>
                 </div>
+                <small [class.d-none]="phone.valid || phone.untouched"><font color=red>Phone Number is either empty or incorrect</font></small>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-building"></i> </span>
@@ -49,23 +49,31 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Create password" type="password" name="password" 
+                    <input class="form-control" placeholder="Create password" type="password" name="password" required
                     #password="ngModel" pattern="^.{4,8}$" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="userModel.password">
-                    <small [class.d-none]="password.valid || password.untouched">Password is required</small>
                 </div>
+                <small [class.d-none]="password.valid || password.untouched"><font color=red>Password is either empty or incorrect</font></small>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Repeat password" type="password">
+                    <input required class="form-control"  required placeholder="Repeat password" type="password">
                     
-                </div>
+                </div>          
+               
+                    <div class="column" id="selector">
+                        <input  #file type="file"  required class="btn btn-success btn-block" name="filename"  (change)="onFileChange($event)"/>
+                    </div>
+                    <div class="column">
+                        <img [src]="imgURL" height="100" *ngIf="imgURL">
+                    </div>
+                                      
+            
                 <div>
-                    <input type="file" class="btn btn-success btn-block" name="filename" [(ngModel)]="userModel.fileName" (change)="onFileChange($event)" #fileInput/>
-                    <button [disabled]="userForm.form.invalid" type="submit" class="btn btn-primary btn-block" > Update  </button>
+                    <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-primary btn-block" > Validate  </button>
+                    <small [class.d-none]="!userForm.form.invalid" ><font color="red">Please fill in the form</font></small>
                 </div>
             </form>
-            <br>
             <br>
             <br>
             <form>

@@ -11,10 +11,16 @@ import { EditService } from '../edit.service';
 export class EditComponent implements OnInit {
 
   userModel=new RegisteredUser(); 
+  editU=new RegisteredUser();
   base64:string;
+  imgURL: any;
+  imagePath: any;
   constructor(private _registerservice:RegisterService, private _idservice: EditService) { }
 
   ngOnInit() {
+    //console.log(this.userModel);
+    this.userModel=this._idservice.get_user();
+    console.log(this._idservice.get_user());
   }
   onSubmit(){
     this.userModel.id=this._idservice.get_id();
@@ -24,44 +30,40 @@ export class EditComponent implements OnInit {
     )
   }
   onFileChange(event) {
-    let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      //reader.readAsDataURL(file);
-      console.log(file.name);
-      console.log(file.type);
-      reader.onload = () => {
-        //console.log(reader.result);
-      };
-      if(file.type=="text/plain"){
-        reader.readAsText(file);
-        let content=reader.result;
-        let data = new Blob([content], { type: 'text/plain' });
-        let arrayOfBlob = new Array<Blob>();
-        arrayOfBlob.push(data);
-        let applicationZip = new File(arrayOfBlob, file.name, { type: 'text/plain' });
-        console.log(applicationZip);
-      }
-      if(file.type=="image/jpeg"){
-        reader.readAsDataURL(file);
-        //console.log(reReadItem);
-      }
+    this.FiletoBase64(event.target);
+    this.preview(event.target);
       
-      
-    }
-    
-    
   }
-
-  dataURItoBlob(dataURI) {
-    const byteString = window.atob(dataURI);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const int8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-      int8Array[i] = byteString.charCodeAt(i);
+  FiletoBase64(inputValue: any){
+    var file:File = inputValue.files[0];
+    var myReader:FileReader = new FileReader();
+  
+    myReader.onloadend = (e) => {
+      this.base64+=file.name;
+      this.base64+=";";
+      this.base64 += myReader.result as string;
+      this.userModel.fileName=this.base64;
+      //this.onSubmit();
     }
-    const blob = new Blob([int8Array], { type: 'image/jpeg' });    
-    return blob;
- }
+    myReader.readAsDataURL(file);
+  }
+  preview(inputValue:any) {
+    var files=inputValue.files;
+    if (files.length === 0)
+      return;
+ 
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.imgURL=("")
+      return;
+    }
+ 
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+    }
+  }
 
 }

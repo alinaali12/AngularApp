@@ -9,6 +9,8 @@ export class RegisterService {
   _url='https://localhost:44347/api/RegisteredUsers';
   sort="name";
   pageIndex=1;
+  searchval="";
+  searchcol="";
 
   constructor(private _http: HttpClient) { }
 
@@ -19,6 +21,12 @@ export class RegisterService {
 
   ViewAll() {
     return this._http.get(this._url+"/GetAll");
+  }
+
+  SearchWith(value:string,column:string){
+    this.searchval=value;
+    this.searchcol=column;
+    return this._http.get(this._url+"/GetAll?sortOrder="+this.sort+ "&pageIndex=" + this.pageIndex+"&val="+this.searchval+"&col="+this.searchcol);
   }
 
   SortBy(sorton:string){
