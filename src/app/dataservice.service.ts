@@ -10,6 +10,8 @@ import 'rxjs/add/operator/map';
 export class DataserviceService {
 
    url = 'https://localhost:44347/api/UserModels';
+   EditUser = new Usermodel();
+   toggleEdit: string;
   constructor(private http: HttpClient) {
   }
   EditUserData(id: number): Observable<Usermodel> {
@@ -44,5 +46,20 @@ export class DataserviceService {
     console.log('s', downloadFile.fileNames);
     return this.http.post('https://localhost:44347/api/UserModels/download', downloadFile)
     .map((response: Response) => response as unknown as Usermodel);
+  }
+  saveToggle(toggle) {
+    this.toggleEdit = toggle;
+
+  }
+  saveUser(user: Usermodel) {
+    this.EditUser = user;
+    console.log(this.EditUser + 'service' + this.EditUser.name);
+  }
+  getUser() {
+    return this.EditUser;
+    console.log('service', this.EditUser);
+  }
+  getToggle() {
+    return this.toggleEdit;
   }
 }

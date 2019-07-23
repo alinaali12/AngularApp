@@ -4,12 +4,13 @@
 <div class="container">
 <table class="table table-bordered table-hover table-responsive ">
         <thead>
-            <th [ngClass]="{'sortactive': status=='Id'}"><i class="fa fa-fw fa-sort" (click) = "sort('Id',active)"></i>Id</th>
-          <th [ngClass]="{'sortactive': status=='Name'}"><i class="fa fa-fw fa-sort" (click) = "sort('Name',active)"></i>Name</th>
-          <th [ngClass]="{'sortactive': status=='Email'}"><i class="fa fa-fw fa-sort" (click) = "sort('Email',active)"></i>Email</th>
-          <th [ngClass]="{'sortactive': status=='Choice'}"><i class="fa fa-fw fa-sort" (click) = "sort('Choice',active)"></i>Choices</th>
-          <th [ngClass]="{'sortactive': status=='Comments'}"><i class="fa fa-fw fa-sort" (click) = "sort('Comments',active)"></i>Comments</th>
-          <th [ngClass]="{'sortactive': status=='FileNames'}"><i class="fa fa-fw fa-sort" (click) = "sort('FileNames',active)"></i>Files</th>
+            <th [ngClass]="{'sortactive': status=='Id'}">
+              <i class="fa" [ngClass]="{'fa-sort-down': status=='Id','fa-level-down': status !=='Id'}" (click) = "sort('Id',active)"></i>Id</th>
+          <th [ngClass]="{'sortactive': status=='Name'}"><i class="fa" [ngClass]="{'fa-sort-down': status=='Name','fa-level-down': status !=='Name'}" (click) = "sort('Name',active)"></i>Name</th>
+          <th [ngClass]="{'sortactive': status=='Email'}"><i class="fa" [ngClass]="{'fa-sort-down': status=='Email','fa-level-down': status !=='Email'}" (click) = "sort('Email',active)"></i>Email</th>
+          <th [ngClass]="{'sortactive': status=='Choice'}"><i class="fa" [ngClass]="{'fa-sort-down': status=='Choice','fa-level-down': status !=='Choice'}" (click) = "sort('Choice',active)"></i>Choices</th>
+          <th [ngClass]="{'sortactive': status=='Comments'}"><i class="fa" [ngClass]="{'fa-sort-down': status=='Comments','fa-level-down': status !=='Comments'}" (click) = "sort('Comments',active)"></i>Comments</th>
+          <th [ngClass]="{'sortactive': status=='FileNames'}"><i class="fa" [ngClass]="{'fa-sort-down': status=='FileNames','fa-level-down': status !=='FileNames'}" (click) = "sort('FileNames',active)"></i>Files</th>
           <th>Options</th>
         </thead>
         <tbody>
@@ -20,12 +21,12 @@
             <td> {{user.choice}} </td>
             <td> {{user.comments}} </td>
             <td><a (click)= DownloadUserFile(user.fileNames)>{{user.fileNames}}</a></td>
-            <td><a (click)= passId(user.id) ng-model="myVar">Edit</a>|<a (click)=deleteuser(user.id)>Delete</a></td>
+            <td><a [routerLink] = "['/front-page']" (click)= passId(user) ng-model="myVar">Edit</a>|<a (click)=deleteuser(user.id)>Delete</a></td>
           </tr>
         </tbody>
       </table>
      
-      <table class="table table-striped table-bordered" *ngIf="toggle==='show'">
+      <!-- <table class="table table-striped table-bordered" *ngIf="toggle==='show'">
           <th>Change Data</th>
   
           <tbody>
@@ -42,7 +43,7 @@
               <button style="float: right;" class="btn btn-danger" (click)=cancel()>Cancel</button>
               <button style="float: right;" class="btn btn-success" (click)=savechanges()>Save Changes</button>
              
-      </table>
+      </table> -->
 
       <nav aria-label="Page navigation example">
             <ul class="pagination" *ngFor="let page of pagesArray; let x = index" >

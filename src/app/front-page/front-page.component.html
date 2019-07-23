@@ -2,68 +2,74 @@
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
-  
-<div class="container">
-    <div class="header">
+  <body>
+    <div class="container">
       <div class="row">
-        
-        <div class="col-10 ">
-            <h1>Link in with us to get updated!</h1>
-        </div>
-    
-      </div>
-     
-    </div>
+                <div class="col-md-8 space">
+                 
+                  <div class="hexagon"><h1>Welcome</h1><p class="lead">Lead You To New Ways of Experience</p></div>
+                  <div>
+                    <button class="getstart" (click)= "showpage()">Getting Started</button>
+                  </div>
+                </div>
+                
+                <div class="col-md-4 space" style="align-content: center; background-color: #EBE0E7;" *ngIf=" pageToggle==='show' || EditToggle==='show'">
+                  
+                    <form ngNativeValidate (ngSubmit)="SendData()">
+                        <div class="row">
+                            <img src="assets/images/user.png" alt="Avatar" class="avatar">
+                            <br>
+                          </div>
 
-    <div class="main">
-    <p>please fill in the details</p><br>
-    <form ngNativeValidate (ngSubmit)="SendData()">
-      <div class="row">
-          <img src="assets/images/user.png" alt="Avatar" class="avatar">
-          <br>
+                          <div class="row">
+                              <div class="col-md-2"></div>
+                              <div class="col-md-8"><input type="file" name="image" (change)="onFileChanged($event)" *ngIf=" pageToggle==='show'"></div>
+                            </div>
+                            <br>
+
+                            <div class="row">
+                                <div class="col-md-2" ><label *ngIf="EditToggle==='show'">Name</label></div>
+                                <div class="col-md-8"><input class ="styleinput" required type="text" placeholder="Enter name" [value]='name' (input)='name=$event.target.value' value="{{EditUser.name}}"></div>
+                              </div>
+                              <br>
+                              
+                              <div class="row">
+                                  <div class="col-md-2" ><label *ngIf="EditToggle==='show'">Email</label></div>
+                                  <div class="col-md-8"><input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="text" placeholder="Enter Email" [value]='email' (input)='email=$event.target.value' value="{{EditUser.email}}"></div>
+                                </div>
+                                <br>
+                      
+
+                                <div class="row">
+                                    <div class="col-md-2" ><label *ngIf="EditToggle==='show'">Choices</label></div>
+                                    <div class="col-md-8"><select class="styleinput" required [(ngModel)]="model.choice" name="abc"  value="{{EditUser.choice}}">
+                                        <option selected value="lilies">lilies</option>
+                                        <option value="roses">roses</option>
+                                        <option value="fillers">fillers</option>
+                                      </select></div>
+                                  </div>
+                                  <br>
+
+                                  <div class="row">
+                                      <div class="col-md-2" ><label *ngIf="EditToggle==='show'">Comments</label></div>
+                                      <div class="col-md-8"><textarea placeholder="Comments" class="styleinput" required width=100%; [value]='comments' (input)='comments=$event.target.value'  value="{{EditUser.comments}}"></textarea></div>
+                                    </div>
+                                    <br>
+                                    <input type="button" value="Cancel" (click)= "cancel()" class=" btn btn-danger" style="float: right;" *ngIf=" pageToggle==='show'">
+                                    <input type="submit" [ngClass]="{'successactive': status=='clicked'}" class="btn btn-info pull-right" value="save user" *ngIf=" pageToggle==='show'">
+                                    <input type="button" [ngClass]="{'successactive': status=='clicked'}" class="btn btn-warning pull-right" value=" Edit user" *ngIf=" EditToggle==='show'" (click)=saveChanges(EditUser) style="margin-bottom: 1%;">
+                                   
+                        
+                      </form>
+                      
+                  
+            
+                </div>
         </div>
-      
-        <div class="file"><input type="file" name="image" (change)="onFileChanged($event)"></div> 
-        <br>
-        <div class="row">
-            <div class="col-md-4">Name</div>
-            <div class="col-md-8"><input required type="text" placeholder="Enter name" [value]='name' (input)='name=$event.target.value'></div>
-          </div>
-          <br>
-        <div class="row">
-            <div class="col-md-4" >Email</div>
-            <div class="col-md-8"><input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="text" placeholder="Enter Email" [value]='email' (input)='email=$event.target.value' ></div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-md-4" >Choices</div>
-            <div class="col-md-8"><select required [(ngModel)]="model.choice" name="abc">
-                <option value="lilies">lilies</option>
-                <option value="roses">roses</option>
-                <option value="fillers">fillers</option>
-              </select></div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-md-4" >Comments</div>
-            <div class="col-md-8"><textarea required width=100%; [value]='comments' (input)='comments=$event.target.value' ></textarea></div>
-          </div>
-          <br>
-          <input type="submit" [ngClass]="{'successactive': status=='clicked'}" class="btn btn-info pull-right" value="save user">
-         
-      </form>
-      <p id="data">{{name}}{{email}}{{choices}}{{Comments}}</p>
-      
-    
     </div>
-    
-    </div>
-    <footer>
-    copyrights are reserved
-   
-    </footer>
-    
+  </body>

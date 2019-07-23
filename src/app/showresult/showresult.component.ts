@@ -4,6 +4,7 @@ import { Usermodel } from '../usermodel';
 import { EditDataComponent } from '../edit-data/edit-data.component';
 import { ChangeDetectorRef } from '@angular/core';
 import { stat } from 'fs';
+import { userInfo } from 'os';
 @Component({
   selector: 'app-showresult',
   templateUrl: './showresult.component.html',
@@ -15,7 +16,7 @@ export class ShowresultComponent implements OnInit {
   Users = [];
   deleteres;
   sortres;
-  edituser: Usermodel;
+  edituser: Usermodel = new Usermodel();
   comments;
   putres;
   fileres: Usermodel;
@@ -25,6 +26,8 @@ export class ShowresultComponent implements OnInit {
   filebase64;
   active = 1;
   status = 'Id';
+  getUser = new Usermodel();
+  sortstatus = '';
   constructor(private dataservice: DataserviceService) { }
 
   ngOnInit() {
@@ -55,6 +58,7 @@ export class ShowresultComponent implements OnInit {
    );
   }
   sort(name: string, page: number = 1) {
+   // this.sortstatus = 'clicked';
     this.status = name;
     console.log('sort', name + page);
     this.dataservice.sortData(name, page).subscribe(data => {
@@ -71,13 +75,17 @@ export class ShowresultComponent implements OnInit {
         console.log(this.pagesArray);
       } );
    }
-   passId(id: number) {
-     console.log('passid', id);
-     this.dataservice.EditUserData(id).subscribe(data => {
-      this.edituser = data;
-      console.log('s', this.edituser);
-      this.toggle = 'show';
-      });
+   passId(userpassed: Usermodel) {
+    //  localStorage.clear();
+    //  console.log('passid', userpassed.id);
+    //  this.dataservice.EditUserData(userpassed.id).subscribe(data => {
+    //   this.edituser = data;
+    //   console.log('s', this.edituser);
+    //   this.toggle = 'show';
+    //   });
+     console.log('passid', userpassed);
+     this.dataservice.saveUser(userpassed);
+     this.dataservice.saveToggle('show');
    }
   savechanges() {
      console.log(this.edituser);
@@ -86,7 +94,6 @@ export class ShowresultComponent implements OnInit {
       this.putres = data;
       console.log('s', this.putres);
       this.ngOnInit();
-      this.toggle = 'notshow';
     }
     );
    }

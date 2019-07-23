@@ -1,82 +1,145 @@
 
-  
-*{
+$bg: #3c3c3c;
+$white: #fff;
+$black: #202121;
+@mixin transition($property: all, $duration: 0.5s, $ease: cubic-bezier(0.65,-0.25,0.25, 1.95)) {
+  transition: $property $duration $ease;
+}
+
+* {
+  box-sizing: border-box;
+  &::before, &::after {
     box-sizing: border-box;
   }
-h1
-{
-    padding: 2%;
-    text-align: center;
-    color: blueviolet;
-   
 }
-.main
-{
-    text-align: center;
-    border: 1px solid black; 
-    margin-left:20%;
-    margin-right:20%;
-    text-align: left;
-    padding: 1%;
-    
+
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+  
+  &.getstart {
+    @include transition(all, 0.5s, cubic-bezier(0.65,-0.25,0.25,1.95));
+    font-weight: 900;
+    color: $black;
+    width: 40%;
+    border: 2px solid blueviolet;
+    border-radius: 15px;
+    padding: 1.25rem 2rem;
+    background: $white;
+    text-transform: uppercase;
+    background-color: #8080c0;
+    &:hover, &:focus, &:active {
+      letter-spacing: 0.125rem;
+    }
+  }
+}
+
+body {
+
+  background: url('/assets/images/backblur.jpg');
+  background-color: #cccccc;
+  height: 700px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.space{
+  margin-top: 10%;
+
+}
+.hexagon {
+  position: relative;
+  width: 300px; 
+  height: 173.21px;
+  background-color: #8080c0;
+  margin: 86.60px 0;
+}
+.lead {
+  text-align: center;
+  margin: auto;
+  font-size: 30px;
+}
+h1 {
+  color: #cccccc;
+  text-align: center;
+}
+.avatar {
+
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+  margin-top: 5%;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 86.60px solid #8080c0;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 86.60px solid #8080c0;
+}
+.successactive{
+  background-color: green !important;
+}
+.styleinput {
+  border: none;
+  border-bottom: 4px solid #8842d5; 
+  background: #cccccc;
+}
+input[type=text] {
+  border: none;
+  border-bottom: 4px solid #8842d5; 
+  background: #cccccc;
+  width: 130px;
+  -webkit-transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out;
+  margin-left: 10%;
+}
+input[type=text]:focus {
+  width: 100%;
+}
+textarea:focus {
+  width: 100%;
   
 }
-.container {
-    text-align: center;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;    
-  }
-  p
-  {
-      text-align: center;
-  }
-  .col-md-4
-  {
-      font-weight: bold;
-      font-size: 20px;
-      color: blueviolet;
-     
-  }
-  .avatar {
-
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
-
-  }
-  .file
-  {
-      text-align: center;
-      margin-left: 30%;
-  }
-  .button{
-    margin-left: auto; 
-    margin-right: auto; 
-     display: block;
-  }
-  
- 
-  footer
-  {
-    text-align: center;
-    padding: 2%;
-  }
-  .sub-btn {
-    background: blueviolet;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    font-size: 20px;
-  }
- 
-  a:hover {
-    background-color: blueviolet;
-  }
-  .successactive{
-    background-color: green !important;
-  }
- 
+textarea {
+  margin-left: 10%;
+}
+select {
+  margin-left: 10%;
+}
+label {
+  color: #8842d5;
+  margin-left: 10px;
+}
+input[type=file] {
+  margin-left: 10%;
+}
+input[type=button]
+{
+  margin-bottom: 1%;
+}
