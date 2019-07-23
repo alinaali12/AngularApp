@@ -95,6 +95,10 @@ export class TableComponent implements OnInit {
       
       }
     }); 
+    this._registerservice.GetCount().subscribe(data=> {
+      this.TotalPages=data
+      this.fakearray=new Array(Math.ceil(this.TotalPages/5))
+    }) 
   }
   GetPage(pageno:number){
     this.pagenum=pageno;
