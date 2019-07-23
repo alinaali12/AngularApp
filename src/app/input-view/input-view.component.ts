@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { StudentRegisterationModel } from '../student-registeration-model';
 import { ApiHanlderService } from '../api-hanlder.service';
 import { SiblingCommunicatorService } from '../sibling-communicator.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FileBase } from '../file-base';
 import  {FileDownloaderService} from '../file-downloader.service';
 
@@ -28,7 +27,6 @@ export class InputViewComponent implements OnInit {
  
   ngOnInit() {
     if (this.sharedService.Record!=null){
-
       this.Student = Object.assign({},this.sharedService.Record);  
       this.sharedService.Record=null;
       this.EditCheck=true;

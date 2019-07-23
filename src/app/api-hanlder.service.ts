@@ -14,13 +14,17 @@ export class ApiHanlderService {
   pageNo: string ;
   sortBy: string ;
   pageSize: string ;
+  searchWith:string;
+  searchData: string;
 
   _url= this.BaseUrl+this.ModelName;
 
-  SetQueryVals(pageNo:string="pageNo", sortBy:string="sortBy", pageSize:string="pageSize"){
+  SetQueryVals(pageNo:string="pageNo",searchWith:string="searchWith",searchData:string="searchData", sortBy:string="sortData",pageSize:string="pageSize"){
     this.pageNo=pageNo;
     this.sortBy=sortBy;
     this.pageSize=pageSize;
+    this.searchWith=searchWith;
+    this.searchData=searchData;
   }
   constructor(private _http: HttpClient) { 
     this.SetQueryVals();
@@ -50,6 +54,7 @@ export class ApiHanlderService {
     console.log(this._url+'?'+query);
     return await this._http.get<StudentRegisterationModel[]>(this._url+'?'+query).toPromise();
    }
+  // async SearchRecords(pNum: string, sBy:string="I")
 
   async GetCount (): Promise<number>{
     let Response= await this._http.get<number>(this._url+"/"+this.GetVal).toPromise();

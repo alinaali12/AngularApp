@@ -7,15 +7,22 @@ export const slideInAnimation =
       query(':enter, :leave', [
         style({
           position: 'absolute',
-          left: 0,
-          width: '100%',
-          opacity: 0,
-          transform: 'scale(0) translateY(100%)',
+          width: '100%'   ,
+          opacity:'0'
         }),
       ]),
       // Animate the new page in
+      query(':leave', [
+        animate('400ms ease-out', style({ 
+          opacity: 0.5,transform: 'scale(1) translateX(100%)'
+        }))
+      ]),
       query(':enter', [
-        animate('600ms ease', style({ opacity: 1, transform: 'scale(1) translateY(0)' })),
+        animate('200ms ease-in', style({ 
+          opacity: 1,transform: 'scale(1) translateX(0%)' 
+        }))
       ])
+     
+     
     ]),
 ]);

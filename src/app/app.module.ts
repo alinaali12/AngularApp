@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SiblingCommunicatorService } from './sibling-communicator.service';
 import { ClasschangerDirective } from './classchanger.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DefaultpageComponent,
     OutputviewComponent,
     FocuschangeDirective,
-    ClasschangerDirective    
+    ClasschangerDirective,
+    ConfirmDialogComponent    
    
   ],
   imports: [

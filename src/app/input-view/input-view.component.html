@@ -8,7 +8,7 @@
           <div class="card-body text-center " >
                 <h3 class="color-text">Student Registeration</h3>
               
-                    <form #studentForm="ngForm" method="post" enctype="multipart/form-data" novalidate (ngSubmit)="onSubmit()">   
+                    <form #studentForm="ngForm" enctype="multipart/form-data" novalidate (ngSubmit)="onSubmit()">   
                         <label hidden id="tempLabel">Editing ID: {{Student.id}} </label>              
                         <input  hidden disabled name="id" [(ngModel)]="Student.id" ><br />     
                         <div class="form-group ">
@@ -67,5 +67,3 @@
 </div>  
 <br>
 </div>       
-
-<script src="https://unpkg.com/file-upload-with-preview@4.0.0/dist/file-upload-with-preview.min.js"></script>

@@ -28,13 +28,17 @@ export class OutputviewComponent implements OnInit {
 
   }
   async pageGet(pNum: number,sortBy: string ="Id",pSize:number = 5){
+   
     this._PageModel.CurrentPage=pNum;
     this._PageModel.SortBy=sortBy;
     this._PageModel.PageSize=pSize;
   await this._apiHandler.GetRecords(pNum.toString(),sortBy,pSize.toString()).then(value=> this._PageModel.DataList=value); 
-  console.log(this._PageModel.DataList); 
+ // console.log(this._PageModel.DataList); 
  }
 
+  async pageSearchGet(pNum:number=1,searchWith:string="Id",searchData="",sortBy:string="Id",pSize:number=5){
+
+  }
    async setCount(){
 
    this._PageModel.setCount(await this._apiHandler.GetCount());
@@ -50,10 +54,12 @@ export class OutputviewComponent implements OnInit {
  
   async DeleteData(id : number,pNum : number=1){
 
+    if (confirm("Confirm Record Deletion?")){
     await  this._apiHandler.DeleteRecord(id);
-    this.pageGet(1);
+    this.pageGet(pNum);
     console.log("Deleted");
-
+    }
+    
   }
 
   async GetFile (filename : string){
