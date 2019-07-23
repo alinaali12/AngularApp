@@ -17,13 +17,15 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { MatCheckboxModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
