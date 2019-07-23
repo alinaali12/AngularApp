@@ -8,12 +8,6 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  submitted = false;
-  success = false;
-
-  // movie: Movie;
-
-  messageForm: FormGroup;
 
   constructor(
     formBuilder: FormBuilder,
@@ -28,6 +22,13 @@ export class HomeComponent implements OnInit {
       poster: ['', Validators.required]
     });
   }
+  submitted = false;
+  success = false;
+
+  // movie: Movie;
+
+  messageForm: FormGroup;
+  poster;
   ngOnInit() { }
   onSubmit() {
     this.submitted = true;
@@ -40,9 +41,10 @@ export class HomeComponent implements OnInit {
       director,
       genre,
       releaseDate,
-      description,
-      poster
+      description
     } = this.messageForm.value;
+    let { poster } = this.messageForm.value;
+    poster = this.poster;
     const movie = {
       title,
       director,
@@ -51,21 +53,31 @@ export class HomeComponent implements OnInit {
       description,
       poster
     };
-    this.data.postMovie(movie).subscribe(() => console.log('ok')
+    console.log(this.poster);
+
+    this.data.postMovie(movie).subscribe(() => { console.log('ok'); console.log(this.poster); }
     );
   }
   onFileChange(event) {
+    this.fileUpload(event.target);
+
+  }
+  fileUpload(event) {
     const reader = new FileReader();
 
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
+    if (event.files && event.files.length) {
+      const [file] = event.files;
       reader.readAsDataURL(file);
 
       reader.onload = () => {
+        this.poster = reader.result;
         this.messageForm.patchValue({
           file: reader.result
-        });
-        console.log(file);
+
+        }
+
+        );
+        console.log(reader.result);
 
 
         // need to run CD since file load runs outside of zone
