@@ -41,14 +41,3 @@ table {
         @include fixedColumnSize(300px);
     }
 }
-
-.sort-btn-default {
-    color: white;
-    background-color: blue;
-
-}
-
-.sort-btn-change {
-    color: Red;
-    background-color: white;
-}

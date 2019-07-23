@@ -14,7 +14,7 @@ export class MoviesComponent implements OnInit {
     this.config = {
       itemsPerPage: 5,
       currentPage: 1,
-      totalItems: this.dataService.getCount()
+      totalItems: this.count
     };
   }
   movies: Array<Movie>;
@@ -22,27 +22,26 @@ export class MoviesComponent implements OnInit {
   sortColumn = 'Id';
   messageForm: FormGroup;
   pageActual = 1;
-  count = 10;
+  count;
   sortStyle: string;
   ngOnInit() {
-
-    this.getCount();
-    this.get(this.sortColumn);
+    this.getAllMovies();
+  }
+  getAllMovies() {
+    this.dataService.getAllMovies().subscribe((data: any) => {
+      this.movies = data.data;
+      this.count = data.count;
+    });
   }
   pageChanged(event: any) {
     console.log(event);
     this.config.currentPage = event;
   }
-  getCount() {
-    this.dataService.getCount().subscribe(data => {
-      this.count = data;
-    });
-  }
   get(sort: string) {
-    this.dataService.getMovies(1, 50, sort).subscribe(data => {
+    this.dataService.getMovies(1, this.count, sort).subscribe(data => {
       this.movies = Object.keys(data).map(k => data[k]);
-      this.sortStyle = 'sort-btn-change';
       console.log(this.movies);
+
     });
   }
   delete(id: number) {

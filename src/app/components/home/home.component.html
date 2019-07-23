@@ -52,14 +52,13 @@
   </label>
   <label>
     Poster:
-    <input type="text" formControlName="poster" />
+    <input type="file" (change)="onFileChange($event)" formControlName="poster" />
     <div *ngIf="submitted && messageForm.controls.poster.errors" class="errors">
       <div *ngIf="messageForm.controls.poster.errors.required">
         Poster is required.
       </div>
     </div>
   </label>
-  <input type="file" (change)="onFileChange($event)" />
   <input type="submit" value="Create" class="cta" />
 </form>
 
@@ -74,6 +73,7 @@
   <span>{{ messageForm.controls.genre.value }}</span>
 
   <strong>Release Date: </strong>
+
   <span>{{ messageForm.controls.releaseDate.value }}</span>
 
   <strong>Descrition: </strong>
