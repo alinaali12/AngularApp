@@ -37,7 +37,7 @@ export class MoviesComponent implements OnInit {
     console.log(event);
     this.config.currentPage = event;
   }
-  get(sort: string) {
+  sort(sort: string) {
     this.dataService.getMovies(1, this.count, sort).subscribe(data => {
       this.movies = Object.keys(data).map(k => data[k]);
       console.log(this.movies);
