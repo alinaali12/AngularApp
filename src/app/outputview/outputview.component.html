@@ -1,24 +1,36 @@
 <br>
 <br>
 <br>
-<div  class="container">             
-            <div class="col-md-2 float-right">
-                <button routerLink='/inputview' class="btn btn-primary color-text-white sariftext btn-block rounded-0 ">Registeration</button>       
+<div  class="container"> 
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this record?</h5>
             </div>
+            <div class="modal-footer">         
+              <button type="button" (click)="DeleteData(Delete_ID)"  class="btn btn-primary color-text-white sariftext  rounded-0 " data-dismiss="modal">Delete Record</button>
+              <button type="button"class="btn btn-secondary color-text-white sariftext rounded-0 " data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>  
+
+
+    <div class="col-md-2 float-right">
+            <button routerLink='/inputview' class="btn btn-primary color-text-white sariftext btn-block rounded-0 mdbWavesEffect">Registeration</button>       
+    </div>
         <br>
         <h2 class="color-text">{{Title}}</h2>
         <br>
       
             <table id="Tmain" class="table table-hover  sariftext shadow p-4 mb-4 bg-white" >
                 <thead class="color-container sariftext color-text-white ">
-                    <tr>
-                        <th class="sariftext" (click)="pageGet(_PageModel.CurrentPage,'Id')" scope="col">#</th>
-                        <th class="sariftext" (click)="pageGet(_PageModel.CurrentPage,'Name')" scope="col">Name</th>
-                        <th class="sariftext" (click)="pageGet(_PageModel.CurrentPage,'Program')" scope="col">Program</th>
-                        <th class="sariftext" (click)="pageGet(_PageModel.CurrentPage,'Detail')"  scope="col">Details</th>
-                        <th class="sariftext" (click)="pageGet(_PageModel.CurrentPage,'Filename')" scope="col">File Name</th>
-                        <th class="sariftext" scope="col">Update Record</th>          
-                    </tr>
+                        <tr>               
+                            <th *ngFor="let columns of ColVals" class="sariftext" [ngClass] ="{'color-text-blue' : _PageModel.SortBy==columns.Value}" (click)= "pageGet(_PageModel.CurrentPage,columns.Value)" scope="col">{{columns.Name}}</th>
+                            <th class="sariftext" scope="col">Update Record</th>    
+                        </tr>                
                 </thead>
                 <tbody>
                     <tr   *ngFor="let item of _PageModel.DataList">                
@@ -28,7 +40,7 @@
                             <td>{{item.detail}}</td>
                             <td> <a routerLink='/outputview' (click)=GetFile(item.filename)>{{item.filename}}</a></td>
                             <td> <a routerLink='/inputview' (click)="GoToEdit(item)" >Update</a> |
-                                <a routerLink='/outputview'(click)="DeleteData(item.id)" >Delete</a>
+                                <a  data-toggle="modal" data-target="#exampleModal" (click)="SetDeleteID(item.id)" routerLink='/outputview' >Delete</a>
                             </td>                                           
                     </tr>           
                 </tbody>    

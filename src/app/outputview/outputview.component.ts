@@ -14,11 +14,14 @@ import { FileDownloaderService } from '../file-downloader.service';
 export class OutputviewComponent implements OnInit {
 
   constructor(private _apiHandler: ApiHanlderService,private _sharedService : SiblingCommunicatorService,private downloadService: FileDownloaderService) { }
-
+  ColVals = [{Name:"#",Value:"Id"}, {Name:"Name",Value:"Name"}, {Name:'Program',Value:'Program'},{Name:'Details',Value:'Detail'},{Name:'File Names',Value:'Filename'}];
   Title = "Student Records";
   _PageModel : PageModel;
   _TotalPages: number[];
-
+  Delete_ID: number;
+  SetDeleteID(id:number){
+    this.Delete_ID=id;
+  }
  async ngOnInit() {
 
     this._PageModel= new PageModel("Id",1);
@@ -32,7 +35,7 @@ export class OutputviewComponent implements OnInit {
     this._PageModel.CurrentPage=pNum;
     this._PageModel.SortBy=sortBy;
     this._PageModel.PageSize=pSize;
-  await this._apiHandler.GetRecords(pNum.toString(),sortBy,pSize.toString()).then(value=> this._PageModel.DataList=value); 
+    await this._apiHandler.GetRecords(pNum.toString(),sortBy,pSize.toString()).then(value=> this._PageModel.DataList=value); 
  // console.log(this._PageModel.DataList); 
  }
 
@@ -52,14 +55,13 @@ export class OutputviewComponent implements OnInit {
 
   }
  
-  async DeleteData(id : number,pNum : number=1){
-
-    if (confirm("Confirm Record Deletion?")){
-    await  this._apiHandler.DeleteRecord(id);
-    this.pageGet(pNum);
-    console.log("Deleted");
-    }
+   async DeleteData(id : any,pNum : number=1){
+   console.log('Del Called',id);
+      await  this._apiHandler.DeleteRecord(id);
+      this.pageGet(pNum);
+      console.log("Deleted");
     
+
   }
 
   async GetFile (filename : string){

@@ -29,7 +29,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+   
   ],
   providers: [SiblingCommunicatorService],
   bootstrap: [AppComponent],
