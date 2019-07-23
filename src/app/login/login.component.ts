@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login-service.service';
+import { LoginService } from '../services/Login/login-service.service';
 import { Router } from '@angular/router';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { User } from '../classes/user';

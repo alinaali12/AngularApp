@@ -4,9 +4,9 @@ import {HttpClient} from "@angular/common/http";
 import{HttpHeaders} from '@angular/common/http';
 import {from, Observable, BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Register} from "../app/register";
+import {Register} from "../../register";
 import 'cors';
-import { User } from './classes/user';
+import { User } from '../../classes/user';
 import { Router } from '@angular/router';
 
 @Injectable({
