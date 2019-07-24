@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
     };
     console.log(this.poster);
 
-    this.data.postMovie(movie).subscribe(() => { console.log('ok'); console.log(this.poster); }
+    this.data.postMovie(movie).subscribe(() => { console.log('ok'); }
     );
   }
   onFileChange(event) {
@@ -68,24 +68,50 @@ export class HomeComponent implements OnInit {
     if (event.files && event.files.length) {
       const [file] = event.files;
       reader.readAsDataURL(file);
-
       reader.onload = () => {
-        this.poster = reader.result;
-        this.messageForm.patchValue({
-          file: reader.result
-
-        }
-
-        );
-        console.log(reader.result);
-
-
-        // need to run CD since file load runs outside of zone
-        // this.cd.markForCheck();
+        this.poster = `${file.name}$${reader.result}`;
       };
+      console.log(reader.result);
+
     }
   }
 
+  // DownloadUserFile(file) {
+  //   this.fileUser.fileNames = file;
+  //   console.log( this.fileUser.fileNames);
+  //   this.dataservice.downloadFile(this.fileUser).subscribe(data => {
+  //     this.filebase64 = data.fileNames;
+  //     console.log('downloaduser', data);
+  //     const name = this.filebase64.split(',');
+  //     const ext = this.filebase64.split('.');
+  //     console.log('base', name[0]);
+  //     console.log('name', name[1]);
+  //     console.log('extension', ext[1]);
+  //     const obj = this.base64ToBlob(name[0], ext[1]);
+  //     const url = window.URL.createObjectURL(obj);
+  //     const link = document.createElement('a');
+  //     link.href = url;
+  //     link.download = name[1];
+  //     link.click();
+  //   });
+  // }
+
+  base64ToBlob(b64Data, contentType = '', sliceSize = 512) {
+    console.log(b64Data);
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
+    return new Blob(byteArrays, { type: contentType });
+  }
 
 
 }
