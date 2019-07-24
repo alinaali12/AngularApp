@@ -50,12 +50,14 @@ export class ShowresultComponent implements OnInit {
       });
   }
  deleteuser(id: number) {
-   this.dataservice.DeleteData(id).subscribe((result) => {
-     this.deleteres = result;
-     console.log('s', this.deleteres);
-     this.ngOnInit();
+   if (confirm('Are you sure to delete ' + id)) {
+    this.dataservice.DeleteData(id).subscribe((result) => {
+      this.deleteres = result;
+      console.log('s', this.deleteres);
+      this.ngOnInit();
+    }
+    );
    }
-   );
   }
   sort(name: string, page: number = 1) {
    // this.sortstatus = 'clicked';
