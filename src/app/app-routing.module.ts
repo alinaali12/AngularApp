@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 
 import { HomeComponent } from './home/home.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import { ToDoItemsComponent } from './to-do-items/to-do-items.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,12 @@ const routes: Routes = [
   {
     path:'home',
     component: HomeComponent,
+    canActivate:[AuthenticationGuard]
+
+  },
+  {
+    path:'todoitems',
+    component: ToDoItemsComponent,
     canActivate:[AuthenticationGuard]
 
   }

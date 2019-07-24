@@ -18,6 +18,8 @@ import { APP_ROUTES } from './app.routes';
 import { MatCheckboxModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ToDoItemsComponent } from './to-do-items/to-do-items.component';
+import { JwPaginationComponent } from 'jw-angular-pagination';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ToDoItemsComponent,
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
