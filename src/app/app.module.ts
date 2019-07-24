@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +20,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ToDoItemsComponent } from './to-do-items/to-do-items.component';
 import { JwPaginationComponent } from 'jw-angular-pagination';
+import { PermissionsDirective } from './directives/permissions.directive';
+import { AppLoadService } from './services/onappload/app-load.service';
+import { ErrorComponent } from './error/error.component';
 
+export function init_app(appLoadService : AppLoadService) {
+
+  return() => appLoadService.getAllPermissions();
+}
 
 @NgModule({
   declarations: [
@@ -29,7 +36,9 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     HomeComponent,
     NavbarComponent,
     ToDoItemsComponent,
-    JwPaginationComponent
+    JwPaginationComponent,
+    PermissionsDirective,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +49,8 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [LoginService, CookieService],
+  providers: [LoginService, CookieService, AppLoadService, 
+    { provide: APP_INITIALIZER, useFactory: init_app, deps: [AppLoadService], multi: true }], //this line helps init_app function run at the begining of app loading process
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/Todo Items/api.service';
-import { TodoItem } from '../classes/todo-item';
+import { ApiService } from '../services/TodoItems/api.service';
+import { TodoItem } from '../classes/todoItem/todo-item';
 
 @Component({
   selector: 'app-to-do-items',
