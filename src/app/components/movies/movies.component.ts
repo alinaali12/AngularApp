@@ -1,9 +1,9 @@
+import { AppComponent } from './../../app.component';
 import { DataService } from '../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Movie } from '../home/home.component';
 import { callbackify } from 'util';
-
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -24,8 +24,12 @@ export class MoviesComponent implements OnInit {
   pageActual = 1;
   count;
   sortStyle: string;
+
   ngOnInit() {
     this.getAllMovies();
+    const check = JSON.parse(localStorage.getItem('permissionData'));
+    console.log(check);
+
   }
   getAllMovies() {
     this.dataService.getAllMovies().subscribe((data: any) => {

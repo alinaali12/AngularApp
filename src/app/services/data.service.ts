@@ -5,19 +5,24 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-  baseUrl = 'https://localhost:44347/api/Movies';
+  baseUrl = 'https://localhost:44347/api';
+
   queryUrl = '?search=';
   count;
   // data;
   // ?page=3&limit=8&sort=Id
   constructor(private http: HttpClient) { }
+
+  getAllPages() {
+    return this.http.get(this.baseUrl + '/permissions' + '/getallpages');
+  }
   getMovies(page: number = 1, limit: number = this.count, sort: string = 'Id') {
     return this.http.get(
-      this.baseUrl + '?page=' + page + '&limit=' + limit + '&sort=' + sort
+      this.baseUrl + '/Movies' + '?page=' + page + '&limit=' + limit + '&sort=' + sort
     );
   }
   postMovie(movie: Movie) {
-    return this.http.post<Movie>(this.baseUrl, movie, {
+    return this.http.post<Movie>(this.baseUrl + '/Movies', movie, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -25,10 +30,10 @@ export class DataService {
   }
 
   getAllMovies() {
-    return this.http.get(this.baseUrl + '/allData');
+    return this.http.get(this.baseUrl + '/Movies' + '/allData');
   }
 
   deleteMovie(id: number) {
-    return this.http.delete<Movie>(this.baseUrl + '/' + id);
+    return this.http.delete<Movie>(this.baseUrl + '/Movies' + '/' + id);
   }
 }

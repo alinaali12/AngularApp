@@ -9,14 +9,19 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RankingComponent } from './ranking/ranking.component';
+import { StorageModule } from '@ngx-pwa/local-storage';
 @NgModule({
-  declarations: [AppComponent, MoviesComponent, NavComponent, HomeComponent],
+  declarations: [AppComponent, MoviesComponent, NavComponent, HomeComponent, RankingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StorageModule.forRoot({
+      IDBNoWrap: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
