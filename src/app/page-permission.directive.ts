@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 export class PagePermissionDirective {
 
   constructor(private router: Router) { }
+  url;
 
   ngOnInit() {
     this.checkPermission();
   }
-  url;
   checkPermission() {
 
     console.log(this.router.url);
@@ -28,12 +28,11 @@ export class PagePermissionDirective {
       if (this.url === element.pageURL) {
         if (element.hasPermission) {
           return;
+        } else {
+          this.router.navigate(['/error']);
         }
-        else {
-          this.router.navigate(['/error'])
-        }
-      }
-      else {
+      } else {
+        return;
       }
 
     });
