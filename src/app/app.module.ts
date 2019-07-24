@@ -9,17 +9,22 @@ import { ShowresultComponent } from './showresult/showresult.component';
 import { RouterModule, Routes } from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import { EditDataComponent } from './edit-data/edit-data.component';
+import { CheckpermissionDirective } from './checkpermission.directive';
+import { ErrorComponent } from './error/error.component';
 const appRoutes: Routes = [
   { path: 'front-page', component: FrontPageComponent },
   { path: 'showresult', component: ShowresultComponent },
   { path: 'edit-data', component: EditDataComponent},
+  { path: 'error', component: ErrorComponent}
 ];
 @NgModule({
   declarations: [
     AppComponent,
     FrontPageComponent,
     ShowresultComponent,
-    EditDataComponent
+    EditDataComponent,
+    CheckpermissionDirective,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

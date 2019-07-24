@@ -4,6 +4,7 @@ import { Usermodel } from './usermodel';
 import {Observable} from 'rxjs/Observable';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Permission } from './Permission';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +13,7 @@ export class DataserviceService {
    url = 'https://localhost:44347/api/UserModels';
    EditUser = new Usermodel();
    toggleEdit: string;
+   PreservePermissions = [];
   constructor(private http: HttpClient) {
   }
   EditUserData(id: number): Observable<Usermodel> {
@@ -61,5 +63,9 @@ export class DataserviceService {
   }
   getToggle() {
     return this.toggleEdit;
+  }
+  setPermissions(): Observable <Permission[]> {
+    return this.http.get('https://localhost:44347/api/Permissions')
+    .map((response: Response) => response as unknown as Permission[]);
   }
 }
