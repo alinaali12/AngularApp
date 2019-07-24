@@ -24,7 +24,7 @@ export class TableComponent implements OnInit {
   fileh=false;
   displaynames:string[]=['placeholder', 'placeholder', 'placeholder','placeholder','placeholder'];
   pagenum=1;
-  SearchCol:string;
+  SearchCol:string="Name";
   SearchVal:string;
 
   constructor(private _registerservice:RegisterService, private _idservice:EditService) {}
