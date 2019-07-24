@@ -11,17 +11,20 @@
 
   <ul class="nav navbar-expand nav-tabs bg-light " role="tablist">
     <li class="nav-item ">
-      <a Tabchange  class="nav-link" routerLinkActive="background-tabs active " data-toggle="tab" routerLink='/defaultpage'  >Home</a>
+      <a Tabchange   class="nav-link" routerLinkActive="background-tabs active " data-toggle="tab" routerLink='/defaultpage'  >Home</a>
     </li>
     <li class="nav-item">
-      <a Tabchange  data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/inputview' >Add Record</a>
+      <a Tabchange  PageChecker data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/inputview' >Add Record</a>
     </li>
     <li class="nav-item">
-      <a Tabchange data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/outputview' >View Records</a>
+      <a Tabchange PageChecker data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/outputview' >View Records</a>
     </li>  
+    <li class="nav-item">
+      <a Tabchange PageChecker data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/funpage' >Fun Page</a>
+    </li> 
   </ul>
-
-<main [@routeAnimations]="prepareRoute(outlet)">
+<!--[@routeAnimations]="prepareRoute(outlet)"-->
+<main >
   <div class="tab-content">
     <br>
     <br>

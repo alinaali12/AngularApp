@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InputViewComponent } from './input-view/input-view.component';
@@ -12,6 +12,10 @@ import { SiblingCommunicatorService } from './sibling-communicator.service';
 import { ClasschangerDirective } from './classchanger.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { FunpageComponent } from './funpage/funpage.component';
+import { ErrorpageComponent } from './errorpage/errorpage.component';
+import { PagecheckDirective } from './pagecheck.directive';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     OutputviewComponent,
     FocuschangeDirective,
     ClasschangerDirective,
-    ConfirmDialogComponent    
+    ConfirmDialogComponent,
+    FunpageComponent,
+    ErrorpageComponent,
+    PagecheckDirective    
    
   ],
   imports: [
@@ -32,9 +39,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     HttpClientModule,
    
   ],
-  providers: [SiblingCommunicatorService],
+  providers: [SiblingCommunicatorService,CookieService],
   bootstrap: [AppComponent],
-
-  
 })
 export class AppModule { }

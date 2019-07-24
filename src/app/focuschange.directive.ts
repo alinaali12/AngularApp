@@ -1,4 +1,4 @@
-import { Directive,ElementRef, Input, HostListener, HostBinding } from '@angular/core';
+import { Directive, Input, HostListener, HostBinding } from '@angular/core';
 
 @Directive({
   selector: '[Tabchange],[appFocuschange],[myValue="Boring"]',
