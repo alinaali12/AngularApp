@@ -14,22 +14,14 @@ export class CheckpermissionDirective implements OnInit {
   constructor(private el: ElementRef, private Serviceobj: DataserviceService, private router: Router) {
    }
    ngOnInit() {
-   this.getPermissionData();
-
-   // console.log('d', this.gerper);
-   // this.el.nativeElement.textContent += this.Permissions;
+   this.getPermission = this.Serviceobj.GetPageData();
+   this.setPermissiondata();
    }
-  getPermissionData() {
-    this.Serviceobj.setPermissions().subscribe(data => {
-      this.Permissions = data;
-      console.log(this.Permissions);
-      this.setPermissiondata(this.Permissions as Permission[]);
-      });
-   }
-   setPermissiondata(per: Permission[]) {
+   setPermissiondata() {
     this.Path = 'http://localhost:4000' + this.router.url ;
     console.log('href', this.Path);
-    this.getPermission = per;
+   // this.getPermission = per;
+    console.log('set', this.getPermission);
     this.getPermission.forEach(perm => {
       if (perm.pageUrl === this.Path && perm.pagePermission === 'false') {
           console.log('denied');

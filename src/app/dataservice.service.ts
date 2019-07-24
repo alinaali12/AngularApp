@@ -13,7 +13,7 @@ export class DataserviceService {
    url = 'https://localhost:44347/api/UserModels';
    EditUser = new Usermodel();
    toggleEdit: string;
-   PreservePermissions = [];
+   PageData: Array<Permission>;
   constructor(private http: HttpClient) {
   }
   EditUserData(id: number): Observable<Usermodel> {
@@ -65,7 +65,13 @@ export class DataserviceService {
     return this.toggleEdit;
   }
   setPermissions(): Observable <Permission[]> {
-    return this.http.get('https://localhost:44347/api/Permissions')
+   return this.http.get('https://localhost:44347/api/Permissions')
     .map((response: Response) => response as unknown as Permission[]);
+  }
+  preservePermissions(pages: Permission[]) {
+    this.PageData = pages;
+  }
+  GetPageData() {
+    return this.PageData;
   }
 }
