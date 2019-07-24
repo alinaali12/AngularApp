@@ -11,8 +11,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RankingComponent } from './ranking/ranking.component';
 import { StorageModule } from '@ngx-pwa/local-storage';
+import { PagePermissionDirective } from './page-permission.directive';
+import { ErrorComponent } from './error/error.component';
 @NgModule({
-  declarations: [AppComponent, MoviesComponent, NavComponent, HomeComponent, RankingComponent],
+  declarations: [AppComponent, MoviesComponent, NavComponent, HomeComponent, RankingComponent, PagePermissionDirective, ErrorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
