@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 
 import { HomeComponent } from './home/home.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import { LoglevelListComponent } from './loglevel-list/loglevel-list.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,10 @@ const routes: Routes = [
     path: '',
     component: LoginComponent
 
+  },  
+  {
+    path: 'logging',
+    component: LoglevelListComponent
   },
   {
     path:'home',

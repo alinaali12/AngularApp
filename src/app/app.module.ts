@@ -17,13 +17,15 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { MatCheckboxModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { LoglevelListComponent } from './loglevel-list/loglevel-list.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    LoglevelListComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [LoginService, CookieService],
+  providers: [LoginService, CookieService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
