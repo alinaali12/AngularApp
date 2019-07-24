@@ -1,15 +1,15 @@
 
-<head><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-</head>
-<body>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
     <br>
     <br>
     <br>
     <br>
-    <div>
+    <div appCheckAccess>
         <div style="text-align: center" >
             <input (keydown)="Search($event)" type="text" name="search" placeholder="Search.." [(ngModel)]="SearchVal">
             <select class="form-control" style="width: 200px" [(ngModel)]="SearchCol" id="searchbar"> 
@@ -65,7 +65,5 @@
         </ul>
     </nav>
 </div>
-
-</body>
 
 

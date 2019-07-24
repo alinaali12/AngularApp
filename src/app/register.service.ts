@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegisteredUser } from './shared/models/registereduser.model';
+import { Router } from '@angular/router';
+import { EditService } from './edit.service';
+import { PermissionService } from './permission.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +14,9 @@ export class RegisterService {
   pageIndex=1;
   searchval="";
   searchcol="";
+  permission:any;
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient,private router: Router,private _registerservice:RegisterService, private _idservice:EditService, private _permservice:PermissionService) {}
 
 
   Register(user:RegisteredUser){
@@ -49,5 +53,19 @@ export class RegisterService {
 
   Update(user:RegisteredUser,id:number){
     return this._http.put(this._url+"/"+id,user);
+  }
+  
+  async CheckPermissions(){
+    var tempURL="http://localhost:4200"+this.router.url;
+    if(localStorage.getItem(tempURL) === null){//means array is empty
+      await this._permservice.ViewAll().then(value=>{
+        this.permission=value;
+        //console.log(this.permission);
+        for(var i=0;i<3;i++){
+          localStorage.setItem(this.permission[i].siteUrl,this.permission[i].access);
+          console.log("in loop",localStorage.getItem(this.permission[i].siteUrl));
+        }
+      });
+    }
   }
 }

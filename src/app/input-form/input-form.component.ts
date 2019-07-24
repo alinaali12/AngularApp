@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisteredUser } from '../shared/models/registereduser.model';
 import { RegisterService } from '../register.service';
+import { Router } from '@angular/router';
+import { EditService } from '../edit.service';
+import { PermissionService } from '../permission.service';
 
 
 @Component({
@@ -15,9 +18,12 @@ export class InputFormComponent implements OnInit {
   public imagePath;
   imgURL: any;
   public message: string;
-  constructor(private _registerservice:RegisterService) { }
+  permission:any;
+
+  constructor(private router: Router,private _registerservice:RegisterService, private _idservice:EditService, private _permservice:PermissionService) { }
 
   ngOnInit() {
+    
   }
   onSubmit(){
     this._registerservice.Register(this.userModel).subscribe(

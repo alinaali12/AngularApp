@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RegisteredUser } from '../shared/models/registereduser.model';
 import { RegisterService } from '../register.service';
 import { EditService } from '../edit.service';
+import { Router } from '@angular/router';
+import { PermissionService } from '../permission.service';
 
 @Component({
   selector: 'app-edit',
@@ -15,13 +17,18 @@ export class EditComponent implements OnInit {
   base64:string;
   imgURL: any;
   imagePath: any;
-  constructor(private _registerservice:RegisterService, private _idservice: EditService) { }
+  permission:any;
+  constructor(private router: Router,private _registerservice:RegisterService, private _idservice:EditService, private _permservice:PermissionService) { }
 
   ngOnInit() {
     //console.log(this.userModel);
+   
     this.userModel=this._idservice.get_user();
     console.log(this._idservice.get_user());
   }
+
+  
+
   onSubmit(){
     this.userModel.id=this._idservice.get_id();
     this._registerservice.Update(this.userModel,this.userModel.id).subscribe(

@@ -9,6 +9,8 @@ import { InputFormComponent } from './input-form/input-form.component';
 import { TableComponent } from './table/table.component';
 import { EditComponent } from './edit/edit.component';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { CheckAccessDirective } from './check-access.directive';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -19,7 +21,9 @@ import { SafeUrlPipe } from './safe-url.pipe';
     InputFormComponent,
     TableComponent,
     EditComponent,
-    SafeUrlPipe,    
+    SafeUrlPipe,
+    CheckAccessDirective,
+    ErrorComponent,    
   ],
   imports: [
     BrowserModule,

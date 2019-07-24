@@ -5,6 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { EditService } from '../edit.service';
 import { RegisteredUser } from '../shared/models/registereduser.model';
+import { PermissionService } from '../permission.service';
+import { PermissionObj } from '../shared/models/permission.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -26,11 +29,13 @@ export class TableComponent implements OnInit {
   pagenum=1;
   SearchCol:string="Name";
   SearchVal:string;
+  permission:any;
+  
 
-  constructor(private _registerservice:RegisterService, private _idservice:EditService) {}
+  constructor(private router: Router,private _registerservice:RegisterService, private _idservice:EditService, private _permservice:PermissionService) {}
 
   ngOnInit() {
-    console.log("oninit");
+    this._registerservice.CheckPermissions();
     this._registerservice.ViewAll().subscribe(data => {
       this.user = data;
       for(var i=0;i<5;i++){
