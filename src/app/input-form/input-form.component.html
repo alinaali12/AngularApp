@@ -68,7 +68,7 @@
                         <img [src]="imgURL" height="100" *ngIf="imgURL">
                     </div>
                 <div>
-                    <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-primary btn-block" > Validate  </button>
+                    <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-primary btn-block" routerLink="/table" > Validate  </button>
                     <small [class.d-none]="!userForm.form.invalid" ><font color="red">Please fill in the form</font></small>
                 </div>
             </form>
