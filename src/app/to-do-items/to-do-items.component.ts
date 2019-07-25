@@ -22,7 +22,6 @@ export class ToDoItemsComponent implements OnInit {
       this._apiService.getRecords().subscribe((data)=>{
         this.todoItems = data;
         this.items = data;
-      console.log(this.todoItems);
     });
   }
   onChangePage(pageOfItems: Array<any>) {

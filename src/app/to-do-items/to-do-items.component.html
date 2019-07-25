@@ -1,24 +1,24 @@
 
-<div class="card text-center m-3" appPermissions>
+<div class="card text-center m-3" >
     <h3 class="card-header">Todo Items</h3>
     <div class="card-body">
-            <table>
-                <thead>
-                    <th *ngFor="let col of columns">
-                        {{col}}
-                    </th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let policy of todoItems">
-                        <td>{{policy.id}}</td>
-                        <td>{{policy.title}}</td>
-                        <td>{{policy.isComplete}}</td>
-                        <td>{{policy.description}}</td>
-                        <td>{{policy.priority}}</td>
-                        <td>{{policy.file}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <table class="table">
+            <thead>
+                <th  scope="col" *ngFor="let col of columns">
+                    {{col}}
+                </th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let policy of todoItems">
+                    <th  scope="row" >{{policy.id}}</th>
+                    <td >{{policy.title}}</td>
+                    <td >{{policy.isComplete}}</td>
+                    <td >{{policy.description}}</td>
+                    <td >{{policy.priority}}</td>
+                    <td >{{policy.file}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div class="card-footer pb-0 pt-3">
         <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>

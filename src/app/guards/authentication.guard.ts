@@ -10,6 +10,7 @@ export class AuthenticationGuard implements CanActivate  {
   constructor( private router:Router, private loginValidationService: LoginService){} 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
    //const currentUser = this.loginValidationService.currentUser;
+   console.log(this.loginValidationService.isLoggedIn);
     if (this.loginValidationService.isLoggedIn) {
       return true;
     }

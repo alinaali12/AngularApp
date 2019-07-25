@@ -1,59 +1,5 @@
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Login Form</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
-</head>
-
-
-
-<div class="d-flex justify-content-center h-100">
-  <div class="col-sm-9">
-    <div class="card">
-      <div class="card-header">
-        <h3>Login In</h3>
-      </div>
-      <div style="background-color:lavender;">
-        <form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value)" >
-            <div class="col-sm-6 col-lg-4">
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="Username">Username:</label>
-                <div class="col-md-8">
-                  <input class="form-control" type = "text" name = "username" placeholder = "username" ngModel>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-sm-6 col-lg-4">
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="Username">Password:</label>
-                <div class="col-md-8">
-                  <input class="form-control" type = "password" name = "pwd" placeholder = "password" ngModel>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-sm-6 col-lg-4">
-              <div class="form-group">
-                <div class="col-md-8">
-                    <input  class="btn btn-primary" type = "submit" value = "submit">
-                </div>
-              </div>
-            </div>
-            
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- Updated UI -->
-<!-- <div class="background"></div> -->
-<div class="container container-table" appPermissions>
+<div class="container container-table">
   <div class="row h-100 justify-content-center">
     <div class="signin">
       <div class="card-group">
@@ -89,13 +35,6 @@
                 </div>
               
                 <div>
-                  <!-- <input type="checkbox" [(ngModel)]="rememberMe"
-                  [ngModelOptions]="{standalone: true}">
-                  <label >Remember Me!</label> -->
-
-
-
-                  
                   <input type="checkbox" class="remember-me" 
                   [(ngModel)]="rememberMe"
                   [ngModelOptions]="{standalone: true}"

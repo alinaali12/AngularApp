@@ -25,8 +25,9 @@ export class LoginComponent implements OnInit {
     this.isValidatedUser = false;
     this.rememberMe = false;
     
+    console.log("I am At the loggin page");
+
     // Validation checks
-    
     this.loginForm = fb.group({
      pwd: ["", Validators.required]
 
@@ -69,6 +70,7 @@ export class LoginComponent implements OnInit {
           //delete any cookie with this username and password
           this._cookieService.delete('username',this.currentUser.userName);
           this._cookieService.delete('password',this.currentUser.plainPassword);
+          this._cookieService.delete('remember','true');
         }
         //---------
 

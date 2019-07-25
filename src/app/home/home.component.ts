@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private _loginServive: LoginService, private router: Router) { }
+  constructor(private _loginServive: LoginService, private router: Router) { 
+    console.log("I am At home page");
+  }
 
   ngOnInit() {
   }
