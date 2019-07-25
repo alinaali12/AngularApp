@@ -1,7 +1,8 @@
 
-<div class="card text-center m-3" appPermissions>
+<div class="card text-center m-3" >
     <h3 class="card-header">Todo Items</h3>
     <div class="card-body">
+        <h2>Pagination but without using the pagination function in Web API</h2>
         <table class="table">
             <thead>
                 <th  scope="col" *ngFor="let col of columns">
@@ -9,7 +10,7 @@
                 </th>
             </thead>
             <tbody>
-                <tr *ngFor="let policy of todoItems">
+                <tr *ngFor="let policy of pageOfItems">
                     <th  scope="row" >{{policy.id}}</th>
                     <td >{{policy.title}}</td>
                     <td >{{policy.isComplete}}</td>
@@ -24,3 +25,22 @@
         <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
     </div>
 </div>
+
+<!-- 
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item first-item">
+        <a (click)="setPage(1)" class="page-link">First</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item previous-item">
+        <a (click)="setPage(pager.currentPage - 1)" class="page-link">Previous</a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item number-item">
+        <a (click)="setPage(page)" class="page-link">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item next-item">
+        <a (click)="setPage(pager.currentPage + 1)" class="page-link">Next</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item last-item">
+        <a (click)="setPage(pager.totalPages)" class="page-link">Last</a>
+    </li>
+</ul> -->

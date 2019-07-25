@@ -10,7 +10,7 @@ import { TodoItem } from '../../classes/todoItem/todo-item';
 export class ToDoItemsComponent implements OnInit {
   items = [];
   pageOfItems: Array<any>;
-
+  private totalCount:number;
   private todoItems:Array<TodoItem>;
   private columns;
   
@@ -20,10 +20,14 @@ export class ToDoItemsComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+    this._apiService.getCountOfAllRecords().subscribe((data)=>{
+      this.totalCount = data;
+      console.log("page no got by dbtodoitems is",this.totalCount);
+    });
+
       this._apiService.getRecords().subscribe((data)=>{
         this.todoItems = data;
-        this.items = data;
+        this.items = Array(this.todoItems.length).fill([], 0).map((x, i) => (this.todoItems[i]));
     });
   }
   onChangePage(pageOfItems: Array<any>) {
