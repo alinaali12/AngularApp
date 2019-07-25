@@ -6,11 +6,13 @@ import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { UserLogin } from './UserLogin';
 import { constants } from 'os';
+import { interval } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
   authenticate;
+  timer = 30;
   url = 'https://localhost:44347/api/UserLoginInfoes';
   constructor(private http: HttpClient) { }
   checkUserLogin(User: UserLogin) {
@@ -29,5 +31,19 @@ export class LoginServiceService {
   } else {
     return false;
   }
+  }
+  startSession() {
+    interval(1000 * 60).subscribe(x => {
+      this.timer = this.timer - 1;
+    //  console.log('1min', this.timer);
+      if (this.timer === 0) {
+      }
+    });
+  }
+  resetSession() {
+    this.timer = 30;
+  }
+  getSession() {
+    return this.timer;
   }
 }

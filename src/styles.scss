@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.circle {
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    font-size: 30px;
+    color: black;
+    line-height: 20%;
+    text-align: center;
+    background:#8D5A9E;
+    transition: transform .2s;
+  }
+  .timer {
+    margin: 2%; 
+    float: right;
+  }

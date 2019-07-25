@@ -5,6 +5,8 @@ import { EditDataComponent } from '../edit-data/edit-data.component';
 import { ChangeDetectorRef } from '@angular/core';
 import { stat } from 'fs';
 import { userInfo } from 'os';
+import { LoginServiceService } from '../login-service.service';
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-showresult',
   templateUrl: './showresult.component.html',
@@ -28,8 +30,8 @@ export class ShowresultComponent implements OnInit {
   status = 'Id';
   getUser = new Usermodel();
   sortstatus = '';
-  constructor(private dataservice: DataserviceService) { }
-
+  constructor(private dataservice: DataserviceService, private loginservice: LoginServiceService) { }
+  timer;
   ngOnInit() {
    //  this.dataservice.getUsers().subscribe((userData) => this.Users = userData);
    this.dataservice.getUsers().subscribe(data => {
@@ -38,6 +40,10 @@ export class ShowresultComponent implements OnInit {
     this.getpages();
     this.edituser = new Usermodel();
     this.editedUser = new Usermodel();
+    this.timer = this.loginservice.getSession();
+    interval(1000).subscribe(x => {
+    this.timer = this.loginservice.getSession();
+    });
     });
   }
   getPageData(page: number) {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Usermodel } from '../usermodel';
 import { DataserviceService } from '../dataservice.service';
 import { Router } from '@angular/router';
+import { interval } from 'rxjs';
+import { LoginServiceService } from '../login-service.service';
 
 @Component({
   selector: 'app-front-page',
@@ -26,13 +28,18 @@ export class FrontPageComponent implements OnInit {
   EditToggle;
   EditInfo = new Usermodel();
   EditUser = new Usermodel();
-
-  constructor(private Serviceobj: DataserviceService) { }
+  timer;
+  constructor(private Serviceobj: DataserviceService, private loginservice: LoginServiceService) { }
   ngOnInit() {
     this.model.choice = 'lilies';
     this.EditToggle = this.Serviceobj.getToggle();
     this.EditUser = this.Serviceobj.getUser();
     console.log('onint', this.Serviceobj.getUser());
+    this.loginservice.startSession();
+    this.timer = this.loginservice.getSession();
+    interval(1000).subscribe(x => {
+    this.timer = this.loginservice.getSession();
+    });
   }
   showpage() {
     this.EditToggle = '';

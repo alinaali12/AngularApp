@@ -9,3 +9,28 @@ h1 {
     margin-right: 40%;
     display: block;
 }
+i {
+    color: green;
+}
+.input-wrapper-tick {
+    display:inline-block;
+    position: relative
+}
+.input-wrapper-tick:after {
+    font-family: 'FontAwesome';
+    content: '\f00c';
+    position: absolute;
+    right: 6px;
+    color: green;
+}
+.input-wrapper-cross {
+    display:inline-block;
+    position: relative
+}
+.input-wrapper-cross:after {
+    font-family: 'FontAwesome';
+    content: '\f00d ';
+    position: absolute;
+    right: 6px;
+    color:red;
+}

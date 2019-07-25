@@ -8,6 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   <body>
+    <!-- <div>hello{{timer}}</div> -->
     <div class="container" appCheckpermission>
       <div class="row">
                 <div class="col-md-8 space">
@@ -17,7 +18,10 @@
                     <button class="getstart" (click)= "showpage()">Getting Started</button>
                   </div>
                 </div>
-                
+                <div class="timer" > 
+                    <span class="circle">{{timer}}</span>
+                </div>
+               
                 <div class="col-md-4 space" style="align-content: center; background-color: #EBE0E7;" *ngIf=" pageToggle==='show' || EditToggle==='show'">
                   
                     <form ngNativeValidate (ngSubmit)="SendData()">

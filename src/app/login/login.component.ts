@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   User = new UserLogin();
   obj;
+  Valid;
   constructor(private loginS: LoginServiceService, private route: Router) { }
   ngOnInit() {
   }
@@ -25,5 +26,15 @@ export class LoginComponent implements OnInit {
 }
     setData(data) {
       this.loginS.setAuthentication(data);
+    }
+    ValidateEmail() {
+      const regex = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$');
+      const res = regex.test(this.User.Email); // outputs true
+      if (res) {
+        this.Valid = 'true';
+      } else {
+        this.Valid = 'false';
+      }
+      console.log(this.Valid);
     }
 }
