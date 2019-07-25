@@ -19,13 +19,14 @@ export class LoginComponent implements OnInit {
   private isValidatedUser:boolean;
   private rememberMe : boolean;
   loginForm: FormGroup;
+  public passwordSectionIsCollapsed;
 
 
   constructor(private fb: FormBuilder,private _loginServive: LoginService, private router: Router, private _cookieService: CookieService) { 
     this.isValidatedUser = false;
     this.rememberMe = false;
+    this.passwordSectionIsCollapsed = true;
     
-    console.log("I am At the loggin page");
 
     // Validation checks
     this.loginForm = fb.group({
@@ -34,8 +35,6 @@ export class LoginComponent implements OnInit {
     });
     // ------
 
-
-    
     if(_cookieService.get('remember')) {
       var username =this._cookieService.get('username');
       var pwd =this._cookieService.get('password');
@@ -85,4 +84,13 @@ export class LoginComponent implements OnInit {
     
 
    }
+
+   toggleForgotPasswordSection()
+   {
+    this.passwordSectionIsCollapsed = false;
+   }
+
+   forgotPassword() { 
+    console.log("Here we go again.. you forgot your password AGAIN");
+  }
 }

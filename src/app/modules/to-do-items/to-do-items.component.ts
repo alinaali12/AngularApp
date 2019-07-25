@@ -13,12 +13,14 @@ export class ToDoItemsComponent implements OnInit {
 
   private todoItems:Array<TodoItem>;
   private columns;
-
+  
   constructor(private _apiService: ApiService) { 
     this.columns = ['Id','Title','IsComplete','Description','Priority','File'];
+  
   }
 
   ngOnInit() {
+   
       this._apiService.getRecords().subscribe((data)=>{
         this.todoItems = data;
         this.items = data;
@@ -29,4 +31,5 @@ export class ToDoItemsComponent implements OnInit {
     this.pageOfItems = pageOfItems;
   }
 
+ 
 }
