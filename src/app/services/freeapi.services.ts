@@ -26,18 +26,18 @@ return this.httpclient.get(this.userapi);
 
 return this.httpclient.delete(this.userapi+"/"+id, {headers});
     }
-    getuserbyid( id: any): Observable<any>
+    getuserbyid( id: number): Observable<any>
     {
         this.userapi =`${this.api}/Users`;
         const headers = new HttpHeaders().set('content-type', 'application/json');
-
-return this.httpclient.post(this.userapi+"/"+id, {headers}); //chnging
+console.log(this.userapi+"/"+id)
+return this.httpclient.put(this.userapi+"/"+id, {headers});
     }
     updateuser(user: any){
         this.userapi =`${this.api}/Users`;
         const headers = new HttpHeaders().set('content-type', 'application/json');
-console.log("url ",this.userapi+"/"+user.id);
-return this.httpclient.put(this.userapi+"/"+user.id, user,{headers});
+
+return this.httpclient.post(this.userapi, user, {headers});
     }
 
     adduser(user: User): Observable<any>{
@@ -54,12 +54,12 @@ return this.httpclient.put(this.userapi+"/"+user.id, user,{headers});
       // const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8'}); 
         this.userapi =`${this.api}/Users`;
         const headers = new HttpHeaders().set('content-type', 'application/json');
-
+        user.Id = 0;
         return this.httpclient.post(this.userapi,
             user,{headers}
             );
     }
-    DownloadFile(userfile){
+    DownloadFile(userfile:string){
         //let fileExtension = fileType;
         //let input = filePath;
         return this.httpclient.get("https://localhost:44347/api/users/"+userfile,

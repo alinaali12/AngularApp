@@ -14,6 +14,11 @@ import { DispalyemployeeComponent } from './dispalyemployee/dispalyemployee.comp
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { UploadComponent } from './upload/upload.component';
+import {CookieService} from 'ngx-cookie-service'
+import { UrlService } from './services/UrlService';
+import { databind } from './services/databind';
+import {NgxWebstorageModule} from 'ngx-webstorage';
+
 //  const appRoutes: Routes=[
 
 //    { path: 'create' , component: CreateEmployeeComponent}
@@ -40,11 +45,13 @@ import { UploadComponent } from './upload/upload.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxWebstorageModule.forRoot(),
+
 
     // RouterModule.forRoot(appRoutes)
   ],
-  providers: [freeApiService],
+  providers: [freeApiService, CookieService, UrlService,databind ],
   bootstrap: [AppComponent]
 })
 

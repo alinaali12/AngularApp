@@ -1,52 +1,72 @@
 <div style="text-align:center">
 
-<table class="table table-striped" matSort>
-  <tr>
-    <td ><!--*ngFor="let sort of sortorder | keyvalue">  -->
-     <!-- <button [ngStyle]="{'background':'transparent', 'border':'none'}">
-          <i [ngClass]=" (sort.value == 'des') ? 'fa fa-long-arrow-up' : '' " aria-hidden="true"></i>
+  <table class="table table-striped">
+    <tr>
+      <td ><!--*ngFor="let sort of sortorder | keyvalue">  -->
+       <!-- <button [ngStyle]="{'background':'transparent', 'border':'none'}">
+            <i [ngClass]=" (sort.value == 'des') ? 'fa fa-long-arrow-up' : '' " aria-hidden="true" (click)="sortname()"></i>
+          </button>
+        -->
+        <button>
+        <i [ngClass]=" (idsort == 'des') ? 'fa fa-long-arrow-up' : ''" aria-hidden="true" (click)="sortid()"></i>
+      </button>
+      <button [ngStyle]="{'background':'transparent', 'border':'none'}">
+          <i [ngClass]=" (idsort == 'asc') ? 'fa fa-long-arrow-down' : '' " aria-hidden="true" (click)="sortid()"></i>
         </button>
-      -->
-        #
-    </td>
-    <td>Name </td>
-    <td>Employee Role</td>
-    <td>Address</td>
-    <td>File</td>
-    <td>User Actions</td>
-  </tr>
-    <tbody>
-    <tr *ngFor="let user of totalusers | paginate: { itemsPerPage: 10, currentPage: p }" >
-      <th scope="row">{{ user.id }}</th>
   
-      <td>{{user.name}}</td>
-      <td>{{user.employe_Role}}</td>
-      <td>{{user.address}}</td>
-      <td><a class="btn btn-danger" (click)="DownloadFile(user.file)">{{user.file}}</a>
-        </td>
-
-  <a class="navbar-brand mb-0 h5 text-primary" routerLink="/update-user/  {{user.id}}" routerLinkActive="active">Update</a>
-  <a class="navbar-brand mb-0 h5 text-primary" routerLink="/delete-user/  {{user.id}}" routerLinkActive="active">Delete</a>
-
-  <td></td>
+          #
+          
+      </td>
+      <td>
+         
+          <button [ngStyle]="{'background':'transparent', 'border':'none'}">
+              <i [ngClass]=" (namesort == 'des') ? 'fa fa-long-arrow-up' : ''" aria-hidden="true" (click)="sortname()"></i>
+            </button>
+            <button [ngStyle]="{'background':'transparent', 'border':'none'}">
+                <i [ngClass]=" (namesort == 'asc') ? 'fa fa-long-arrow-down' : '' " aria-hidden="true" (click)="sortname()"></i>
+              </button>
+        Name
   
+      </td>
+      <td>Employee Role</td>
+      <td>Address</td>
+      <td>File</td>
+      <td>User Actions</td>
     </tr>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </tbody>
-  </table>
-
-<!--  <pagination-controls (pageChange)="(pageChange)="p = $event"" class="my-pagination"></pagination-controls>
--->
-  <!--<div class="row">
-    <div class="medium-8 medium-offset-2 columns">
-      <h2 class="subheader"></h2>
-      <ul>
-        <li *ngFor="let item of totalusers | paginate: { itemsPerPage: 10, currentPage: p }">{{ item.name }}</li>
-      </ul>
-      
+      <tbody>
+      <tr *ngFor="let user of totalusers | paginate: { itemsPerPage: 10, currentPage: p }" >
+        <th scope="row">{{ user.id }}</th>
+    
+        <td>{{user.name}}</td>
+        <td>{{user.employe_Role}}</td>
+        <td>{{user.address}}</td>
+        <td><a class="btn btn-danger" (click)="DownloadFile(user.file)">{{user.file}}</a>
+          </td>
+  
+    <a class="navbar-brand mb-0 h5 text-primary" routerLink="/update-user/  {{user.id}}" routerLinkActive="active">Update</a>
+    <a class="navbar-brand mb-0 h5 text-primary" routerLink="/delete-user/  {{user.id}}" routerLinkActive="active">Delete</a>
+  
+    <td></td>
+    
+      </tr>
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </tbody>
+    </table>
+  
+  <!--  <pagination-controls (pageChange)="(pageChange)="p = $event"" class="my-pagination"></pagination-controls>
+  -->
+    <!--<div class="row">
+      <div class="medium-8 medium-offset-2 columns">
+        <h2 class="subheader"></h2>
+        <ul>
+          <li *ngFor="let item of totalusers | paginate: { itemsPerPage: 10, currentPage: p }">{{ item.name }}</li>
+        </ul>
+        
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
     </div>
+  -->
+  
   </div>
--->
-
-</div>
+  
+  

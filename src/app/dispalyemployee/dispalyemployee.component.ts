@@ -2,8 +2,7 @@ import { Component, OnInit, Input, Output, Directive, EventEmitter} from '@angul
 import{ freeApiService } from '../services/freeapi.services';
 import { observable } from 'rxjs';
 import { User } from '../classes/User';
-
-
+import * as R from 'ramda'
 
 
 
@@ -17,19 +16,20 @@ import { User } from '../classes/User';
 
 
 export class DispalyemployeeComponent implements OnInit {
-  sortorder ;
   constructor(private _freeApiService :freeApiService ) {
    }
    
   users:User[]; 
-  
+  namesort: string = "asc";
+  idsort: string = "asc";
+  none:string = "none";
+  empty:String = "";
+
   totalusers:User[]; 
   pageno: number = 0 ;
   ngOnInit() {
-    this.sortorder =new Map([['File', ''],['Employe_Role', ''],['Address', ''], ['Name', 'des'], ]);
     this.users = [];
     this.totalusers = [];
-    console.log(this.sortorder)
 
     this._freeApiService.getusers()
     .subscribe(
@@ -48,6 +48,36 @@ export class DispalyemployeeComponent implements OnInit {
 
 
 
+
+  }
+
+  sortname(){
+   
+
+    if (this.namesort=="asc"){
+      this.namesort = "des";
+      //this.totalusers = this.totalusers.sort((a,b) => a.Name.localeCompare(b.Name));
+      this.totalusers = R.sortBy(R.prop('name'), this.totalusers)
+    }else{
+      this.namesort = "asc";
+      //this.totalusers = this.totalusers.sort((a,b) => b.Name.localeCompare(a.Name));
+      this.totalusers = R.reverse(this.totalusers);
+    }
+
+  }
+
+  sortid(){
+   
+
+    if (this.idsort=="asc"){
+      this.idsort = "des";
+      //this.totalusers = this.totalusers.sort((a,b) => a.Name.localeCompare(b.Name));
+      this.totalusers = R.sortBy(R.prop('id'), this.totalusers)
+    }else{
+      this.idsort = "asc";
+      //this.totalusers = this.totalusers.sort((a,b) => b.Name.localeCompare(a.Name));
+      this.totalusers = R.reverse(this.totalusers);
+    }
 
   }
 

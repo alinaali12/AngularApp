@@ -19,8 +19,8 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit() {
     console.log("msgg",this.updateresult);
-    let id = this.route.snapshot.paramMap.get('id');
-
+    let id: number = parseInt(this.route.snapshot.paramMap.get('id'));
+    
     //console.log(id);
     this.apiservice.getuserbyid(id).subscribe(
       data=>
