@@ -26,6 +26,7 @@ export class FrontPageComponent implements OnInit {
   EditToggle;
   EditInfo = new Usermodel();
   EditUser = new Usermodel();
+
   constructor(private Serviceobj: DataserviceService) { }
   ngOnInit() {
     this.model.choice = 'lilies';

@@ -1,0 +1,21 @@
+<div class="container">
+
+<h1>Login</h1>
+        <form ngNativeValidate (ngSubmit)="GetData()">
+            <div class="col-md-4">
+                <input required type="email" [(ngModel)]="User.Email" placeholder="email" name="Email">
+            </div>
+            <br>
+            <br>
+            <div class="col-md-4">
+                <input required  type="password"[(ngModel)]="User.Password" placeholder="password" name="Password">
+            </div>
+            <br>
+            <br>
+            <div class="col-md-4">
+              <input  type="Submit" class="btn btn-info" value="Login">
+            </div>
+            <br>
+
+        </form>     
+</div>

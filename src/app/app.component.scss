@@ -20,7 +20,7 @@ ul li a{
   .bgimg {
     background-position: center;
     background-size: cover;
-
+    background-image: url('../assets/images/hotel.jpg');
     min-height : 75%;
   }
   .navbar {
@@ -28,4 +28,10 @@ ul li a{
     min-height: 50px;
     margin-bottom: 0px;
     border: 1px solid transparent;
+}
+.timer {
+  padding: 30%;
+  background:black;
+  color: greenyellow;
+  
 }
