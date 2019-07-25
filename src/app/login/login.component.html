@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h5 *ngIf="success">Your form is valid</h5>
+
+        <label>
+            Email:
+            <input type="text" formControlName="email" />
+            <div *ngIf="submitted && loginForm.controls.email.errors" class="errors">
+                <div *ngIf="loginForm.controls.email.errors.required">
+                    Email is required.
+                </div>
+            </div>
+        </label>
+
+        <label>
+            Password:
+            <input formControlName="password" />
+            <div *ngIf="submitted && loginForm.controls.password.errors" class="errors">
+                <div *ngIf="loginForm.controls.password.errors.required">
+                    Password is required.
+                </div>
+            </div>
+        </label>
+
+
+        <input type="submit" value="Sign in" class="cta" />
+    </form>
+
+    <div *ngIf="submitted" class="results">
+        <strong>email: </strong>
+        <span>{{ loginForm.controls.email.value }}</span>
+
+        <strong>password: </strong>
+        <span>{{ loginForm.controls.password.value }}</span>
+
+    </div>
+</div>

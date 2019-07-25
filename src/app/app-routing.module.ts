@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { MoviesComponent } from './components/movies/movies.component';
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path: 'movies', component: MoviesComponent },
   { path: 'ranking', component: RankingComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'error', component: ErrorComponent }
+  { path: 'error', component: ErrorComponent },
+  { path: 'login', component: LoginComponent }
 
 
 ];
