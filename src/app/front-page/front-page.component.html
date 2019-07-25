@@ -61,7 +61,7 @@
                                     </div>
                                     <br>
                                     <input type="button" value="Cancel" (click)= "cancel()" class=" btn btn-danger" style="float: right;" *ngIf=" pageToggle==='show'">
-                                    <input type="submit" [ngClass]="{'successactive': status=='clicked'}" class="btn btn-info pull-right" value="save user" *ngIf=" pageToggle==='show'">
+                                    <input type="submit" [ngClass]="{'successactive': status=='clicked'}"  [routerLink] = "['/showresult']" class="btn btn-info pull-right" value="save user" *ngIf=" pageToggle==='show'">
                                     <input type="button" [ngClass]="{'successactive': status=='clicked'}" class="btn btn-warning pull-right" value=" Edit user" *ngIf=" EditToggle==='show'" (click)=saveChanges(EditUser) style="margin-bottom: 1%;">
                                    
                         
