@@ -21,9 +21,9 @@
               <form name="form" #login ="ngForm" (ngSubmit) = "login.form.valid && onClickSubmit(login.value)" ng-model="currentUser">
               
                 <div class="form-group">
-                  <label class="col-md-12 control-label" for="Username">Username:</label>
+                  <label class="col-md-12 control-label" for="Username">Email:</label>
                   <div class="col-md-12 inputs">
-                    <input class="form-control" type="text" #username="ngModel" name="username" placeholder="username"  [(ngModel)]="currentUser.userName" [ngClass]="{ 'is-invalid': login.submitted && username.invalid }" required> 
+                    <input class="form-control" type="email" #username="ngModel" name="username" placeholder="email"  [(ngModel)]="currentUser.userName" [ngClass]="{ 'is-invalid': login.submitted && username.invalid }" required> 
                   </div>
                 </div>
 
