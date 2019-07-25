@@ -30,6 +30,7 @@ export class InputFormComponent implements OnInit {
       data=>console.log('success',data),
       error=>console.log('error', error)
     )
+    this.router.navigateByUrl('table');
   }
 
   onFileChange(event) {

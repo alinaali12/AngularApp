@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" id="bootstrap-css">
 <link rel="StyleSheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
-<div class="container" align="center" appCheckAccess>
+<div class="container" align="center">
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">Create Account</h4>
@@ -68,10 +68,12 @@
                         <img [src]="imgURL" height="100" *ngIf="imgURL">
                     </div>
                 <div>
-                    <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-primary btn-block" routerLink="/table" > Validate  </button>
+                    <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-primary btn-block" > Validate  </button>
                     <small [class.d-none]="!userForm.form.invalid" ><font color="red">Please fill in the form</font></small>
                 </div>
             </form>
+            <br>
+        
             <form>
                 <button type="submit" class="btn btn-primary btn-block" >Table View &#8594;</button>
             </form>
