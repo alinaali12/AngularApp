@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import Ilog from '../Clsses/logs';
+import AccessControl from '../Clsses/AccessControlClass';
 
 
 @Injectable({
@@ -45,5 +46,10 @@ export default class apiservice {
     searchwithcalender(searchingwithc:string)
     {
         return this.http.get<Array<Ilog>>(`${this.Logs_Api}?searchWith=Created&searchData=${searchingwithc}`);
+    }
+    AccessData()
+    {
+        return this.http.get<Array<AccessControl>>(`${this.Api}/Accesscontrols`);
+        
     }
 }
