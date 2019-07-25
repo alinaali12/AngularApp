@@ -5,6 +5,7 @@ import { DefaultpageComponent } from './defaultpage/defaultpage.component';
 import { OutputviewComponent } from './outputview/outputview.component';
 import { FunpageComponent } from './funpage/funpage.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 const routes: Routes = [
   {path:'defaultpage',component:DefaultpageComponent, data : {state: 'default'}},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path:'inputview',component:InputViewComponent, data : {state: 'input'}},
   {path:'outputview',component:OutputviewComponent, data : {state: 'output'}},
   {path: 'funpage', component:FunpageComponent, data: {state: 'funpage'}},
-  {path:'errorpage',component:ErrorpageComponent, data: {state: 'errorpage'}}
+  {path:'errorpage',component:ErrorpageComponent, data: {state: 'errorpage'}},
+  {path:'loginpage',component:LoginPageComponent, data: {state: 'loginpage'}}
 ];
 
 @NgModule({

@@ -14,7 +14,7 @@ export class DefaultpageComponent implements OnInit {
     "text-danger": this.hasError,
     "text-special": this.isSpecial
   }
-  title = 'Student Degree Registerations';
+  title = 'Student Degree Registration';
 
   constructor() { }
 

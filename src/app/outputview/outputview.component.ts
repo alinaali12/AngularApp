@@ -27,7 +27,7 @@ export class OutputviewComponent implements OnInit {
     this._PageModel= new PageModel("Id",1);
     await this.setCount();
     await this.pageGet(1,"Id");
-    console.log("Called");
+   // console.log("Called");
 
   }
   async pageGet(pNum: number,sortBy: string ="Id",pSize:number = 5){

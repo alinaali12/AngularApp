@@ -27,8 +27,6 @@ export class AppComponent {
        await this.urlSevice.GetUrls().then(value=>{ console.log(value), this.cookieService.set(this.cookieName,JSON.stringify(value))});
  
        this.sharedService.Urls = JSON.parse(this.cookieService.get(this.cookieName));
-
-    console.log('lol',this.sharedService.Urls);
   }
 
 

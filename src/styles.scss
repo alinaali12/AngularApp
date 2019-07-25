@@ -75,10 +75,15 @@ body{
 .border-color{
     border-color: $common_color;
 }
-.active a{
+div .active a{
     background-color: $common_color !important;
     border-color: $common_color !important;
 }
+h3 a{
+    background-color: blue !important;
+    border-color: $common_color !important; 
+}
+
   .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: $common_color !important;
     border-color: $common_color !important;

@@ -35,7 +35,6 @@ GetDocumentImage(){
         link.href = url;
         link.download = filename;
         link.click();
-  
     }
   }
   OpenFile(b64encodedString: string|ArrayBuffer, filename:string){

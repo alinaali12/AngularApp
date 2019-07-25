@@ -16,6 +16,7 @@ import { FunpageComponent } from './funpage/funpage.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { PagecheckDirective } from './pagecheck.directive';
 import { CookieService } from 'ngx-cookie-service';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CookieService } from 'ngx-cookie-service';
     ConfirmDialogComponent,
     FunpageComponent,
     ErrorpageComponent,
-    PagecheckDirective    
+    PagecheckDirective,
+    LoginPageComponent    
    
   ],
   imports: [

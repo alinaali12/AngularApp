@@ -32,7 +32,7 @@ export class PagecheckDirective {
  
   
   constructor(private _location: Location,private router:Router, private sharedService: SiblingCommunicatorService) {
-   // console.log('PageChecker Called.');
+      this.onClick();
    }
 
 }
