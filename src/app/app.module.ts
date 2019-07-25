@@ -13,8 +13,9 @@ import { RankingComponent } from './ranking/ranking.component';
 import { StorageModule } from '@ngx-pwa/local-storage';
 import { PagePermissionDirective } from './page-permission.directive';
 import { ErrorComponent } from './error/error.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
-  declarations: [AppComponent, MoviesComponent, NavComponent, HomeComponent, RankingComponent, PagePermissionDirective, ErrorComponent],
+  declarations: [AppComponent, MoviesComponent, NavComponent, HomeComponent, RankingComponent, PagePermissionDirective, ErrorComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

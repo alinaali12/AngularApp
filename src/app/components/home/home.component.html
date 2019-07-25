@@ -1,4 +1,5 @@
-<div appPagePermission>
+<div [style.background]="'url('xml.png')'"></div>
+<div>
   <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
     <h5 *ngIf="success">Your form is valid</h5>
 
@@ -63,7 +64,7 @@
     <input type="submit" value="Create" class="cta" />
   </form>
 
-  <div *ngIf="submitted" class="results">
+  <!-- <div *ngIf="submitted" class="results">
     <strong>Title: </strong>
     <span>{{ messageForm.controls.title.value }}</span>
 
@@ -82,5 +83,5 @@
 
     <strong>Poster: </strong>
     <span>{{ messageForm.controls.poster.value }}</span>
-  </div>
+  </div> -->
 </div>
