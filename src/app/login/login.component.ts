@@ -1,3 +1,4 @@
+import { DataService } from './../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
@@ -7,18 +8,18 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  submitted = false;
-  success = false;
 
 
-  constructor(
-    formBuilder: FormBuilder) {
+  constructor(formBuilder: FormBuilder, private dataService: DataService) {
     this.loginForm = formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
+  loginForm: FormGroup;
+  submitted = false;
+  success = false;
+  authCheck;
 
   ngOnInit() {
   }
@@ -32,7 +33,8 @@ export class LoginComponent implements OnInit {
     const login = {
       email, password
     };
-    console.log(login);
+    this.dataService.getAuthorization(login).subscribe((data) => { this.authCheck = data; console.log(data); });
+
 
   }
 }

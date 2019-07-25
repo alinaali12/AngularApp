@@ -14,7 +14,7 @@
 
         <label>
             Password:
-            <input formControlName="password" />
+            <input formControlName="password" type="password" />
             <div *ngIf="submitted && loginForm.controls.password.errors" class="errors">
                 <div *ngIf="loginForm.controls.password.errors.required">
                     Password is required.

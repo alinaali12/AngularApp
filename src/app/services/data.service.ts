@@ -1,3 +1,4 @@
+import { Login } from './../login/login.component';
 import { Movie } from '../components/home/home.component';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -12,6 +13,15 @@ export class DataService {
   // data;
   // ?page=3&limit=8&sort=Id
   constructor(private http: HttpClient) { }
+
+
+  getAuthorization(login: Login) {
+    return this.http.post(this.baseUrl + '/logins' + '/auth', login, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 
   getAllPages() {
     return this.http.get(this.baseUrl + '/permissions' + '/getallpages');
