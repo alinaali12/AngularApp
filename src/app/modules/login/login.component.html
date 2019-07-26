@@ -1,5 +1,5 @@
 
-<div class="container container-table" appPermissions>
+<div class="container container-table">
   <div class="row h-100 justify-content-center">
     <div class="signin">
       <div class="card-group">
@@ -18,11 +18,11 @@
             <h4>Welcome to an Amazing place </h4>
             <h2>SIGN IN</h2>
             <p class="last-heading">Welcome to First Design</p>
-            <form name="form" #login ="ngForm" (ngSubmit) = "login.form.valid && onClickSubmit(login.value)" ng-model="currentUser">
+            <form name="form" #login ="ngForm" (ngSubmit)="login.form.valid"  ng-model="currentUser">
               <div class="form-group">
                 <label class="col-md-12 control-label" for="Username">Email:</label>
                 <div class="col-md-12 inputs">
-                  <input class="form-control" type="email" #username="ngModel" name="username" placeholder="email"  [(ngModel)]="currentUser.userName" [ngClass]="{ 'is-invalid': login.submitted && username.invalid }" required> 
+                  <input class="form-control" type="email" #username="ngModel" name="username" placeholder="email"  [(ngModel)]="currentUser.userEmail" [ngClass]="{ 'is-invalid': login.submitted && username.invalid }" required> 
                 </div>
               </div>
 
@@ -30,7 +30,7 @@
                 <div class="form-group" >
                   <label class="col-md-12 control-label" for="password">Password:</label>
                   <div class="col-md-12">
-                    <input class="form-control" type = "password" #pwd="ngModel" name = "pwd" placeholder = "password"  [(ngModel)]="currentUser.plainPassword" [ngClass]="{ 'is-invalid': login.submitted && pwd.invalid }"  required >
+                    <input class="form-control" type = "password" #pwd="ngModel" name = "pwd" placeholder = "password"  [(ngModel)]="currentUser.stringPassword" [ngClass]="{ 'is-invalid': login.submitted && pwd.invalid }"  required >
                   </div>
                 </div>
                 <!-- <div class="col-md-12">
@@ -48,14 +48,14 @@
                   >
                   <label class="remember-me-label">Remember Me!</label>
 
-                  <a href="#" (click)="toggleForgotPasswordSection()" class="forgot-password-label">Forgot Password</a>
+                  <a (click)="toggleForgotPasswordSection()" class="forgot-password-label">Forgot Password</a>
                 </div>
               
-                <input #buttonLogin class="btn btn-primary" type="submit" value = "Login">
+                <input #buttonLogin class="btn btn-primary" type="submit" value = "Login" (click)="onClickSubmit(login.value)">
               </div>
 
               <div *ngIf="!passwordSectionIsCollapsed">
-                <button #forgotPassword class="btn btn-primary" (click)="forgotPassword()">Update Password</button>
+                  <input #buttonLogin class="btn btn-primary" type="submit" value = "Reset Password" (click)="forgotPassword()">
               </div>
             
             </form>

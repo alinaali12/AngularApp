@@ -1,13 +1,13 @@
 
 
 export class User {
- userName: string;
- plainPassword: string;
- authorizationData: string;
+    userEmail: string;
+    stringPassword: string;
+    authorizationData: string;
 
 
  constructor(username:string, pwd:string) {
-     this.plainPassword = pwd;
-     this.userName = username;
+     this.stringPassword = pwd;
+     this.userEmail = username;
  }
 }

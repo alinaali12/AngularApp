@@ -6,6 +6,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { ToDoItemsComponent } from './modules/to-do-items/to-do-items.component';
 import { ErrorComponent } from './modules/error/error.component';
+import { ResetPasswordComponent } from './modules/reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,11 @@ const routes: Routes = [
     component: ErrorComponent,
     canActivate:[AuthenticationGuard]
 
+  },
+  {
+    path:'resetpassword',
+    component: ResetPasswordComponent
+   // data : {userEmail : ''}
   }
 ];
 

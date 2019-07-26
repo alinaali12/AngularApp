@@ -23,6 +23,8 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
 import { PermissionsDirective } from './directives/permissions.directive';
 import { AppLoadService } from './services/onappload/app-load.service';
 import { ErrorComponent } from './modules/error/error.component';
+import { ResetPasswordComponent } from './modules/reset-password/reset-password.component';
+
 
 export function init_app(appLoadService : AppLoadService) {
 
@@ -38,7 +40,8 @@ export function init_app(appLoadService : AppLoadService) {
     ToDoItemsComponent,
     JwPaginationComponent,
     PermissionsDirective,
-    ErrorComponent
+    ErrorComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

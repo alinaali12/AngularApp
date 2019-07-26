@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import {HttpClient} from "@angular/common/http";
-import{HttpHeaders} from '@angular/common/http';
 import {from, Observable, BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Register} from "../../register";
@@ -14,18 +13,17 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
   private _url: string;
-  Header:any;
-  Token:any;
   public currentUser: Observable<User>;
   private currentUserSubject : BehaviorSubject<User>;
   private loggedInUser : User;
+
+  
   constructor(private http:HttpClient, private router: Router) { 
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
 
     this._url = "https://localhost:44347/api/Logins";
-    // const headerSettings: {[name:string]: string | string[];} = {};
-    // this.Header = new HttpHeaders(headerSettings);
+
   }
 
   public validateLogin(username:string,stringpassword:string ) {
@@ -57,7 +55,6 @@ export class LoginService {
     this.currentUserSubject.next(null);
     this.router.navigate(['']);
   }
-
 
 
   get isLoggedIn() {
