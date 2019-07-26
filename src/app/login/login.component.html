@@ -4,12 +4,12 @@
 
         <label>
             Email:
-            <input type="text" formControlName="email" />
-            <!-- <div *ngIf="submitted && loginForm.controls.email.errors" class="errors">
+            <input type="email" formControlName="email" autocomplete="email" />
+            <div *ngIf="submitted && loginForm.controls.email.errors" class="errors">
                 <div *ngIf="loginForm.controls.email.errors.required">
                     Email is required.
                 </div>
-            </div> -->
+            </div>
         </label>
 
         <label>
@@ -21,8 +21,8 @@
                 </div>
             </div>
         </label>
-
-
+        <input class="d-inline-block" type="checkbox" value="false" (change)="RememberMe($event)" id="remember">
+        <label class="d-inline-block" for="remember"> Remember Me</label><br>
         <input type="submit" value="Sign in" class="cta" />
     </form>
 

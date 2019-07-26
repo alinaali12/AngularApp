@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
   success = false;
   authCheck;
   encryptSecretKey = 'movie';
+  timeLeft = 3;
+  interval;
   ngOnInit() {
   }
   onSubmit() {
@@ -30,7 +32,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.success = true;
-    const { email } = this.loginForm.value;
+    const { email, rememberMe } = this.loginForm.value;
     let { password } = this.loginForm.value;
     password = this.encryptData(password);
 
@@ -41,9 +43,32 @@ export class LoginComponent implements OnInit {
     this.dataService.getAuthorization(login).subscribe((data) => {
       this.authCheck = data; console.log(data);
       localStorage.setItem('isLogin', data.toString());
+      // localStorage.setItem('rememberMe', rememberMe.toString());
+
       console.log(localStorage.getItem('isLogin').toString());
 
+
+
     });
+    this.interval = setInterval(() => {
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+        console.log(this.timeLeft);
+
+      }
+
+      if (this.timeLeft === 0) {
+        return;
+      }
+    }, 1000);
+
+    const result = confirm('Do you want to do this?');
+    if (result) {
+      console.log('ok clicked');
+    } else {
+      console.log('cancel clicked');
+    }
+
 
   }
   encryptData(data) {
@@ -55,6 +80,10 @@ export class LoginComponent implements OnInit {
       return enc.toString();
     } catch (e) { console.log(e); }
 
+  }
+  RememberMe(event: any) {
+    localStorage.setItem('rememberMe', event.target.checked);
+    console.log(localStorage.getItem('rememberMe'));
   }
 
 }
