@@ -1,16 +1,38 @@
 .container {
+    padding-top:2%;
+}
+.mycontainer{
     margin-top:10%;
 }
+.row {
+    margin-top: 3%;
+    margin-left: 8%;
+    margin-right: 10%;
+}
+body {
+
+    background-image: url('/assets/images/backgroundpage.jpg');
+    background-color: #cccccc;
+    height: 700px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
 h1 {
     text-align: center;
 }
 .col-md-4 {
-    margin-left: 40%;
-    margin-right: 40%;
-    display: block;
+    margin-top: 2%;
+    margin-left: 5%;
+   // display: block;
 }
-i {
+i{
     color: green;
+}
+.iconlog {
+    color: #87cefa;
+    margin-right:10px;
 }
 .input-wrapper-tick {
     display:inline-block;
@@ -33,4 +55,38 @@ i {
     position: absolute;
     right: 6px;
     color:red;
+}
+.box {
+    width:80%;
+    border-radius: 15px;
+    border:none;
+}
+.input-wrapper-tick {
+    width: 80%;
+}
+.input-wrapper-cross{
+    width: 80%;
+}
+.boxbutton {
+    margin-top:3%;
+    width: 40%;
+    background-color: #87cefa;
+    margin-right: 5%;
+    margin-left: 0%;
+    border-radius: 15px;
+
+}
+.forget {
+    float: right;
+    margin-right:20%;
+    color: grey;
+}
+.header {
+ text-align: left;
+}
+.stylep{
+    margin-left: 65%;
+}
+.checkboxclass {
+    margin-left: 5%;
 }

@@ -13,6 +13,7 @@ import { CheckpermissionDirective } from './checkpermission.directive';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from 'src/authguard';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 const appRoutes: Routes = [
   { path: 'front-page', component: FrontPageComponent, canActivate: [AuthGuard] },
   { path: 'showresult', component: ShowresultComponent, canActivate: [AuthGuard]},
@@ -37,7 +38,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

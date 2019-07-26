@@ -1,28 +1,85 @@
 <head>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<div class="container">
+<body>
+                <div class="container">
+                        <div class="row">
+                                <div class="col-md-7 img">
+                                <img src="/assets/images/loginimg.jpg" alt="login" width="100%" height="500px;">
+                                </div>
+                                <div class="col-mg-5">
+                                      <div class="mycontainer">
+                                        <div class="header">
+                                                        <h1>Welcome Back :)</h1>
+                                                        <p class='stylep'>To keep connected with us please login with you personal information by email address and password <i class="fa fa-bell"></i></p>
+                                        </div>
+                                        
+                                        <form ngNativeValidate (ngSubmit)="GetData()">
+                                                        <div class="col-md-4">
+                                                            
+                                                                <div [ngClass]="{'input-wrapper-tick ': Valid=='true', 'input-wrapper-cross': Valid=='false'}">
+                                                                <i class=" iconlog fa fa-envelope"></i> <input class="box" type="text" required type="email" (change)="ValidateEmail()" [(ngModel)]="User.Email" placeholder="email" name="Email" />
+                                                                </div>
+                                                        </div>
+                                                      
+                                                        <br>
+                                                        <br>
+                                                        <div class="col-md-4">
+                                                               <i class="iconlog fa fa-key"></i>   <input class="box"  required  type="password"[(ngModel)]="User.Password" placeholder="password" name="Password">
+                                                            <span class="forget">Forget Password?</span>
+                                                        </div>
+                                                       
+                                                        <div class=" col-md-3 checkboxclass">
+                                
+                                                        <input type="checkbox" name="remember">Remember Me 
+                                                        </div>
+                                                            <div class="col-md-4">
+                                                            <input class="boxbutton btn"  type="Submit" value="Login Now">
+                                                            <button class="boxbutton btn"  disabled>Create Account</button>
+                                                            </div>
+                                                            
+                                                           
+                                                        <br>
+                                            
+                                                    </form>
+                                      </div>    
+                                        
+                                </div>
+                        </div>
+                                    
+                </div>     
+</body>
 
-<h1>Login</h1>
-        <form ngNativeValidate (ngSubmit)="GetData()">
-            <div class="col-md-4">
-                
-                    <div  [ngClass]="{'input-wrapper-tick ': Valid=='true', 'input-wrapper-cross': Valid=='false'}">
-                            <input type="text" required type="email" (change)="ValidateEmail()" [(ngModel)]="User.Email" placeholder="email" name="Email" />
-                    </div>
-            </div>
-          
-            <br>
-            <br>
-            <div class="col-md-4">
-                <input required  type="password"[(ngModel)]="User.Password" placeholder="password" name="Password">
-            </div>
-            <br>
-            <br>
-            <div class="col-md-4">
-              <input  type="Submit" class="btn btn-info" value="Login">
-            </div>
-            <br>
 
-        </form>     
-</div>
+
+<!-- <h1>Login</h1>
+                                        <form ngNativeValidate (ngSubmit)="GetData()">
+                                            <div class="col-md-4">
+                                                
+                                                    <div  [ngClass]="{'input-wrapper-tick ': Valid=='true', 'input-wrapper-cross': Valid=='false'}">
+                                                            <input class="box" type="text" required type="email" (change)="ValidateEmail()" [(ngModel)]="User.Email" placeholder="email" name="Email" />
+                                                    </div>
+                                            </div>
+                                          
+                                            <br>
+                                            <br>
+                                            <div class="col-md-4">
+                                                <input class="box"  required  type="password"[(ngModel)]="User.Password" placeholder="password" name="Password">
+                                
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="col-md-4">
+                                            <span class="forget">Forget Password?</span>
+                                            <input type="checkbox" name="remember">Remember Me 
+                                            </div>
+                                           
+                                                <div class="col-md-4">
+                                                <input class="boxbutton btn"  type="Submit" value="Login Now">
+                                                <button class="boxbutton btn"  disabled>Create Account</button>
+                                                </div>
+                                                
+                                               
+                                            <br>
+                                
+                                        </form>  -->
