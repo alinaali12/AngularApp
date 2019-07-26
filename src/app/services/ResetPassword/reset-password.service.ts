@@ -32,15 +32,11 @@ export class ResetPasswordService {
     var data = JSON.stringify(currentUser);
     console.log("and here is data",data);
     var res;
-    this.http.put<boolean>(this._submitnewPasswordUrl+currentUser.userEmail, {
+    return this.http.put<boolean>(this._submitnewPasswordUrl+currentUser.userEmail, {
 
       "stringPassword":  currentUser.stringPassword,
       "userEmail":   currentUser.userEmail
-      
-      }).subscribe(data =>{
-      res = data;
-      console.log("Here I aM",res);
-    } );
+      });
     
   }
 }

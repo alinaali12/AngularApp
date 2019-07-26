@@ -13,7 +13,7 @@ export class ResetPasswordComponent implements OnInit {
   currentUser: User;
   sub:any;
 
-  constructor(private router: ActivatedRoute, location: Location, private  resetPasswordService: ResetPasswordService) { 
+  constructor(private router: ActivatedRoute, private routerr:Router ,location: Location, private  resetPasswordService: ResetPasswordService) { 
     
 
     var userName = location.path().slice(location.path().search("=")+1); //we get this by slicing from the location that the first = is found,till end
@@ -24,8 +24,14 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   submitNewPassword() {
+    var res;
     console.log("you entered this password ", this.currentUser.stringPassword,"against this email",this.currentUser.userEmail);
-    this.resetPasswordService.sendUpdatedPassword(this.currentUser);
+    this.resetPasswordService.sendUpdatedPassword(this.currentUser).subscribe(data =>{
+      res = data;
+      if (res == true){
+        this.routerr.navigate(['/login']);
+      }
+    } );
     console.log("I am back in reset-password")
   }
 }
