@@ -1,6 +1,5 @@
-<div>
+<!-- <div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <h5 *ngIf="success">Your form is valid</h5>
 
         <label>
             Email:
@@ -26,12 +25,29 @@
         <input type="submit" value="Sign in" class="cta" />
     </form>
 
-    <div *ngIf="submitted" class="results">
-        <strong>email: </strong>
-        <span>{{ loginForm.controls.email.value }}</span>
+</div> -->
 
-        <strong>password: </strong>
-        <span>{{ loginForm.controls.password.value }}</span>
+<div class="container w-auto h-100 d-flex flex-row justify-content-between " style="background-color: #F9FAFC">
+    <div class="w-75 h-75 pr-4">
+        <img src="../../assets/background.png" class="img-fluid" alt="Responsive image"></div>
+    <div class="w-50 h-50 d-flex flex-column align-content-center">
 
+        <h2>Welcome Back :)</h2>
+        <p>To keep connected with us please login with your personal information by email address and password</p>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="d-flex flex-column align-content-center">
+            <input type="email" formControlName="email" autocomplete="email" />
+            <input formControlName="password" type="password" />
+            <input class="d-inline-block" type="checkbox" value="false" (change)="RememberMe($event)" id="remember"><br>
+            <label class="d-inline-block" for="remember"> Remember Me</label><br>
+
+
+            <div class="d-flex flex-row w-100 justify-content-around d-inline-block">
+
+
+                <input type="submit" value="Login Now" class="border" style="border-radius: 20%" />
+                <input type="submit" value="Create Account" class="" disabled />
+
+            </div>
+        </form>
     </div>
 </div>
