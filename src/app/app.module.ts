@@ -11,7 +11,10 @@ import { EditComponent } from './edit/edit.component';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { CheckAccessDirective } from './check-access.directive';
 import { ErrorComponent } from './error/error.component';
-
+import { LoginPageComponent } from './login-page/login-page.component';
+import {AuthGuard} from './auth.guard';
+import { RouterModule } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -23,14 +26,17 @@ import { ErrorComponent } from './error/error.component';
     EditComponent,
     SafeUrlPipe,
     CheckAccessDirective,
-    ErrorComponent,    
+    ErrorComponent,
+    LoginPageComponent,    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
+    
   ],
+  providers:[AuthGuard,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

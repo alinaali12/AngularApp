@@ -9,6 +9,7 @@
     <br>
     <br>
     <br>
+    {{_idservice.countDown | async}}
     <div>
         <div style="text-align: center" >
             <input (keydown)="Search($event)" type="text" name="search" placeholder="Search.." [(ngModel)]="SearchVal">

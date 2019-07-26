@@ -20,7 +20,7 @@ export class InputFormComponent implements OnInit {
   public message: string;
   permission:any;
 
-  constructor(private router: Router,private _registerservice:RegisterService, private _idservice:EditService, private _permservice:PermissionService) { }
+  constructor(private router: Router,private _registerservice:RegisterService) { }
 
   ngOnInit() {
     
@@ -42,7 +42,7 @@ export class InputFormComponent implements OnInit {
     var file:File = inputValue.files[0];
     var myReader:FileReader = new FileReader();
   
-    myReader.onloadend = (e) => {
+    myReader.onloadend = () => {
       this.base64+=file.name;
       this.base64+=";";
       this.base64 += myReader.result as string;

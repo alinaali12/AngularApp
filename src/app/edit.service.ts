@@ -8,7 +8,8 @@ import {PermissionObj} from './shared/models/permission.model';
 export class EditService {
   id:number;
   user:RegisteredUser=new RegisteredUser();
-  
+  countDown;
+  count=1800;
 
   constructor() { }
 
