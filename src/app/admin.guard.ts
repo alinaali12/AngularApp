@@ -13,12 +13,11 @@ export class AdminGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean | UrlTree {
 
-    let islogin = localStorage.getItem('isLogin').toString()
+    const islogin = localStorage.getItem('isLogin').toString();
 
     if (islogin === 'true') {
       return true;
-    }
-    else {
+    } else {
       // return this.router.parseUrl("/");
       return false;
     }
