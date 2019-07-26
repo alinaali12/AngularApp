@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { StudentRegisterationModel } from './student-registeration-model';
-import { Permission_URL } from './Permission_URL';
+import { StudentRegisterationModel } from '../models/student-registeration-model';
+import { Permission_URL } from '../models/Permission_URL';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import { Permission_URL } from './Permission_URL';
 export class SiblingCommunicatorService {
   Record: StudentRegisterationModel;
   Urls : Permission_URL [];
-  
+  LoggedIn: boolean;
 
   constructor() { }
   insertData(std:StudentRegisterationModel){

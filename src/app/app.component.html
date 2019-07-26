@@ -6,33 +6,37 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<body>
-
-
-  <ul class="nav navbar-expand nav-tabs bg-light " role="tablist">
-    <li class="nav-item ">
-      <a Tabchange   class="nav-link" routerLinkActive="background-tabs active " data-toggle="tab" routerLink='/defaultpage'  >Home</a>
-    </li>
-    <li class="nav-item">
-      <a Tabchange  PageChecker data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/loginpage' >Login</a>
-    </li>
-    <li class="nav-item">
-      <a Tabchange  PageChecker data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/inputview' >Add Record</a>
-    </li>
-    <li class="nav-item">
-      <a Tabchange PageChecker data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/outputview' >View Records</a>
-    </li>  
-    <li class="nav-item">
-      <a Tabchange PageChecker data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/funpage' >Fun Page</a>
-    </li> 
-  </ul>
-<!--[@routeAnimations]="prepareRoute(outlet)"-->
-<main >
-  <div class="tab-content">
-    <br>
-    <br>
-    <router-outlet #outlet="outlet"></router-outlet>
-    <!-- Route Goes here-->   
-
+  <app-login-page *ngIf="!sharedService.LoggedIn"></app-login-page>
+  <div  *ngIf="sharedService.LoggedIn">
+    <ul class="nav navbar-expand nav-tabs bg-light "  role="tablist">
+    
+        <li class="nav-item ">
+          <a Tabchange   class="nav-link" routerLinkActive="background-tabs active " data-toggle="tab" routerLink='/defaultpage'  >Home</a>
+        </li>
+        <li class="nav-item">
+          <a Tabchange   data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/inputview' >Add Record</a>
+        </li>
+        <li class="nav-item">
+          <a Tabchange data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/outputview' >View Records</a>
+        </li>  
+        <li class="nav-item">
+          <a Tabchange  data-toggle="tab" routerLinkActive="background-tabs active " routerLink='/funpage' >Fun Page</a>
+        </li>
+        <div class="testclass" > 
+            <button  class="btn btn-danger btn-sm "  (click)="LogOut()">Logout</button>
+        </div>   
+      </ul>  
+      
+    <!--[@routeAnimations]="prepareRoute(outlet)"-->
+    <main >
+      <div class="tab-content">
+      
+        <small class=" color-text Inline">{{timeLeft}}</small> 
+        <small class="Inline">seconds left (until Session Expires)</small>
+        <br>
+        <br>
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+    </main>
+   
 </div>
-</main>

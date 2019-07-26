@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Permission_URL } from './Permission_URL';
+import { Permission_URL } from '../models/Permission_URL';
 
 @Injectable({
   providedIn: 'root'

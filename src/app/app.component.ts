@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { slideInAnimation } from './route-animations.spec';
-import { ApiPermissionsService } from './api-permissions.service';
+import { RouterOutlet, Router } from '@angular/router';
+import { slideInAnimation } from './models/route-animations.spec';
+import { ApiPermissionsService } from './services/api-permissions.service';
 import { CookieService } from 'ngx-cookie-service';
-import { SiblingCommunicatorService } from './sibling-communicator.service';
-import { Permission_URL } from './Permission_URL';
+import { SiblingCommunicatorService } from './services/sibling-communicator.service';
+import { SessionManagerService } from './services/session-manager.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,17 +17,35 @@ import { Permission_URL } from './Permission_URL';
 export class AppComponent {
   title = 'AngularApp';
   cookieName : string = 'Permission_Url';
-  constructor(private urlSevice: ApiPermissionsService, private cookieService: CookieService,private sharedService: SiblingCommunicatorService){
+  timeLeft: number ;
+  interval;
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      }
+    },1000)
+  }
+
+  constructor(private router: Router,private urlSevice: ApiPermissionsService, private cookieService: CookieService,private sharedService: SiblingCommunicatorService,private loginService: SessionManagerService){
     
   }
-  prepareRoute(outlet: RouterOutlet){
+  prepareRoute(outlet: RouterOutlet, ){
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['state'];
   }
   async ngOnInit(){
+    this.timeLeft=this.loginService.getRemainingTime();
+    this.startTimer(); //After logging In
    if (!this.cookieService.check(this.cookieName))
        await this.urlSevice.GetUrls().then(value=>{ console.log(value), this.cookieService.set(this.cookieName,JSON.stringify(value))});
- 
        this.sharedService.Urls = JSON.parse(this.cookieService.get(this.cookieName));
+  }
+
+  LogOut(){ 
+    this.loginService.Logout();
+    this.sharedService.LoggedIn=false;
+    this.router.navigateByUrl('/loginpage');
   }
 
 

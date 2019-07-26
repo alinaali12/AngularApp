@@ -19,7 +19,7 @@ export class ClasschangerDirective {
   constructor() { }
   ngOnInit(){
     this.newClass ="tab-pane container-fluid active";
-    console.log(this.newClass);
+  //  console.log(this.newClass);
   }
 
 }

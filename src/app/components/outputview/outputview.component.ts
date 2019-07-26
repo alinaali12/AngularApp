@@ -1,10 +1,10 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { StudentRegisterationModel } from '../student-registeration-model';
-import { ApiHanlderService } from '../api-hanlder.service';
-import { PageModel } from '../page-model';
-import { SiblingCommunicatorService }  from '../sibling-communicator.service';
-import { FileBase } from '../file-base';
-import { FileDownloaderService } from '../file-downloader.service';
+import { StudentRegisterationModel } from '../../models/student-registeration-model';
+import { ApiHanlderService } from '../../services/api-hanlder.service';
+import { PageModel } from '../../models/page-model';
+import { SiblingCommunicatorService }  from '../../services/sibling-communicator.service';
+import { FileBase } from '../../models/file-base';
+import { FileDownloaderService } from '../../services/file-downloader.service';
 
 @Component({
   selector: 'app-outputview',

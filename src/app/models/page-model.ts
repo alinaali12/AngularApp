@@ -1,4 +1,4 @@
-import { StudentRegisterationModel } from './student-registeration-model';
+import { StudentRegisterationModel } from '../models/student-registeration-model';
 
 export class PageModel {
     constructor(SortBy:string ="Id",CurrentPage:number=1,Count:number=0,PageSize:number=5,DataList?:StudentRegisterationModel[]){

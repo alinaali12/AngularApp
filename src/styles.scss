@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 $common_color : #e31768;
 
 main {
@@ -35,6 +35,13 @@ body{
     background-image:  url('assets/b9bdkfck9dbcj8bj9cieggcejbgcebefdfbauArp.jpg');
     border-radius: 50px;
 }
+.card-login{
+    background-image: url('assets/d74d92f2-df42-4a12-a64b-ce5835748bce.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%; 
+}
+
 .card-body{
     padding-top: 5% !important;  
 }
@@ -53,6 +60,10 @@ body{
     font-weight: 200;       
     font-size: 15px !important ;
     text-indent: 10px; 
+}
+.arialtext-small{
+    font-family: arial !important;
+    font-size: 12px !important;
 }
 .push-left{
    padding-left: 60%;
@@ -90,9 +101,27 @@ h3 a{
     height: 40px;
    
 }
+.btn-white{
+    background-color: white !important ;
+}
+.btn-white:hover{
+    background-color: whitesmoke !important;
+    transition: 0.03s;
+}
+.testclass{
+    padding-top: 2px;
+    margin-left: 60%;
+    
+  }
 .Inline{
     display: inline-block !important;
-    margin: 5px;
+    margin: 10px;
+}
+.border-left-login{
+    border-radius: 10px 0 0 10px !important;
+}
+.border-right-login{
+    border-radius: 0 10px 10px 0 !important;
 }
 .border-left{
     border-radius: 25px 0 0 25px !important;
