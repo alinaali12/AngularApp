@@ -25,6 +25,7 @@ export class ResetPasswordComponent implements OnInit {
 
   submitNewPassword() {
     console.log("you entered this password ", this.currentUser.stringPassword,"against this email",this.currentUser.userEmail);
-    this.resetPasswordService.sendUpdatedPassword(this.currentUser).subscribe((data)=> console.log("Password sent, the response is",data));
+    this.resetPasswordService.sendUpdatedPassword(this.currentUser);
+    console.log("I am back in reset-password")
   }
 }

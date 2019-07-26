@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from  "@angular/common/http";
 import { User } from 'src/app/classes/user';
 
 @Injectable({
@@ -9,6 +9,8 @@ export class ResetPasswordService {
 
   _resetPasswordUrl = "https://localhost:44347/api/email";
   _submitnewPasswordUrl = "https://localhost:44347/api/Logins/";
+
+
   constructor(private http:HttpClient) {
   }
 
@@ -27,8 +29,18 @@ export class ResetPasswordService {
     //   "userEmail": "sej@ciklum.com",
     //   "password": "QpHN3pV5cDiyW1JclRya6Q=="
     // }
-    const data = JSON.stringify(currentUser);
+    var data = JSON.stringify(currentUser);
     console.log("and here is data",data);
-    return this.http.put<boolean>(this._submitnewPasswordUrl+currentUser.userEmail, data);
+    var res;
+    this.http.put<boolean>(this._submitnewPasswordUrl+currentUser.userEmail, {
+
+      "stringPassword":  currentUser.stringPassword,
+      "userEmail":   currentUser.userEmail
+      
+      }).subscribe(data =>{
+      res = data;
+      console.log("Here I aM",res);
+    } );
+    
   }
 }
