@@ -7,7 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RankingComponent } from './ranking/ranking.component';
 
 const routes: Routes = [
-  { path: '', component: MoviesComponent },
+  { path: '', component: LoginComponent },
   { path: 'movies', component: MoviesComponent },
   { path: 'ranking', component: RankingComponent },
   { path: 'home', component: HomeComponent },
