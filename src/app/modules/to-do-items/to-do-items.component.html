@@ -1,5 +1,5 @@
-
-<div class="card text-center m-3" >
+<!-- JW pagination will work when the API data receives complete data on single call -->
+<!-- <div class="card text-center m-3" >
     <h3 class="card-header">Todo Items</h3>
     <div class="card-body">
         <h2>Pagination but without using the pagination function in Web API</h2>
@@ -24,23 +24,41 @@
     <div class="card-footer pb-0 pt-3">
         <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
     </div>
-</div>
+</div> -->
 
-<!-- 
-<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-    <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item first-item">
-        <a (click)="setPage(1)" class="page-link">First</a>
-    </li>
-    <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item previous-item">
-        <a (click)="setPage(pager.currentPage - 1)" class="page-link">Previous</a>
-    </li>
-    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item number-item">
-        <a (click)="setPage(page)" class="page-link">{{page}}</a>
-    </li>
-    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item next-item">
-        <a (click)="setPage(pager.currentPage + 1)" class="page-link">Next</a>
-    </li>
-    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item last-item">
-        <a (click)="setPage(pager.totalPages)" class="page-link">Last</a>
-    </li>
-</ul> -->
+
+<h3 class="card-header">Todo Items</h3>
+<div class="card-body">
+    <h2>Pagination but without using the pagination function in Web API</h2>
+    <table class="table">
+        <thead>
+            <th  scope="col" *ngFor="let col of columns">
+                {{col}}
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let policy of todoItems">
+                <th  scope="row" >{{policy.id}}</th>
+                <td >{{policy.title}}</td>
+                <td >{{policy.isComplete}}</td>
+                <td >{{policy.description}}</td>
+                <td >{{policy.priority}}</td>
+                <td >{{policy.file}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1">Previous</a>
+        </li>
+        <li *ngFor="let page of numbers">
+            <a class="page-link" (click)="loadPage(page+1)">{{page+1}}</a>
+        </li>
+       
+        <li class="page-item">
+            <a class="page-link">Next</a>
+        </li>
+    </ul>
+</nav>
