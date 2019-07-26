@@ -38,8 +38,12 @@ export class LoginComponent implements OnInit {
       email, password
     };
 
-    this.dataService.getAuthorization(login).subscribe((data) => { this.authCheck = data; console.log(data); });
+    this.dataService.getAuthorization(login).subscribe((data) => {
+      this.authCheck = data; console.log(data);
+      localStorage.setItem('isLogin', data.toString());
+      console.log(localStorage.getItem('isLogin').toString());
 
+    });
 
   }
   encryptData(data) {
@@ -47,7 +51,7 @@ export class LoginComponent implements OnInit {
       const key = '55a51621a6648525';
       const keyutf = CryptoJS.enc.Utf8.parse(key);
       const iv = CryptoJS.enc.Base64.parse(key);
-      const enc = CryptoJS.AES.encrypt(data, keyutf, { iv: iv });
+      const enc = CryptoJS.AES.encrypt(data, keyutf, { iv });
       return enc.toString();
     } catch (e) { console.log(e); }
 

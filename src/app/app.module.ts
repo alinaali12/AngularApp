@@ -1,6 +1,6 @@
+import { AdminGuard } from './admin.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './components/movies/movies.component';
@@ -15,7 +15,9 @@ import { PagePermissionDirective } from './page-permission.directive';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 @NgModule({
-  declarations: [AppComponent, MoviesComponent, NavComponent, HomeComponent, RankingComponent, PagePermissionDirective, ErrorComponent, LoginComponent],
+  declarations: [AppComponent, MoviesComponent, NavComponent,
+    HomeComponent, RankingComponent, PagePermissionDirective,
+    ErrorComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,7 +28,7 @@ import { LoginComponent } from './login/login.component';
       IDBNoWrap: true,
     })
   ],
-  providers: [],
+  providers: [AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

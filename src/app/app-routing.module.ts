@@ -5,12 +5,13 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RankingComponent } from './ranking/ranking.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'movies', component: MoviesComponent },
-  { path: 'ranking', component: RankingComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'movies', component: MoviesComponent, canActivate: [AdminGuard] },
+  { path: 'ranking', component: RankingComponent, canActivate: [AdminGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AdminGuard] },
   { path: 'error', component: ErrorComponent },
   { path: 'login', component: LoginComponent }
 
