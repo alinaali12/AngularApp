@@ -15,7 +15,7 @@ export class LoginServiceService {
   authenticate;
   timer = 30;
   url = 'https://localhost:44347/api/UserLoginInfoes';
-  constructor(private http: HttpClient,private route: Router) { }
+  constructor(private http: HttpClient, private route: Router) { }
   checkUserLogin(User: UserLogin) {
     console.log('s', User);
     this.authenticate = this.http.post(this.url + '/' + 'check', User, {responseType: 'text'});
@@ -36,7 +36,6 @@ export class LoginServiceService {
   startSession() {
     interval(1000 * 60).subscribe(x => {
       this.timer = this.timer - 1;
-    //  console.log('1min', this.timer);
       if (this.timer === 28) {
       this.setAuthentication('false');
       this.route.navigate(['/login']);

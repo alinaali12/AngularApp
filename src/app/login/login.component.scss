@@ -33,29 +33,53 @@ i{
 .iconlog {
     color: #87cefa;
     margin-right:10px;
+    width: 14px;
+    float: left;
+    margin-top: 12px;
 }
-.input-wrapper-tick {
-    display:inline-block;
-    position: relative
-}
-.input-wrapper-tick:after {
-    font-family: 'FontAwesome';
-    content: '\f00c';
-    position: absolute;
-    right: 6px;
-    color: green;
-}
-.input-wrapper-cross {
-    display:inline-block;
-    position: relative
-}
-.input-wrapper-cross:after {
-    font-family: 'FontAwesome';
-    content: '\f00d ';
-    position: absolute;
-    right: 6px;
-    color:red;
-}
+// .input-wrapper-tick {
+//    // display:inline-block;
+//     position: relative;
+//     float: left;
+//     height: 50px;
+//     display: block;
+//     z-index: 1;
+//     /* left: 0; */
+//     margin-left: 0;
+//     border: 1px solid red;
+// }
+// .input-wrapper {
+//     // display:inline-block;
+//      position: relative;
+//      float: left;
+//      height: 80px;
+//      display: block;
+//      z-index: 1;
+//      /* left: 0; */
+//      margin-left: 0;
+   
+//      margin-bottom: 0%;
+//  }
+ 
+// .input-wrapper-tick:after {
+//     font-family: 'FontAwesome';
+//     content: '\f00c';
+//     position: absolute;
+//     right: 6px;
+//     color: green;
+// }
+// .input-wrapper-cross {
+//     display:inline-block;
+//     position: relative
+    
+// }
+// .input-wrapper-cross:after {
+//     font-family: 'FontAwesome';
+//     content: '\f00d ';
+//     position: absolute;
+//     right: 6px;
+//     color:red;
+// }
 .box {
     width:80%;
     border-radius: 15px;
@@ -64,6 +88,7 @@ i{
 .input-wrapper-tick {
     width: 80%;
 }
+
 .input-wrapper-cross{
     width: 80%;
 }
@@ -77,9 +102,12 @@ i{
 
 }
 .forget {
-    float: right;
-    margin-right:20%;
+    margin-right:10%;
     color: grey;
+    margin-top: 18%;
+    margin-left: 115px;
+    font-size: 15px;
+    
 }
 .header {
  text-align: left;
@@ -90,3 +118,73 @@ i{
 .checkboxclass {
     margin-left: 5%;
 }
+ .show {
+    color: red;
+    position: absolute;
+    margin-top: 0;
+}
+#spanemail {
+    //margin-top: 100px;
+    margin-top: 10px;
+    float: left;
+    color: gray;
+    /* display: inline; */
+    /* z-index: 9999; */
+   //margin-left: -246px;
+    opacity: 0.5;
+    width: 36%;
+}
+
+
+
+label {
+    margin:20px 0;
+    position:relative;
+    display:inline-block;
+  }
+    
+  span {
+    float: right;
+    padding:10px;
+    pointer-events: none;
+    position:absolute;
+    left:0;
+    top:0;
+    transition: 0.2s;
+    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity:0.5;
+  }
+  
+  input {
+  
+    padding:10px;
+    border: none;
+   font-weight: normal;
+  }
+  span {
+      margin-left:20px;
+      font-size: 17px;
+  }
+  input:focus + span, input:not(:placeholder-shown) + span {
+    opacity:1;
+    transform: scale(0.75) translateY(-100%) translateX(-30px);
+  }
+  
+  /* For IE Browsers*/
+  input:focus + span, input:not(:-ms-input-placeholder) + span {
+    opacity:1;
+    transform: scale(0.75) translateY(-100%) translateX(-30px);
+    border-bottom: #87cefa;
+  }
+  .disbutton {
+      padding: 3.5%;
+  }
+  .error {
+      border: 2px solid red;
+  }
+  .errormsg {
+      color: red;
+      text-align: center;
+  }
+  

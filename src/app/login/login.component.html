@@ -15,41 +15,57 @@
                                         </div>
                                         
                                         <form ngNativeValidate (ngSubmit)="GetData()">
-                                                        <div class="col-md-4">
-                                                            
-                                                                <div [ngClass]="{'input-wrapper-tick ': Valid=='true', 'input-wrapper-cross': Valid=='false'}">
-                                                                <i class=" iconlog fa fa-envelope"></i> <input class="box" type="text" required type="email" (change)="ValidateEmail()" [(ngModel)]="User.Email" placeholder="email" name="Email" />
-                                                                </div>
+                                               
+                                                        <div class="col-md-4 ">
+                                                                        <p class="errormsg" *ngIf="Wronginput==='true' || Wrongpass==='true'">Invalid Data</p>
+                                                                        <label>
+                                                                        <!-- <div [ngClass]="{'input-wrapper-tick ': Valid=='true', 'input-wrapper-cross': Valid=='false'}"> -->
+                                                                         <i class="iconlog fa fa-envelope"></i> 
+                                                                        <input required [(ngModel)]="User.Email" (change)="ValidateEmail()" placeholder=" " name="Email" [ngClass]="{'error': Wronginput =='true'}">
+                                                                         <span>Email</span>
+                                                                         <i class="fa" [ngClass]="{'fa-check ': Valid=='true', 'fa-times': Valid=='false'}"></i> 
+                                                                        </label>
+                                                                <!-- <div [ngClass]="{'input-wrapper-tick ': Valid=='true', 'input-wrapper-cross': Valid=='false'}">
+                                                                <i class=" iconlog fa fa-envelope"></i> 
+                                                                <input class="box" type="text" required type="email" (change)="ValidateEmail()" [(ngModel)]="User.Email"  name="Email" />
+                                                                </div> -->
                                                         </div>
                                                       
-                                                        <br>
-                                                        <br>
+                                                      
                                                         <div class="col-md-4">
-                                                               <i class="iconlog fa fa-key"></i>   <input class="box"  required  type="password"[(ngModel)]="User.Password" placeholder="password" name="Password">
-                                                            <span class="forget">Forget Password?</span>
+                                                               <!-- <i class="iconlog fa fa-key"></i>   
+                                                               <input class="box"  required type="password"[(ngModel)]="User.Password" placeholder="Password" name="Password"> -->
+                                                               <label>
+                                                                        <i class="iconlog fa fa-key"></i> 
+                                                                        <input required type="password" (change)="passChange()" [(ngModel)]="User.Password" placeholder=" " name="Password" [ngClass]="{'error': Wrongpass =='true'}">
+                                                                        <span>Password</span>
+                                                               </label>
+                                                               <span  class="forget">Forget Password?</span>
                                                         </div>
                                                        
                                                         <div class=" col-md-3 checkboxclass">
                                 
-                                                        <input type="checkbox" name="remember">Remember Me 
+                                                        <input type="checkbox" [(ngModel)]="remember" name="remember">Remember Me 
                                                         </div>
                                                             <div class="col-md-4">
                                                             <input class="boxbutton btn"  type="Submit" value="Login Now">
-                                                            <button class="boxbutton btn"  disabled>Create Account</button>
+                                                            <button class="boxbutton btn disbutton"  disabled>Create Account</button>
                                                             </div>
                                                             
                                                            
                                                         <br>
-                                            
+                                                       
                                                     </form>
                                       </div>    
                                         
                                 </div>
                         </div>
                                     
-                </div>     
-</body>
+                </div>  
+                
+         
 
+</body>
 
 
 <!-- <h1>Login</h1>
