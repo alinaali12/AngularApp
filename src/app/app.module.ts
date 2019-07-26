@@ -14,6 +14,9 @@ import { StorageModule } from '@ngx-pwa/local-storage';
 import { PagePermissionDirective } from './page-permission.directive';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/material';
+
 @NgModule({
   declarations: [AppComponent, MoviesComponent, NavComponent,
     HomeComponent, RankingComponent, PagePermissionDirective,
@@ -26,7 +29,9 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     StorageModule.forRoot({
       IDBNoWrap: true,
-    })
+    }),
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [AdminGuard],
   bootstrap: [AppComponent]
