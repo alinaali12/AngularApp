@@ -1,5 +1,5 @@
 export class UserLogin {
-    SerialNo = 0;
+    serialNo = 0;
     Email = '';
     Password = '';
     constructor() {

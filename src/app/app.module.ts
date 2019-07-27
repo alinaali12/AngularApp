@@ -14,11 +14,13 @@ import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from 'src/authguard';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 const appRoutes: Routes = [
   { path: 'front-page', component: FrontPageComponent, canActivate: [AuthGuard] },
   { path: 'showresult', component: ShowresultComponent, canActivate: [AuthGuard]},
   { path: 'edit-data', component: EditDataComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'forget-password', component: ForgetPasswordComponent},
   { path: 'error', component: ErrorComponent}
 ];
 @NgModule({
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     EditDataComponent,
     CheckpermissionDirective,
     ErrorComponent,
-    LoginComponent
+    LoginComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

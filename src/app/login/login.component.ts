@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   remember;
   Wronginput = 'false';
   Wrongpass = 'false';
+  forgetClicked = 'false';
+  checkSend = 'false';
   constructor(private loginS: LoginServiceService, private route: Router, private cookieService: CookieService) { }
   ngOnInit() {
       console.log(this.User.Email);
@@ -32,7 +34,7 @@ export class LoginComponent implements OnInit {
       if (data === 'found') {
       this.route.navigate(['/front-page']);
       }
-      if (data === 'not found') {
+      if (data === 'not found' && this.forgetClicked === 'false') {
         this.Wronginput = 'true';
       }
       if (data === 'invalid passowrd') {
@@ -62,5 +64,25 @@ export class LoginComponent implements OnInit {
   }
   passChange() {
     this.Wrongpass = 'false';
+  }
+  ForgetMethod() {
+    this.Wronginput = 'false';
+    this.Wrongpass = 'false';
+    this.forgetClicked = 'true';
+    console.log('forget');
+  }
+  cancel() {
+    this.forgetClicked = 'false';
+    this.checkSend = 'false';
+  }
+  SendEmail() {
+    this.checkSend = 'true';
+    this.Wronginput = 'false';
+    this.Wrongpass = 'false';
+    localStorage.setItem('resetmail', this.User.Email);
+    console.log('semdemail', this.User.Email);
+    this.loginS.ForgetLinkSend(this.User).subscribe( data => {
+        console.log(data);
+      });
   }
 }

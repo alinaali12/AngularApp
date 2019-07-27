@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log('appcomponentoninit');
     this.Serviceobj.setPermissions().subscribe(data => {
+        console.log('set', data);
         this.setdata(data);
         this.ShareData();
       });

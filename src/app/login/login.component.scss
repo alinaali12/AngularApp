@@ -104,7 +104,7 @@ i{
 .forget {
     margin-right:10%;
     color: grey;
-    margin-top: 18%;
+    margin-top: 10%;
     margin-left: 115px;
     font-size: 15px;
     
@@ -187,4 +187,17 @@ label {
       color: red;
       text-align: center;
   }
-  
+  .forgetbutton {
+    padding: 3.5%;
+    background-color:palevioletred !important;
+  }
+  .linksent {
+
+      padding:10%;
+      background: gainsboro;
+      color:green;
+      text-align: center;
+      margin: 10%;
+      font-size: 15px;
+      border-bottom: 2px solid green;
+  }

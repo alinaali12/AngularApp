@@ -15,18 +15,16 @@ export class LoginServiceService {
   authenticate;
   timer = 30;
   url = 'https://localhost:44347/api/UserLoginInfoes';
+  EditUser;
   constructor(private http: HttpClient, private route: Router) { }
   checkUserLogin(User: UserLogin) {
-    console.log('s', User);
     this.authenticate = this.http.post(this.url + '/' + 'check', User, {responseType: 'text'});
     return this.authenticate;
   }
   setAuthentication(auth) {
-    console.log('set', auth);
     this.authenticate = auth;
   }
   getAuthentication() {
-  console.log('getauth', this.authenticate);
   if (this.authenticate === 'found') {
     return true;
   } else {
@@ -48,5 +46,17 @@ export class LoginServiceService {
   }
   getSession() {
     return this.timer;
+  }
+  ForgetLinkSend(user: UserLogin) {
+    return this.EditUser = this.http.post(this.url + '/' + 'forget', user);
+  }
+  SetEditUserInfo(user: UserLogin): Observable<UserLogin> {
+   this.EditUser = this.http.put(this.url + '/' + 'reset', user)
+   .map((response: Response) => response as unknown as UserLogin);
+   return this.EditUser;
+  }
+  SaveChanges(user: UserLogin) {
+    return this.http.put(this.url + '/' + user.serialNo, user);
+
   }
 }
