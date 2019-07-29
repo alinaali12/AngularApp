@@ -27,8 +27,11 @@ h1 {
     margin-left: 5%;
    // display: block;
 }
-i{
-    color: green;
+.fa-check {
+    color:green !important;
+}
+.fa-times {
+    color:red !important;
 }
 .iconlog {
     color: #87cefa;
@@ -99,7 +102,11 @@ i{
     margin-right: 5%;
     margin-left: 0%;
     border-radius: 15px;
+  
 
+}
+.boxbutton:focus {
+    outline: 0 !important;
 }
 .forget {
     margin-right:10%;
@@ -179,6 +186,7 @@ label {
   }
   .disbutton {
       padding: 3.5%;
+      outline: 0;
   }
   .error {
       border: 2px solid red;
@@ -200,4 +208,42 @@ label {
       margin: 10%;
       font-size: 15px;
       border-bottom: 2px solid green;
+  }
+  .checkbox {
+      font-weight: normal;
+  }
+  .fa-bell {
+      color: yellowgreen;
+  }
+  .strength {
+      margin-left: 100% !important;
+      font-weight: normal;
+      font-size: 15px;
+      opacity: 1;
+  }
+  .weak {
+      color:red;
+  }
+  .strong {
+      color:green;
+     
+
+  }
+  .medium::after {
+    font-family: 'FontAwesome';
+    content: '\f00c ';
+    color:yellowgreen;
+  }
+  .weak::after {
+    font-family: 'FontAwesome';
+    content: '\f00d ';
+    color:red;
+  }
+  .strong::after {
+    font-family: 'FontAwesome';
+    content: '\f00c';
+    color:green;
+  }
+  .medium {
+      color:yellowgreen;;
   }

@@ -5,7 +5,7 @@
                 <div class="container">
                         <div class="row">
                                 <div class="col-md-7 img">
-                                <img src="/assets/images/loginimg.jpg" alt="login" width="100%" height="530px;">
+                                <img src="/assets/images/loginimg.jpg" alt="login" width="100%" height="560px;">
                                 </div>
                                 <div class="col-mg-5">
                                       <div class="mycontainer">
@@ -37,16 +37,20 @@
                                                                <input class="box"  required type="password"[(ngModel)]="User.Password" placeholder="Password" name="Password"> -->
                                                                <label>
                                                                         <i class="iconlog fa fa-key"></i> 
-                                                                        <input  required type="password" (change)="passChange()" [(ngModel)]="User.Password" placeholder=" " name="Password" [ngClass]="{'error': Wrongpass =='true'}">
+                                                                        <input  required type="password" (change)="passChange(Password)" [(ngModel)]="User.Password" placeholder=" " name="Password" [ngClass]="{'error': Wrongpass =='true'}"> 
                                                                         <span>Password</span>
+                                                                        <span class="strength" [ngClass]="{'weak': (passwordmsg=='weak' || passwordLengthMatch=='false'), 'strong': passwordmsg=='strong', 'medium': passwordmsg=='medium'}">{{passwordmsg}}</span>
                                                                </label>
                                                                <a (click)="ForgetMethod()"  class="forget">Forget Password?</a>
                                                               
                                                         </div>
-                                                       
+                                                
+                                                              
+                                                
+                                                        
                                                         <div class=" col-md-3 checkboxclass" *ngIf = "forgetClicked==='false'">
-                                
-                                                        <input type="checkbox" [(ngModel)]="remember" name="remember">Remember Me 
+                                                    
+                                                        <input type="checkbox" [(ngModel)]="remember" name="remember" ><label class="checkbox" (click)="check($event)">Remember Me</label>
                                                         </div>
                                                             <div class="col-md-4">
                                                             <input class="boxbutton btn"  type="Submit" value="Login Now" *ngIf = "forgetClicked==='false'">
@@ -74,35 +78,3 @@
 
 </body>
 
-
-<!-- <h1>Login</h1>
-                                        <form ngNativeValidate (ngSubmit)="GetData()">
-                                            <div class="col-md-4">
-                                                
-                                                    <div  [ngClass]="{'input-wrapper-tick ': Valid=='true', 'input-wrapper-cross': Valid=='false'}">
-                                                            <input class="box" type="text" required type="email" (change)="ValidateEmail()" [(ngModel)]="User.Email" placeholder="email" name="Email" />
-                                                    </div>
-                                            </div>
-                                          
-                                            <br>
-                                            <br>
-                                            <div class="col-md-4">
-                                                <input class="box"  required  type="password"[(ngModel)]="User.Password" placeholder="password" name="Password">
-                                
-                                            </div>
-                                            <br>
-                                            <br>
-                                            <div class="col-md-4">
-                                            <span class="forget">Forget Password?</span>
-                                            <input type="checkbox" name="remember">Remember Me 
-                                            </div>
-                                           
-                                                <div class="col-md-4">
-                                                <input class="boxbutton btn"  type="Submit" value="Login Now">
-                                                <button class="boxbutton btn"  disabled>Create Account</button>
-                                                </div>
-                                                
-                                               
-                                            <br>
-                                
-                                        </form>  -->
