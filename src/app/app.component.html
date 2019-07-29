@@ -7,9 +7,12 @@
 </head>
 <nav class ="marginn">
   <ul class="navbar" class="bg-dark navbar-expand-sm navbar">
-    <li><a [routerLink] = "['/logging']"> <h4>ErrorLogging </h4></a></li>
+   
+    <li><a [routerLink] = "['/logging']" (click)="checkout()" > <h4>ErrorLogging </h4></a></li>
     <li><a [routerLink] = "['/testpage1']"><h4> Test Page - 01 </h4></a></li>
     <li><a [routerLink] = "['/testpage2']"> <h4>Test Page - 02 </h4></a></li>
+    <li class="abcc" (click)="logout()"> <a [routerLink]="['login']"  >Logout</a></li>
+    <li class="aaaaaa">{{counter}}</li>
   </ul>
 </nav>
 <router-outlet></router-outlet>

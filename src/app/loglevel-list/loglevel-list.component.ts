@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Ilog from '../Clsses/logs';
 import apiservice from '../Services/apiservices';
 import { DatePipe } from '@angular/common';
+import DateTime from '../Clsses/DateTime';
 
 @Component({
   selector: 'app-loglevel-list',
@@ -10,52 +11,46 @@ import { DatePipe } from '@angular/common';
 })
 export class LoglevelListComponent implements OnInit {
 logss:Array<Ilog>
-search:Array<Ilog>
-searchdata: String;
-pages;
+checkDateTime:Array<DateTime>
 delres;
 pagenumber;
 countt;
 count=[];
 active;
-searchhhh;
 sortdata;
 dateee;
-created;
-time;
 TimeToShow;
 TimeFormat;
 datsplit;
 SearchingData;
 changeformat;
 DateToShow;
-searchwithdata;
-
 Searchingcalender;
 searchdateformat;
 value;
-status:String="notclicked";
-index:number=0;
-previousrec;
-timeD: Array<Ilog> = new Array<Ilog>();
+datasplit;
 pipe = new DatePipe('en-US');
 constructor(private apiservice:apiservice, private datePipe:DatePipe) {
   
  }
 
   ngOnInit() {
-
+  // this.apiservice.checkout();
+  // console.log("counter = ",this.apiservice.counter);
+   console.log('I am in Logging Compoenentttt');
     this.apiservice.getlogs(this.pagenumber).subscribe(data=>{
       console.log('Response result',this.logss=data);
-      this.timeD=this.logss;
       this.GetCount();
       this.dateTime();
-     
-    
+      this.checkingDateTime();
     });
   }
 
- 
+  checkingDateTime(){
+    this.apiservice.getlogs(this.pagenumber).subscribe(data=>{
+      console.log('checkDateTimeeeeeeeee',this.checkDateTime=data);
+  });
+  }
     searchLogs(){
     
      // console.log(this.SearchingData);
@@ -84,12 +79,23 @@ constructor(private apiservice:apiservice, private datePipe:DatePipe) {
   }
 
   remove(data){
-    console.log(data);
-    this.apiservice.remove(data.created,data.type).subscribe(data=> {
-      this.delres=data;
-      console.log('Delete result',this.delres);
-      this.ngOnInit();
-    });
+    console.log('aaaaaaaabbbbbb',data);
+    this.datasplit=data.id;
+    console.log('DaTa Splittt', this.datasplit);
+    for(let i = 0; i < this.checkDateTime.length; i++)
+    {
+      if(this.datasplit===this.checkDateTime[i].id)
+      {
+        this.apiservice.remove(this.checkDateTime[i].created,this.checkDateTime[i].type).subscribe
+        (
+          data=>{
+            this.delres=data;
+            console.log('Delete result',this.delres);
+            this.ngOnInit();
+          }
+        )
+      }
+    }
   }
   getPageData(pageNo)
   {
@@ -126,8 +132,9 @@ constructor(private apiservice:apiservice, private datePipe:DatePipe) {
   }
   dateTime()
   {
-   for(let i = 0; i < this.logss.length; i++)
+    for(let i = 0; i < this.logss.length; i++)
    {
+    
     this.datsplit=this.logss[i].created.split(" ");
     this.changeformat=this.datsplit[0].split('/');
     this.DateToShow=this.changeformat[1] + '/' +this.changeformat[0]+'/'+this.changeformat[2];
@@ -149,22 +156,6 @@ constructor(private apiservice:apiservice, private datePipe:DatePipe) {
   {
     status="clicked";
   }
-  // checkstatus(id) {
-  //   this.previousrec=id;
-  //   console.log(id);
-  //   if(this.index%2==0)
-  //   {
-  //     this.status='clicked';
-  //     this.index++;
-  //   }
-  //   else
-  //   {
-  //     this.status='notclicked';
-  //     this.index++;
-  //   }
-    
-    
-  //   console.log(this.status);
-  // }
+  
 }
   

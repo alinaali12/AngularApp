@@ -20,7 +20,9 @@ import { DatePipe } from '@angular/common';
 import {  AppRoutingModule  , RoutingComponents} from './app-routing.module';
 import { CheckAccessDirective } from './check-access.directive';
 import { ErrorPageComponent } from './error-page/error-page.component';
-
+import { LoginPageComponent } from './login-page/login-page.component';
+import { AuthGuard } from './auth.guard';
+import { EncrDecrServiceService } from '../app/encr-decr-service.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     HomeComponent,
     RoutingComponents,
     CheckAccessDirective,
-    ErrorPageComponent
+    ErrorPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [LoginService, CookieService, DatePipe],
+  providers: [LoginService, CookieService, DatePipe, AuthGuard, CookieService, EncrDecrServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

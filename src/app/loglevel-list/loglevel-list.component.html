@@ -20,14 +20,14 @@
    
     </div>
  
-</nav>
+</nav> 
 </div>
-
 
 
 <br>
 <br>
 <div appCheckAccess class="container">
+
   <table  class="table table-bordered table-striped">
       <thead class="thead-dark" class="text-info">
         <tr class="abc">
@@ -54,16 +54,12 @@
       <tbody scope="row" class="thead-light"  >
         <tr *ngFor="let com of logss">
           <td>{{com.id}}</td>
-          <td id="description"  class="ShowandHide">
-            <header >
-              {{com.description}}
-          </header>
-            <button id="btn1"  data-toggle="collapse" attr.data-target="#{{com.id}}"  data-target="#showHideDescription" class="ButtonStyle" >Show / Hide </button>
-            <div id="{{com.id}}" class="collapse">
-
-                {{ com.description }}
-              </div>
-            </td>
+        
+          <td id="description" class="ShowandHide"  >
+            <button data-toggle="collapse" attr.data-target="#{{com.id}}"
+              data-target="#showHideDescription">Show/Hide</button>
+            <div id="{{com.id}}" class="collapse">{{ com.description }}</div>
+          </td>
           <td> 
             {{com.type}}
           </td>

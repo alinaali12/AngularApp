@@ -69,11 +69,7 @@ tbody{
     height:100%;
     text-align: right;
 }
-.collapse{
-    text-align: left  !important;
-}
-header{
-
+.header{
     position: relative;
     overflow:hidden;
     -ms-text-overflow:ellipsis;
@@ -81,17 +77,9 @@ header{
     width:150px;
     height: 1.1em;
 }
-
-.headerr{
-
-    overflow:visible;
-    width: 600px;
-    height: 20px;
-    text-align: left;
-    display: inline-block;
+.collapse{
+    text-align: left  !important;   
 }
-
-
 .ButtonStyle{
     background-color: rgb(195, 226, 220);
 }
@@ -146,7 +134,25 @@ header{
   .dropdown a:hover {background-color: #ddd;}
   
   .show {display: block;}
+  @mixin fixedColumnSize($property) {
+    max-width: $property;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+}
 
+table {
+    
+    word-wrap: break-word;
+
+td#poster {
+    @include fixedColumnSize(300px);
+}
+
+td#description {
+    @include fixedColumnSize(20px);
+}
+}
 
 // table, tr , td  {
 //    width:100%;

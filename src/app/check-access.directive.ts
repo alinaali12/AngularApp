@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class CheckAccessDirective implements OnInit {
 Access:Array<AccessControl>=new Array<AccessControl>();
 urll;
+check:string="false";
   constructor(private apiservice:apiservice,  private router: Router) { }
   ngOnInit()
   {
@@ -25,6 +26,29 @@ urll;
         }
      });
   });
-
+}
+ Counter()
+  {
+    if(localStorage.getItem('token')=="Found")
+    {
+    var counter = 5;
+    
+    var interval =  setInterval(() => {
+      console.log(counter);
+      counter--;
+      
+  
+      if(counter > 0 ){
+          console.log("gre")
+    
+      } else {
+        clearInterval(interval);
+        console.log('else',this.check);
+        return this.check;
+      }
+      return this.check;
+    }, 1000);
+   return interval;
+  }
 }
 }
