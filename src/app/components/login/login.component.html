@@ -57,7 +57,12 @@
                 <!-- <input required class="form-control" type="email" aria-label="email" formControlName="email"
                     autocomplete="email" (change)="CheckEmailField()" /> -->
                 <input required class="form-control" type="email" aria-label="email" formControlName="email"
-                    autocomplete="email" (change)="CheckEmailField()" />
+                    autocomplete="email" (change)="CheckEmailField()" [value]='retrievedEmail' /><br>
+                <div *ngIf="submitted && loginForm.controls.email.errors" class="errors">
+                    <div *ngIf="loginForm.controls.email.errors.required">
+                        Email is required.
+                    </div>
+                </div>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -65,7 +70,13 @@
                         <i class="fas fa-link"></i>
                     </span>
                 </div>
-                <input required class="form-control" aria-label="password" formControlName="password" type="password" />
+                <input required class="form-control" aria-label="password" formControlName="password" type="password"
+                    autocomplete="off" [value]='retrievedpassword' /><br>
+                <div *ngIf="submitted && loginForm.controls.password.errors" class="errors">
+                    <div *ngIf="loginForm.controls.password.errors.required">
+                        Password is required.
+                    </div>
+                </div>
             </div>
 
             <!-- Password text input -->
@@ -93,8 +104,8 @@
                 <input type="submit" value="Login Now" class="border-0 py-2 px-3  text-white mr-3"
                     style="border-radius: 50px;background-color: #45B1EF" />
                 <!-- create btn -->
-                <input type="submit" value="Create Account" class="border-0 py-2 px-3 bg-white text-dark"
-                    style="border-radius: 50px" disabled />
+                <input value="Create Account" class="border-0 py-2 px-3 bg-white text-dark" style="border-radius: 50px"
+                    disabled />
 
             </div>
         </form>

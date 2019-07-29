@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from 'src/app/services/navbarService/navbar.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,21 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   appTitle = 'Movies';
-  constructor(private router: Router) { }
+  constructor(private router: Router, public nav: NavbarService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.showHideNavbar();
+  }
   logOut() {
     console.log('logOut');
     const check = false;
     sessionStorage.setItem('isLogin', check.toString());
-    localStorage.setItem('OkRememberedMe', check.toString());
+    // localStorage.setItem('OkRememberedMe', check.toString());
     const islogin = sessionStorage.getItem('isLogin').toString();
 
-    const isRemembered = localStorage.getItem('OkRememberedMe').toString();
+    // const isRemembered = localStorage.getItem('OkRememberedMe').toString();
     console.log('log out login', islogin);
-    console.log('log out isRemembered', isRemembered);
+    // console.log('log out isRemembered', isRemembered);
+    this.nav.hide();
     this.router.navigateByUrl('/');
 
+
+  }
+  showHideNavbar() {
+    // const rememberMeCheck = localStorage.getItem('rememberMe');
+    const loggedInCheck = sessionStorage.getItem('isLogin');
+    // if (loggedInCheck === 'true' || rememberMeCheck === 'true') {
+    if (loggedInCheck === 'true') {
+      this.nav.show();
+    }
   }
 
 }
