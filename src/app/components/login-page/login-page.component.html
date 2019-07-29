@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 <div  class="container" >
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -9,17 +10,14 @@
                   </div>
                 </div>
               </div>  
-        
+             
         <br>
         <br>
         <br>
 <div class="card-group  justify-content-center " >
         <div class="card  col-md-6 card-login  shadow p-4 mb-4 bg-white border-left-login" > 
-    
         </div>
-
         <div class="card   col-md-5  shadow p-4 mb-4 bg-light border-right-login" >
-        
             <div class="card-body card-color " >
                 <h3 class="color-text">Welcome Back :)</h3>
                 <small>To keep you connected with us please login with your personal<br>
@@ -29,19 +27,29 @@
                         <br>
                     <form  #LoginForm="ngForm" enctype="multipart/form-data" (ngSubmit)= "LoginForm.form.valid && onSubmit(email.value,password.value)"  novalidate >   
                         
-                        <div  class="form-group">                                  
-                            <input type="email" class="form-control " (change)="onEmailChange()"  name="email1" placeholder=""  required  #email="ngModel" [(ngModel)]="User.email"                         
+                        <div  class="form-group inputWithIcon">                                  
+                            <input type="email" class="form-control  arialtext-small " (change)="checkEmail()"  id="email1" placeholder=""  name="eM" required  #email="ngModel" [(ngModel)]="User.email"                         
                             [class.is-invalid]="email.invalid && email.touched" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/> 
-                            <label class="mdc-floating-label" for="email1">Email Address</label>
+                            <label class="mdc-floating-label" for="email1" aria-hidden="true">Email Address</label>                    
+                            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+
+                            <span *ngIf="!email.errors?.pattern && email.valid" class="checkbox">&#x2705;</span> 
+                          
+
+                            <small  *ngIf="((email.invalid || email.errors?.pattern) && (LoginForm.submitted || email.touched))" class="text-danger" >Please enter a correct email! </small>     
                             <br>
                         </div>   
-                        <div  class="form-group"> 
-                            <input type="password" class=" form-control"  name="password1" required  #password="ngModel" placeholder="" [(ngModel)]="User.password"
+                      
+                        <div  class="form-group inputWithIcon "> 
+                            <input type="password" class=" form-control  arialtext-small"  id="password1" required  name="P" #password="ngModel" placeholder="" [(ngModel)]="User.password"
                             [class.is-invalid]="password.invalid && password.touched"/>                    
-                            <label class="mdc-floating-label" for="password1">Password</label>
-                           <br>    
+                            <label class="mdc-floating-label" for="password1" aria-hidden="true">Password</label>
+                           
+                            <small *ngIf="(password.invalid && (LoginForm.submitted || password.touched))" class="text-danger" >Password field cannot be left empty. </small> 
+                            <i class="fa fa-lock fa-2x fa-fw" aria-hidden="true"></i>
+                            <br>    
                         </div >    
-                                <mat-checkbox name="cbox" class = "example-margin" [(ngModel)]="CheckValue"> Remember Me!</mat-checkbox>
+                                <mat-checkbox name="cbox" class = "example-margin  arialtext-small" [(ngModel)]="CheckValue"> Remember Me!</mat-checkbox>
                             <div class="col-md-10 ">                                      
                                  <button  class="btn btn-info color-container color-text-white arialtext-small Inline  border-total " > Login Now </button>
                                  <button id="openModalButton" [hidden]="true" type="reset" data-toggle="modal" data-target="#exampleModal">Open Modal</button>

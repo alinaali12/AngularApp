@@ -1,7 +1,10 @@
 export class LoginInfo {
     email: string ="";
     password: string ="";
+    constructor(){      
+    }
 }
 export class ResponseCheck{
-    found: boolean;
+   email_Found: boolean;
+   pass_Found: boolean;
 }

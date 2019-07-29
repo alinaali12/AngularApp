@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginInfo } from '../../models/login-info';
+import { LoginInfo, ResponseCheck } from '../../models/login-info';
 import { SessionManagerService } from 'src/app/services/session-manager.service';
 import { Router } from '@angular/router';
 import { SiblingCommunicatorService } from 'src/app/services/sibling-communicator.service';
@@ -10,18 +10,19 @@ import { SiblingCommunicatorService } from 'src/app/services/sibling-communicato
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  CheckValue: boolean =false;
+  CheckValue: boolean = false;
   User : LoginInfo = new LoginInfo;
+  EmailFound: boolean ; //Was used for checking email in db
   constructor(private router: Router,private loginService: SessionManagerService,private sharedService: SiblingCommunicatorService) { }
 
   async onSubmit(email: string,pass: string){
     console.log('Values:',email,pass);
     this.User.email=email;
     this.User.password=pass;
-    console.log('CheckValue:',this.CheckValue);
+   
     if (await this.loginService.Login(this.User,this.CheckValue)){
      this.router.navigateByUrl('/defaultpage');
-     this.sharedService.LoggedIn=true;
+     this.sharedService.StartTimer();
      
     }else{
       
@@ -30,15 +31,21 @@ export class LoginPageComponent implements OnInit {
     }
   
   }
-  onEmailChange(){
-    let pass = this.loginService.GetFromLocalStorage(this.User.email);
-    if (pass!=null){
-       this.User.password=pass;
-    }
+  async checkEmail(){
+    console.log('Checking Email');
+   // this.EmailFound=await this.loginService.CheckEmail(this.User);
   }
+  onRemember(){
+    //console.log("Getting Local Pass");
+     //  this.User.email="saad18910@hotmail.com";
+    this.User = this.loginService.GetFromLocalStorage();
+    if (this.User.email != "")
+      this.CheckValue=true;
+  }
+
   ngOnInit() {
-   // this.User.email="saad18910@hotmail.com";
-  
+ 
+    this.onRemember();
   }
 
 }

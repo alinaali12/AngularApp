@@ -17,16 +17,7 @@ import { SessionManagerService } from './services/session-manager.service';
 export class AppComponent {
   title = 'AngularApp';
   cookieName : string = 'Permission_Url';
-  timeLeft: number ;
-  interval;
 
-  startTimer() {
-    this.interval = setInterval(() => {
-      if(this.timeLeft > 0) {
-        this.timeLeft--;
-      }
-    },1000)
-  }
 
   constructor(private router: Router,private urlSevice: ApiPermissionsService, private cookieService: CookieService,private sharedService: SiblingCommunicatorService,private loginService: SessionManagerService){
     
@@ -34,12 +25,11 @@ export class AppComponent {
   prepareRoute(outlet: RouterOutlet, ){
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['state'];
   }
+
   async ngOnInit(){
-    this.timeLeft=this.loginService.getRemainingTime();
-    this.startTimer(); //After logging In
-   if (!this.cookieService.check(this.cookieName))
-       await this.urlSevice.GetUrls().then(value=>{ console.log(value), this.cookieService.set(this.cookieName,JSON.stringify(value))});
-       this.sharedService.Urls = JSON.parse(this.cookieService.get(this.cookieName));
+    if (!this.cookieService.check(this.cookieName))
+        await this.urlSevice.GetUrls().then(value=>{ console.log(value), this.cookieService.set(this.cookieName,JSON.stringify(value))});
+    this.sharedService.Urls = JSON.parse(this.cookieService.get(this.cookieName));  
   }
 
   LogOut(){ 

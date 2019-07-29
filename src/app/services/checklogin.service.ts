@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from  '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginInfo, ResponseCheck } from '../models/login-info';
 
@@ -18,8 +18,14 @@ export class CheckloginService {
   async SendData(User: LoginInfo): Promise<any>{
     console.log('Sending Login Request');
    let Response : ResponseCheck = await this._http.post(this._url+"/"+"CheckLogin",User).toPromise() as ResponseCheck;
-   console.log(Response.found);
-   return (Response.found);
+   console.log(Response);
+   return (Response.pass_Found);
+  }
+  async CheckForEmail (User:LoginInfo): Promise<any>{
+    console.log('Sending Login Request For Email');
+    let Response : ResponseCheck = await this._http.post(this._url+"/"+"CheckLogin",User).toPromise() as ResponseCheck;
+    console.log(Response);
+    return (Response.email_Found);
   }
  
 }

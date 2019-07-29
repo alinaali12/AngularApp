@@ -41,7 +41,7 @@ export class EncryptService {
     return User;
   }
   decryptPass (encrypted_pass : string) : string{
-    return this.Decrypt(this.CustomKey,encrypted_pass);
+    return (encrypted_pass) ? this.Decrypt(this.CustomKey,encrypted_pass) : "";
   }
   
 }

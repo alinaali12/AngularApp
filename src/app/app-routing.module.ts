@@ -8,7 +8,6 @@ import { ErrorpageComponent } from './components/errorpage/errorpage.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { AuthGuard } from './auth.guard';
 
-import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {path:'defaultpage',component:DefaultpageComponent,canActivate : [AuthGuard], data : {state : 'defaultpage'}},

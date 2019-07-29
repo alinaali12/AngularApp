@@ -6,8 +6,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <app-login-page *ngIf="!sharedService.LoggedIn"></app-login-page>
-  <div  *ngIf="sharedService.LoggedIn">
+  <app-login-page *ngIf="!this.sharedService.LoggedIn ; else LoggedIn"></app-login-page>
+  <ng-template #LoggedIn>
     <ul class="nav navbar-expand nav-tabs bg-light "  role="tablist">
     
         <li class="nav-item ">
@@ -27,11 +27,11 @@
         </div>   
       </ul>  
       
-    <!--[@routeAnimations]="prepareRoute(outlet)"-->
-    <main >
+   <!-- [@routeAnimations]="prepareRoute(outlet)" -->
+    <main>
       <div class="tab-content">
       
-        <small class=" color-text Inline">{{timeLeft}}</small> 
+        <small class=" color-text Inline">{{this.sharedService.timeLeft}}</small> 
         <small class="Inline">seconds left (until Session Expires)</small>
         <br>
         <br>
@@ -39,4 +39,4 @@
     </div>
     </main>
    
-</div>
+</ng-template>

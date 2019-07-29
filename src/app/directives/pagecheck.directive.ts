@@ -2,7 +2,7 @@ import { Directive, Input, HostListener, HostBinding } from '@angular/core';
 
 import { RouterLink, Router, } from '@angular/router';
 import { SiblingCommunicatorService } from '../services/sibling-communicator.service';
-import { Location } from '@angular/common';
+import { Location } from  '@angular/common';
 
 @Directive({
   selector: '[appPagecheck],[PageChecker]'
