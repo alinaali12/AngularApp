@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from "@angular/common";
 import { ResetPasswordService } from 'src/app/services/ResetPassword/reset-password.service';
 
+
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -12,6 +13,8 @@ import { ResetPasswordService } from 'src/app/services/ResetPassword/reset-passw
 export class ResetPasswordComponent implements OnInit {
   currentUser: User;
   sub:any;
+  public passwordUpdated;
+  public confirmPassword;
 
   constructor(private router: ActivatedRoute, private routerr:Router ,location: Location, private  resetPasswordService: ResetPasswordService) { 
     
@@ -24,12 +27,18 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   submitNewPassword() {
+    if (this.confirmPassword=="" || this.currentUser.stringPassword == "") {
+      return 
+    }
     var res;
     console.log("you entered this password ", this.currentUser.stringPassword,"against this email",this.currentUser.userEmail);
     this.resetPasswordService.sendUpdatedPassword(this.currentUser).subscribe(data =>{
       res = data;
       if (res == true){
+        this.passwordUpdated = true;
         this.routerr.navigate(['/login']);
+      } else {
+        this.passwordUpdated = false;
       }
     } );
     console.log("I am back in reset-password")

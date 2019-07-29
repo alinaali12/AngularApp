@@ -18,7 +18,12 @@
             <h4>Welcome to an Amazing place </h4>
             <h2>SIGN IN</h2>
             <p class="last-heading">Welcome to First Design</p>
-            <form name="form" #login ="ngForm" (ngSubmit)="login.form.valid"  ng-model="currentUser">
+
+
+            <form name="form" #login ="ngForm" (ngSubmit)="login.form.valid"  ng-model="currentUser" *ngIf="resettingPassword==false; else emailSent">
+              <div class="col-md-12">
+                <label class="error-label" *ngIf = "credentialsValid==false " >Invalid Username or Password</label>
+              </div>
               <div class="form-group">
                 <label class="col-md-12 control-label" for="Username">Email:</label>
                 <div class="col-md-12 inputs">
@@ -26,7 +31,7 @@
                 </div>
               </div>
 
-              <div *ngIf="passwordSectionIsCollapsed">
+              <div *ngIf="passwordSectionIsCollapsed; else passwordSection">
                 <div class="form-group" >
                   <label class="col-md-12 control-label" for="password">Password:</label>
                   <div class="col-md-12">
@@ -54,11 +59,17 @@
                 <input #buttonLogin class="btn btn-primary" type="submit" value = "Login" (click)="onClickSubmit(login.value)">
               </div>
 
-              <div *ngIf="!passwordSectionIsCollapsed">
+              <ng-template #passwordSection>
                   <input #buttonLogin class="btn btn-primary" type="submit" value = "Reset Password" (click)="forgotPassword()">
-              </div>
+              </ng-template>
             
             </form>
+
+            <ng-template #emailSent> 
+              <label class="wait-request" *ngIf="resettingPassword && emailNotSent==true">Please wait... </label>
+              <label class="resetSuccess" *ngIf="emailNotSent==false">Please check your email to reset password.</label> 
+            </ng-template> 
+
           </div>
         </div>
 

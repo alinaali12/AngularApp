@@ -41,6 +41,7 @@ export class LoginService {
   public startNewSession(username:string, password: string) {
 
     this.loggedInUser = new User(username,password);
+    //rida:qeee
     this.loggedInUser.authorizationData = window.btoa(username + ':' + password);
     sessionStorage.setItem('currentUser', JSON.stringify(this.loggedInUser));
 
