@@ -10,6 +10,7 @@ export class EditService {
   user:RegisteredUser=new RegisteredUser();
   countDown;
   count=1800;
+  logIn=false;
 
   constructor() { }
 

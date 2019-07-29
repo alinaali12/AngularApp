@@ -17,8 +17,10 @@ export class PermissionService {
   }
 
   async Match(_u:UserLogin):Promise <any>{
-    _u.password=btoa(_u.password);
-    var confirm=await this._http.post(this._url2,_u).toPromise();
+    var _u2=new UserLogin();
+    _u2.password=btoa(_u.password);
+    _u2.email=_u.email;
+    var confirm=await this._http.post(this._url2,_u2).toPromise();
     console.log("Match",confirm);
     return confirm;
   }

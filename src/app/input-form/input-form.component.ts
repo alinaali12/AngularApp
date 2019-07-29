@@ -20,7 +20,7 @@ export class InputFormComponent implements OnInit {
   public message: string;
   permission:any;
 
-  constructor(private router: Router,private _registerservice:RegisterService) { }
+  constructor(private router: Router,private _registerservice:RegisterService, private _idservice:EditService) { }
 
   ngOnInit() {
     

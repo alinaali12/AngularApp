@@ -35,6 +35,7 @@ export class TableComponent implements OnInit {
   constructor(private router: Router,private _registerservice:RegisterService, private _idservice:EditService, private _permservice:PermissionService) {}
 
   ngOnInit() {
+    this._idservice.logIn=true;
     this._registerservice.CheckPermissions();
     this._registerservice.ViewAll().subscribe(data => {
       this.user = data;

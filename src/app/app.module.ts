@@ -13,7 +13,6 @@ import { CheckAccessDirective } from './check-access.directive';
 import { ErrorComponent } from './error/error.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import {AuthGuard} from './auth.guard';
-import { RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 
@@ -33,7 +32,8 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
     
   ],
   providers:[AuthGuard,CookieService],

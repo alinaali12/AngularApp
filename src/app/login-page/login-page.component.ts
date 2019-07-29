@@ -15,7 +15,8 @@ import { EditService } from '../edit.service';
 export class LoginPageComponent implements OnInit {
   MyUser:UserLogin=new UserLogin();
   check="true";
-
+  loggingIn=true;
+  password;
   constructor(private _permservice:PermissionService,private router: Router,private cookie:CookieService,private _idservice:EditService) { }
 
   ngOnInit() {
@@ -27,6 +28,7 @@ export class LoginPageComponent implements OnInit {
     
   }
   async onSubmit(){
+    this.password=this.MyUser.password;
     await this._permservice.Match(this.MyUser).then(value=>{
       var access=value;
       console.log("access",access);
@@ -36,6 +38,8 @@ export class LoginPageComponent implements OnInit {
       }
       else{
         this.cookie.set('token', "false", 0.5/24);
+        this.loggingIn=false;
+        
       }
       
       
@@ -43,8 +47,8 @@ export class LoginPageComponent implements OnInit {
     
     if(this.check=="true"){
       this.cookie.set("rememberedemail",this.MyUser.email,1);
-      this.cookie.set("remeberedpassword",this.MyUser.password,1);
-      console.log("stored");
+      this.cookie.set("remeberedpassword",this.password,1);
+      console.log("stored",this.password);
     }
     else{
       this.cookie.set("rememberedemail",null,1);
@@ -61,8 +65,5 @@ export class LoginPageComponent implements OnInit {
       take(this._idservice.count),
       map(()=> --this._idservice.count)
    );
-   if(this._idservice.countDown<=0){
-     this.router.navigateByUrl('');
-   }
   }
 }

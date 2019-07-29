@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RegisterService } from './register.service';
+import { EditService } from './edit.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,7 @@ import { RegisterService } from './register.service';
 })
 export class AppComponent {
   title = 'MyApp';
-
-  constructor(private _registerservice:RegisterService){
+  constructor(private _registerservice:RegisterService,private _idservice:EditService){
     this._registerservice.CheckPermissions();
   }
 }

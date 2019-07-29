@@ -3,6 +3,7 @@
 
 <div class="container" align="center">
     <div class="card bg-light">
+        <strong>Remaining time in session: {{_idservice.countDown | async}}</strong>
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">Edit Account</h4>
             <form #userForm="ngForm" (ngSubmit)="onSubmit()" > 
