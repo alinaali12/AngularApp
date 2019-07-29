@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
   encryptSecretKey = 'movie';
   timeLeft = 3;
   interval;
+  isEmailCorrect;
+  isValid;
   ngOnInit() {
   }
   onSubmit() {
@@ -42,32 +44,33 @@ export class LoginComponent implements OnInit {
 
     this.dataService.getAuthorization(login).subscribe((data) => {
       this.authCheck = data; console.log(data);
-      localStorage.setItem('isLogin', data.toString());
+      sessionStorage.setItem('isLogin', data.toString());
       // localStorage.setItem('rememberMe', rememberMe.toString());
 
-      console.log(localStorage.getItem('isLogin').toString());
+      console.log(sessionStorage.getItem('isLogin').toString());
 
 
 
     });
-    this.interval = setInterval(() => {
-      if (this.timeLeft > 0) {
-        this.timeLeft--;
-        console.log(this.timeLeft);
+    // this.interval = setInterval(() => {
+    //   if (this.timeLeft > 0) {
+    //     this.timeLeft--;
+    //     console.log(this.timeLeft);
 
-      }
+    //   }
 
-      if (this.timeLeft === 0) {
-        return;
-      }
-    }, 1000);
+    //   if (this.timeLeft === 0) {
+    //     const result = confirm('Do you want to do this?');
+    //     if (result) {
+    //       console.log('ok clicked');
+    //     } else {
+    //       console.log('cancel clicked');
+    //     }
 
-    const result = confirm('Do you want to do this?');
-    if (result) {
-      console.log('ok clicked');
-    } else {
-      console.log('cancel clicked');
-    }
+    //     return;
+    //   }
+    // }, 1000);
+
 
 
   }
@@ -84,6 +87,18 @@ export class LoginComponent implements OnInit {
   RememberMe(event: any) {
     localStorage.setItem('rememberMe', event.target.checked);
     console.log(localStorage.getItem('rememberMe'));
+  }
+  CheckEmailField() {
+    this.isEmailCorrect = 'false';
+    const regex = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$');
+    const { email } = this.loginForm.value;
+    const res = regex.test(email); // outputs true
+    if (res) {
+      this.isValid = 'true';
+    } else {
+      this.isValid = 'false';
+    }
+    console.log(this.isValid);
   }
 
 }

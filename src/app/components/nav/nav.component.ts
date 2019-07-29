@@ -14,9 +14,9 @@ export class NavComponent implements OnInit {
   logOut() {
     console.log('logOut');
     const check = false;
-    localStorage.setItem('isLogin', check.toString());
+    sessionStorage.setItem('isLogin', check.toString());
     localStorage.setItem('OkRememberedMe', check.toString());
-    const islogin = localStorage.getItem('isLogin').toString();
+    const islogin = sessionStorage.getItem('isLogin').toString();
 
     const isRemembered = localStorage.getItem('OkRememberedMe').toString();
     console.log('log out login', islogin);

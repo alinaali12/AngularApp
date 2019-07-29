@@ -35,10 +35,13 @@
         <img src="../../assets/background.png" class="img-fluid" alt="Responsive image">
     </div>
     <!-- right side -->
-    <div class="w-50 h-50 d-flex flex-column align-content-center my-5">
+    <div class="w-50 h-50 d-flex flex-column align-content-center ">
+        <div class="mb-4 d-flex flex-column ">
+            <h2>Welcome Back :)</h2>
+            <p>To keep connected with us please login with your personal information by email address and password
+                🔔 </p>
+        </div>
 
-        <h2>Welcome Back :)</h2>
-        <p>To keep connected with us please login with your personal information by email address and password</p>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="d-flex flex-column align-content-center">
             <!-- Email text input -->
 
@@ -51,8 +54,8 @@
                 <!-- <input type="text" class="form-control" placeholder="Username" aria-label="Username"
                     aria-describedby="basic-addon1"> -->
 
-                <input class="form-control" type="email" aria-label="email" formControlName="email"
-                    autocomplete="email" />
+                <input required class="form-control" type="email" aria-label="email" formControlName="email"
+                    autocomplete="email" (change)="CheckEmailField()" />
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -60,17 +63,18 @@
                         <i class="fas fa-link"></i>
                     </span>
                 </div>
-                <input class="form-control" aria-label="password" formControlName="password" type="password" />
+                <input required class="form-control" aria-label="password" formControlName="password" type="password" />
             </div>
 
             <!-- Password text input -->
 
             <!-- checkbox -->
-            <div class="d-flex flex-row w-100 justify-content-around d-inline-block p-3">
+            <div class="d-flex flex-row w-100 justify-content-between d-inline-block align-items-baseline">
 
                 <input class="d-inline-block" type="checkbox" value="false" (change)="RememberMe($event)"
                     id="remember">Remember Me
-                <input class="bg-transparent border-0" type="button" id="forgot" value="Forgot Password?" disabled><br>
+                <input class="bg-transparent border-0 ml-4" type="button" id="forgot" value="Forgot Password?"
+                    disabled><br>
 
             </div>
 
@@ -84,10 +88,10 @@
 
 
                 <!-- sign in btn -->
-                <input type="submit" value="Login Now" class="border py-2 px-3  text-white mr-3"
+                <input type="submit" value="Login Now" class="border-0 py-2 px-3  text-white mr-3"
                     style="border-radius: 50px;background-color: #45B1EF" />
                 <!-- create btn -->
-                <input type="submit" value="Create Account" class="border py-2 px-3 bg-white text-dark"
+                <input type="submit" value="Create Account" class="border-0 py-2 px-3 bg-white text-dark"
                     style="border-radius: 50px" disabled />
 
             </div>

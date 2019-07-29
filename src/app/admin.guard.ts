@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean | UrlTree {
 
-    const islogin = localStorage.getItem('isLogin').toString();
+    const islogin = sessionStorage.getItem('isLogin').toString();
 
     const isRemembered = localStorage.getItem('OkRememberedMe').toString();
 
@@ -22,8 +22,7 @@ export class AdminGuard implements CanActivate {
 
     if (islogin === 'true') {
       return true;
-    }
-    else { return false; }
+    } else { return false; }
 
     // if (isRemembered === 'true') {
     //   if (islogin === 'true') {
