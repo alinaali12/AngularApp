@@ -1,5 +1,5 @@
 import { AppComponent } from './../../app.component';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../services/dataService/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Movie } from '../home/home.component';

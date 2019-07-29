@@ -1,5 +1,5 @@
-import { Login } from './../login/login.component';
-import { Movie } from '../components/home/home.component';
+import { Login } from '../../components/login/login.component';
+import { Movie } from '../../components/home/home.component';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 @Injectable({

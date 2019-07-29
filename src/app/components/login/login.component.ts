@@ -1,4 +1,4 @@
-import { DataService } from './../services/data.service';
+import { DataService } from '../../services/dataService/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import * as CryptoJS from 'crypto-js';
@@ -34,9 +34,11 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.success = true;
-    const { email, rememberMe } = this.loginForm.value;
+    const { email } = this.loginForm.value;
     let { password } = this.loginForm.value;
     password = this.encryptData(password);
+    console.log(password);
+
 
     const login = {
       email, password

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../services/dataService/data.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

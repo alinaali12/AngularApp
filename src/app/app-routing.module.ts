@@ -1,10 +1,10 @@
-import { LoginComponent } from './login/login.component';
-import { ErrorComponent } from './error/error.component';
+import { LoginComponent } from './components/login/login.component';
+import { ErrorComponent } from './components/error/error.component';
 import { HomeComponent } from './components/home/home.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RankingComponent } from './ranking/ranking.component';
+import { RankingComponent } from './components/ranking/ranking.component';
 import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
