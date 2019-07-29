@@ -16,6 +16,7 @@ import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material';
+import { BnNgIdleService } from 'bn-ng-idle';
 @NgModule({
   declarations: [AppComponent, MoviesComponent, NavComponent,
     HomeComponent, RankingComponent, PagePermissionDirective,
@@ -32,7 +33,7 @@ import { MaterialModule } from 'src/material';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [AdminGuard],
+  providers: [AdminGuard, BnNgIdleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

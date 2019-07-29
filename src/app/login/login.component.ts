@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   authCheck;
   encryptSecretKey = 'movie';
   timeLeft = 3;
-  interval;
+  // interval;
   isEmailCorrect;
   isValid;
   ngOnInit() {
