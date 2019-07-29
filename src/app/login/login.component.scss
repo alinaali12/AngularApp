@@ -49,3 +49,23 @@
 .error {
     border: 2px solid red;
 }
+
+.has-error {
+    color: red;
+    background-color: red;
+}
+
+.has-success {
+    color: black;
+    background-color: green;
+}
+
+.checkbox-round {
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-round:checked {
+    background-color: gray;
+}

@@ -45,34 +45,13 @@ export class LoginComponent implements OnInit {
     this.dataService.getAuthorization(login).subscribe((data) => {
       this.authCheck = data; console.log(data);
       sessionStorage.setItem('isLogin', data.toString());
-      localStorage.setItem('rememberMe', rememberMe.toString());
+      // localStorage.setItem('rememberMe', rememberMe.toString());
 
       console.log(sessionStorage.getItem('isLogin').toString());
 
 
 
     });
-    // this.interval = setInterval(() => {
-    //   if (this.timeLeft > 0) {
-    //     this.timeLeft--;
-    //     console.log(this.timeLeft);
-
-    //   }
-
-    //   if (this.timeLeft === 0) {
-    //     const result = confirm('Do you want to do this?');
-    //     if (result) {
-    //       console.log('ok clicked');
-    //     } else {
-    //       console.log('cancel clicked');
-    //     }
-
-    //     return;
-    //   }
-    // }, 1000);
-
-
-
   }
   encryptData(data) {
     try {
@@ -98,7 +77,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.isValid = 'false';
     }
-    console.log(this.isValid);
+    // console.log(this.isValid);
   }
 
 }

@@ -36,7 +36,7 @@
     </div>
     <!-- right side -->
     <div class="w-50 h-50 d-flex flex-column align-content-center ">
-        <div class="mb-4 d-flex flex-column ">
+        <div class="my-5 d-flex flex-column ">
             <h2>Welcome Back :)</h2>
             <p>To keep connected with us please login with your personal information by email address and password
                 🔔 </p>
@@ -54,8 +54,11 @@
                 <!-- <input type="text" class="form-control" placeholder="Username" aria-label="Username"
                     aria-describedby="basic-addon1"> -->
 
-                <input required class="form-control" type="email" aria-label="email" formControlName="email"
-                    autocomplete="email" (change)="CheckEmailField()" />
+                <!-- <input required class="form-control" type="email" aria-label="email" formControlName="email"
+                    autocomplete="email" (change)="CheckEmailField()" /> -->
+                <input ng-class="{'has-success': loginForm.email.$valid, 'has-error': inputform.email.$invalid}"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required class="form-control" type="email"
+                    aria-label="email" formControlName="email" autocomplete="email" (change)="CheckEmailField()" />
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -71,7 +74,7 @@
             <!-- checkbox -->
             <div class="d-flex flex-row w-100 justify-content-between d-inline-block align-items-baseline">
 
-                <input class="d-inline-block" type="checkbox" value="false" (change)="RememberMe($event)"
+                <input class="d-inline-block " type="checkbox" value="false" (change)="RememberMe($event)"
                     id="remember">Remember Me
                 <input class="bg-transparent border-0 ml-4" type="button" id="forgot" value="Forgot Password?"
                     disabled><br>

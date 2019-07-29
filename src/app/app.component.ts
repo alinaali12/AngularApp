@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit() {
+    console.log('remember me', localStorage.getItem('rememberMe'));
     this.getAllPages();
     this.checkRememberMe();
   }
