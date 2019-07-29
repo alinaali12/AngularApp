@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     this.dataService.getAuthorization(login).subscribe((data) => {
       this.authCheck = data; console.log(data);
       sessionStorage.setItem('isLogin', data.toString());
-      // localStorage.setItem('rememberMe', rememberMe.toString());
+      localStorage.setItem('rememberMe', rememberMe.toString());
 
       console.log(sessionStorage.getItem('isLogin').toString());
 

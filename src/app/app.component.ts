@@ -13,26 +13,8 @@ export class AppComponent {
   }
   ngOnInit() {
     this.getAllPages();
-    // this.checkRememberMe();
+    this.checkRememberMe();
   }
-  // ngOnDestroy() {
-  //   const rememberMeCheck = localStorage.getItem('rememberMe');
-  //   const loggedInCheck = localStorage.getItem('isLogin');
-  //   let checked = false;
-  //   if (rememberMeCheck == 'true') {
-  //     if (loggedInCheck == 'true') {
-  //       checked = true
-  //       localStorage.setItem('isLogin', checked.toString());
-  //     }
-
-  //   } else if (rememberMeCheck == 'false') {
-  //     checked = false
-  //     localStorage.setItem('isLogin', checked.toString());
-
-  //   }
-  //   console.log('destroy');
-
-  // }
   getAllPages() {
     this.dataService.getAllPages().subscribe(data => {
       localStorage.setItem('permissionData', JSON.stringify(data));
@@ -42,20 +24,15 @@ export class AppComponent {
     });
   }
 
-  // checkRememberMe() {
-  //   const rememberMeCheck = localStorage.getItem('rememberMe');
-  //   const loggedInCheck = localStorage.getItem('isLogin');
-  //   let checked = false;
-  //   if (rememberMeCheck === 'true' || loggedInCheck === 'true') {
-  //     checked = true;
-  //     localStorage.setItem('OkRememberedMe', checked.toString());
-  //     return true;
-  //   }
-  //   // else if (rememberMeCheck === 'false') {
-  //   //   checked = false;
-  //   //   localStorage.setItem('OkRememberedMe', checked.toString());
-  //   //   localStorage.setItem('isLogin', checked.toString());
-  //   // }
-  //   else return false;
-  // }
+  checkRememberMe() {
+    const rememberMeCheck = localStorage.getItem('rememberMe');
+    const loggedInCheck = sessionStorage.getItem('isLogin');
+    let checked = false;
+    if (rememberMeCheck === 'true' || loggedInCheck === 'true') {
+      checked = true;
+      localStorage.setItem('OkRememberedMe', checked.toString());
+      sessionStorage.setItem('isLogin', checked.toString());
+      return true;
+    } else { return false; }
+  }
 }
