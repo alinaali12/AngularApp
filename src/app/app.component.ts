@@ -17,7 +17,7 @@ import { SessionManagerService } from './services/session-manager.service';
 export class AppComponent {
   title = 'AngularApp';
   cookieName : string = 'Permission_Url';
-
+ 
 
   constructor(private router: Router,private urlSevice: ApiPermissionsService, private cookieService: CookieService,private sharedService: SiblingCommunicatorService,private loginService: SessionManagerService){
     

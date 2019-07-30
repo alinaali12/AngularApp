@@ -83,7 +83,7 @@ export class SessionManagerService {
     if (await this.loginService.SendData(User_Manipulate)){
         sessionStorage.setItem('currentLogin','true');
         sessionStorage.setItem('currentUser',User.email);
-        this.setSessionTimer(1);
+        this.setSessionTimer(30);
   
       if (RememberMe)
         this.AddToLocalStorage(User_Manipulate);

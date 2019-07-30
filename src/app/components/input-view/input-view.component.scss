@@ -1,0 +1,13 @@
+textarea {
+    resize: none;
+ }
+
+ .ColorIt{
+     color: red !important;
+     position: absolute;
+     background-color: rgb(240, 247, 234);
+     transition: 0.6 ease-in-out;
+ }
+ .ColorIt:hover{
+     background-color: rgb(167, 164, 164);
+ }

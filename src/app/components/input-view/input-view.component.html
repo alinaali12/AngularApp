@@ -1,10 +1,21 @@
 
-<div  PageChecker class="container" >
+<div  PageChecker class="container" >  
+    <button id="openModelButton" data-toggle="modal" data-target="#exampleModal" hidden></button>
     <br>
     <br>
     <br>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="color-text sariftext " id="exampleModalLabel">{{Message}}</span>
+              <button class="btn btn-primary color-text-white sariftext" data-dismiss="modal">OK</button>
+            </div>                           
+          </div>
+        </div>
+      </div>  
 <div class="card-group  justify-content-center " >
-        <div class="card  col-md-4 background-tabs shadow p-4 mb-4 bg-white border-left" > 
+        <div class="card  col-md-5 background-tabs shadow p-4 mb-4 bg-white border-left" > 
           <div class="card-body text-center " >
                 <h3 class="color-text">Student Registeration</h3>
               
@@ -14,10 +25,10 @@
                         <div class="form-group ">
                            
                             <label  hidden class="control-label text">Name:</label>
-                            <input  class="sariftext form-control input-group-sm mb-3 border-total"  name="StudentName" #stdName="ngModel" placeholder=" Name..." required  [(ngModel)] = "Student.name"
-                            [class.is-invalid]="stdName.invalid && stdName.touched"
+                            <input  class="sariftext form-control input-group-sm mb-3 border-total"  pattern="[A-Za-z]{0,50}" name="StudentName" #stdName="ngModel" placeholder=" Name..." required  [(ngModel)] = "Student.name"
+                            [class.is-invalid]="stdName.touched && stdName.errors?.pattern"
                             />
-                            <small [class.d-none]="stdName.valid || stdName.untouched" class="text-danger" > Name is requried</small>                                  
+                            <small [class.d-none]="stdName.valid || stdName.untouched" class="text-danger" > Please Enter a Proper Name</small>                                  
                   
                             <label class="sariftext"  hidden class="control-label">Program:</label>
                             <select  class="sariftext border-total form-control"  (blur)="checkError(prog.value)" (change)="checkError(prog.value)" required #prog="ngModel" name="Program"   [(ngModel)] = "Student.program"
@@ -38,8 +49,8 @@
                         <br>                      
                         <div class="input-group">
                                 <div class="custom-file">
-                                  <input [class.is-invalid]="Filefield.invalid && Filefield.touched"  name="Files" accept= "*" required  type="file" (change) ="fileUpload($event)" class="custom-file-input " id="inputGroupFile04" #Filefield = "ngModel"  [(ngModel)] = "Student.filename">
-                                  <label class=" custom-file-label border-total push-left" for="inputGroupFile04" placeholder="Choose File">{{Student.filename}}</label>
+                                  <input [class.is-invalid]="Filefield.invalid && Filefield.touched"  name="Files" size="10" accept= "*" required  type="file" (change) ="fileUpload($event)" class="custom-file-input " id="inputFile" #Filefield = "ngModel"  [(ngModel)] = "Student.filename">
+                                  <label class=" custom-file-label border-total push-left" for="intputFile" placeholder="Choose File">{{Student.filename}}</label>
                                 </div>
                               </div>    
                                 <small [class.d-none]="Filefield.valid || Filefield.untouched" class="text-danger" > Select a file to upload</small>                                                                    
@@ -52,13 +63,14 @@
                 </div>
         </div>
 
-        <div class="card justify-content-center col-md-5 card-picture shadow p-4 mb-4 bg-white border-right" >
+        <div class="card justify-content-center col-md-6 card-picture shadow p-4 mb-4 bg-white border-right" >
           <div class="card-body ">
               <h1 class="  text-center color-text-white text-antiqua-title" >Undergraduate Degree Program</h1>
               <div *ngIf="previewUrl" class="container PadIt" style=" border-color: white !important">      
                   <h4 class="text-antiqua color-text-white ">File Type: {{_fileType}}</h4> 
                   
-                  <img  (click)="showFile()" [src]="previewUrl"  />                 
+                  <img  (click)="showFile()" [src]="previewUrl"  />  
+                  <a (click)="RemoveFile()" data-toggle="modal" data-target="#exampleModal" class="ColorIt">&#x2718;</a>               
               </div>
            </div>        
         </div>

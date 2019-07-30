@@ -13,7 +13,7 @@ import  {FileDownloaderService} from '../../services/file-downloader.service';
 })
 
 export class InputViewComponent implements OnInit {
-
+  Message: string ="";
   Title: string = "Record Manipulation"; 
   ButtonName : string ="Create Record";
   errorCheck=true;
@@ -49,18 +49,35 @@ export class InputViewComponent implements OnInit {
     this.Student.filename=event.target.files[0].name;
     var fileReader:FileReader=new FileReader();
    
+    var filesize= ((file.size/1024)/1024).toFixed(4);
+    console.log('FileSize:',filesize);
+    if (Number(filesize) > 15){
+      this.RemoveFile();
+      this.Message="File Size Exceeded 15 MB";
+      console.log(this.Message);
+     
+      var Button= document.getElementById("openModelButton");
+      Button.click();
+      return;
+    }
     fileReader.readAsDataURL(file);
-
     fileReader.onloadend= (event) => {
       
       this.filePreview(fileReader.result);
-      //console.log(fileReader.result);
       this.CurrentFile.file=fileReader.result;
       this.CurrentFile.filename=this.Student.filename;
       
     } 
   }
-  
+  RemoveFile(){
+   this.Message= "File has been removed.";
+   this.CurrentFile=null;
+   this.previewUrl=null;
+   this._fileType=null;
+   this.Student.filename="";
+   console.log('File Removed.');
+
+  }
   filePreview(result : string | ArrayBuffer ){
 
     let RawData= result.toString();
@@ -78,7 +95,7 @@ export class InputViewComponent implements OnInit {
        
   }
   showFile(){
-    if (this._fileType)
+    if (this._fileType=='Image')
        this._fileManager.OpenFile(this.previewUrl,this.Student.filename);
     
   }
