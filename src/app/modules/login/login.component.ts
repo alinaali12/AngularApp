@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
   onClickSubmit() {
     // stop here if form is invalid
     if (this.loginForm.invalid) {
-      console.log("Returning because invalid entry");
       return;
     }
 
@@ -67,7 +66,6 @@ export class LoginComponent implements OnInit {
       return ;
     }
 
-    console.log("trying to validate user");
     this._loginServive.validateLogin(this.currentUser.userEmail, this.currentUser.stringPassword).subscribe((data)=>{
     this.isValidatedUser = data;
     if (this.isValidatedUser) { //user is validated .. 
@@ -82,24 +80,21 @@ export class LoginComponent implements OnInit {
         this._cookieService.delete('password',this.currentUser.stringPassword);
         this._cookieService.delete('remember','true');
       }
-      //---------
+        //---------
 
-      this.currentUser = new User(this.currentUser.userEmail, this.currentUser.stringPassword);
-      this._loginServive.startNewSession(this.currentUser.userEmail, this.currentUser.stringPassword);
+        this.currentUser = new User(this.currentUser.userEmail, this.currentUser.stringPassword);
+        this._loginServive.startNewSession(this.currentUser.userEmail, this.currentUser.stringPassword);
               
-    } else {
-      // alert("Username or Password is incorrect!");
-      this.credentialsValid = false;
-      //   const dialogRef = this.dialog.open(MaterialModalComponent, {
-      //     width: '250px',
-      //     data: { message: "Incorrect Credentials" }
-      //   });
-      console.log("Invalid Login credentials");
-    }
-  });
-
-  
-
+      } else {
+        // alert("Username or Password is incorrect!");
+        this.credentialsValid = false;
+        //   const dialogRef = this.dialog.open(MaterialModalComponent, {
+        //     width: '250px',
+        //     data: { message: "Incorrect Credentials" }
+        //   });
+        console.log("Invalid Login credentials");
+      }
+    });
   }
 
   toggleForgotPasswordSection()
