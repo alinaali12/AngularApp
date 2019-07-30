@@ -33,7 +33,7 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.resetPasswordForm = this.formBuilder.group({
-      pwd: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$')]],
+      pwd: ['', [Validators.required, Validators.minLength(8), Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")]],
       confirmPassword: ['', Validators.required]
     }, {
       // validator: [MustMatch('pwd', 'confirmPassword'), customPasswordCheck('pwd')]
@@ -49,16 +49,27 @@ export class ResetPasswordComponent implements OnInit {
       console.log("Returning because invalid entry");
       return;
     }
-    var res;
-    
-    this.resetPasswordService.sendUpdatedPassword(this.currentUser).subscribe(data =>{
-      res = data;
-      if (res == true){
-        this.passwordUpdated = true;
-        this.routerr.navigate(['/login']);
-      } else {
-        this.passwordUpdated = false;
+
+    this.passwordUpdated = this.resetPasswordService.checkIfResetRequestIsStillValid(this.currentUser).subscribe((data) => {
+      console.log ("this is what validation returns for reset request",data);
+      if (data==true) { //there is a valid reset request available
+        
+        return this.resetPasswordService.sendUpdatedPassword(this.currentUser).subscribe((data) => {
+          console.log ("this is what validation returns for reset request1111",data);
+          if (data == true){
+            console.log ("this is what validation returns for reset request222",data);
+            this.passwordUpdated = true;
+            this.routerr.navigate(['/login']);
+            return true;
+          } else {
+            this.passwordUpdated = false;
+          }
+        });
+        
       }
-    } );
+      this.passwordUpdated = false;
+       return false;
+    });
   }
+  
 }
