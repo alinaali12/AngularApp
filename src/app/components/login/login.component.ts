@@ -16,12 +16,13 @@ import { LocalStorage } from '@ngx-pwa/local-storage';
 export class LoginComponent implements OnInit {
 
 
+  // tslint:disable-next-line: max-line-length
   constructor(formBuilder: FormBuilder, private dataService: DataService, public nav: NavbarService, private router: Router, private bnIdle: BnNgIdleService) {
 
 
     this.loginForm = formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.min(6)]]
     });
   }
   loginForm: FormGroup;
@@ -33,6 +34,9 @@ export class LoginComponent implements OnInit {
   // interval;
   isEmailCorrect;
   isValid;
+  retrievedEmail;
+  retrievedpassword;
+  retrievedRememberMeCB;
   ngOnInit() {
     this.retrieveCredentials();
     this.showHideNavbar();
@@ -78,7 +82,7 @@ export class LoginComponent implements OnInit {
       this.nav.show();
 
 
-      this.bnIdle.startWatching(60).subscribe((res) => {
+      this.bnIdle.startWatching(6000).subscribe((res) => {
         if (res) {
           console.log('session expired');
           confirm('session expired');
@@ -103,15 +107,11 @@ export class LoginComponent implements OnInit {
     if (rememberMeCheck === 'true') {
       localStorage.setItem('email', email);
       localStorage.setItem('password', password);
-    }
-    else {
+    } else {
       localStorage.setItem('email', '');
       localStorage.setItem('password', '');
     }
   }
-  retrievedEmail;
-  retrievedpassword;
-  retrievedRememberMeCB;
   retrieveCredentials() {
 
     const rememberMeCheck = localStorage.getItem('rememberMeCheckbox');
@@ -119,9 +119,11 @@ export class LoginComponent implements OnInit {
       this.retrievedEmail = localStorage.getItem('email');
       this.retrievedpassword = localStorage.getItem('password');
       this.retrievedRememberMeCB = localStorage.getItem('rememberMeCheckbox');
+      this.loginForm.value.email = this.retrievedEmail;
+      this.loginForm.value.password = this.retrievedpassword;
 
-    }
-    else {
+
+    } else {
       this.retrievedEmail = '';
       this.retrievedpassword = '';
       this.retrievedRememberMeCB = false;
@@ -153,7 +155,13 @@ export class LoginComponent implements OnInit {
   //   }
   //   // console.log(this.isValid);
   // }
+  get password() {
+    return this.loginForm.get('password');
+  }
 
+  get email() {
+    return this.loginForm.get('email');
+  }
 }
 export class Login {
   id?: number;
@@ -161,3 +169,4 @@ export class Login {
   password: string;
 
 }
+
