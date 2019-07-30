@@ -19,23 +19,29 @@
             <h2>SIGN IN</h2>
             <p class="last-heading">Welcome to First Design</p>
 
-
-            <form name="form" #login ="ngForm" (ngSubmit)="login.form.valid"  ng-model="currentUser" *ngIf="resettingPassword==false; else emailSent">
+            <form name="loginForm" [formGroup]="loginForm"  ng-model="currentUser" *ngIf="resettingPassword==false; else emailSent">
               <div class="col-md-12">
                 <label class="error-label" *ngIf = "credentialsValid==false " >Invalid Username or Password</label>
               </div>
-              <div class="form-group">
-                <label class="col-md-12 control-label" for="Username">Email:</label>
+
+
+              <div class="form-group" [class.has-error]="f.useremail.invalid && f.useremail.touched" [class.has-success]="f.useremail.valid">
+                <label class="col-md-12 control-label" for="useremail">Email:</label>
                 <div class="col-md-12 inputs">
-                  <input class="form-control" type="email" #username="ngModel" name="username" placeholder="email"  [(ngModel)]="currentUser.userEmail" [ngClass]="{ 'is-invalid': login.submitted && username.invalid }" required> 
+                  <!-- <input class="form-control" formControlName="pwd" type="password" name="pwd" placeholder="password"  [(ngModel)]="currentUser.stringPassword" [ngClass]="{ 'is-invalid':  f.pwd.errors && f.pwd.touched}">  -->
+                  <input class="form-control" required email type="email" formControlName="useremail" name="useremail" placeholder="Email"  [(ngModel)]="currentUser.userEmail" [ngClass]="{ 'is-invalid':  f.useremail.errors && f.useremail.touched}"> 
+                  <span class="error-label" *ngIf="f.useremail.errors?.required && f.useremail.touched">Email cannot be empty</span>
+                  <span class="error-label" *ngIf="f.useremail.errors?.email && f.useremail.touched">Email is invalid</span>
                 </div>
               </div>
 
               <div *ngIf="passwordSectionIsCollapsed; else passwordSection">
-                <div class="form-group" >
+                <div class="form-group" [class.has-error]="f.pwd.invalid && f.pwd.touched" [class.has-success]="f.pwd.valid" >
                   <label class="col-md-12 control-label" for="password">Password:</label>
                   <div class="col-md-12">
-                    <input class="form-control" type = "password" #pwd="ngModel" name = "pwd" placeholder = "password"  [(ngModel)]="currentUser.stringPassword" [ngClass]="{ 'is-invalid': login.submitted && pwd.invalid }"  required >
+                    <input class="form-control" type = "password" formControlName="pwd" name = "pwd" placeholder = "password"  [(ngModel)]="currentUser.stringPassword" [ngClass]="{ 'is-invalid': f.pwd.errors && f.pwd.touched }"  required >
+                    <span class="error-label" *ngIf="f.pwd.errors?.required && f.pwd.touched">Password cannot be empty</span>
+                  <span class="error-label" *ngIf="f.pwd.errors?.minlength && f.pwd.touched">Password is less than 8 digits</span>
                   </div>
                 </div>
                 <!-- <div class="col-md-12">
@@ -56,7 +62,7 @@
                   <a (click)="toggleForgotPasswordSection()" class="forgot-password-label">Forgot Password</a>
                 </div>
               
-                <input #buttonLogin class="btn btn-primary" type="submit" value = "Login" (click)="onClickSubmit(login.value)">
+                <input #buttonLogin class="btn btn-primary" type="submit" value = "Login" (click)="onClickSubmit(loginForm.value)" [disabled]="!loginForm.valid">
               </div>
 
               <ng-template #passwordSection>

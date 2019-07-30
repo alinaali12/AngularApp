@@ -144,3 +144,12 @@ font {
     color: blue;
     font: 12px;
 }
+
+
+input.ng-invalid.ng-dirty {
+    border-bottom-color: #f4511e !important;
+    box-shadow: #f4511e
+}
+.error-label {
+    color: #f4511e;
+}

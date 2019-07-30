@@ -25,18 +25,11 @@ export class LoginComponent implements OnInit {
   public emailNotSent = true;
   public resettingPassword= false;
 
-  constructor(private fb: FormBuilder,private _loginServive: LoginService, private router: Router, private _cookieService: CookieService, private _resetPasswordService: ResetPasswordService, public dialog: MatDialog) { 
+  constructor(private fb: FormBuilder,private _loginServive: LoginService, private router: Router, private _cookieService: CookieService, private _resetPasswordService: ResetPasswordService, public dialog: MatDialog, private formBuilder:FormBuilder) { 
     this.isValidatedUser = false;
     this.rememberMe = false;
     this.passwordSectionIsCollapsed = true;
     
-
-    // Validation checks
-    this.loginForm = fb.group({
-     pwd: ["", Validators.required]
-
-    });
-    // ------
 
     if(_cookieService.get('remember')) {
       var username =this._cookieService.get('username');
@@ -46,64 +39,81 @@ export class LoginComponent implements OnInit {
     } else {
       this.currentUser = new User("","");
     }
-  
-  
   }
-   ngOnInit() {
-   }
 
-   setCheckbox() {
-     this.rememberMe = !this.rememberMe;
-   }
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+    useremail: ['', [Validators.required]],
+    pwd: ['', [Validators.required, Validators.minLength(8)]]
+  }); 
+  }
+
+   // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
+
+
+  setCheckbox() {
+    this.rememberMe = !this.rememberMe;
+  }
    
-   onClickSubmit() {
-    console.log("Accessing login to validate user");
-      if (this.currentUser.userEmail=="" || this.currentUser.stringPassword == "") {
-        return ;
-      }
+  onClickSubmit() {
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      console.log("Returning because invalid entry");
+      return;
+    }
 
-      console.log("trying to validate user");
-      this._loginServive.validateLogin(this.currentUser.userEmail, this.currentUser.stringPassword).subscribe((data)=>{
-      this.isValidatedUser = data;
-      if (this.isValidatedUser) { //user is validated .. 
-        //cookies----
-        if (this.rememberMe) {
-          this._cookieService.set('username',this.currentUser.userEmail);
-          this._cookieService.set('password', this.currentUser.stringPassword);
-          this._cookieService.set('remember','true');
-        } else {
-          //delete any cookie with this username and password
-          this._cookieService.delete('username',this.currentUser.userEmail);
-          this._cookieService.delete('password',this.currentUser.stringPassword);
-          this._cookieService.delete('remember','true');
-        }
-        //---------
+    if (this.currentUser.userEmail=="" || this.currentUser.stringPassword == "") {
+      return ;
+    }
 
-        this.currentUser = new User(this.currentUser.userEmail, this.currentUser.stringPassword);
-        this._loginServive.startNewSession(this.currentUser.userEmail, this.currentUser.stringPassword);
-                
+    console.log("trying to validate user");
+    this._loginServive.validateLogin(this.currentUser.userEmail, this.currentUser.stringPassword).subscribe((data)=>{
+    this.isValidatedUser = data;
+    if (this.isValidatedUser) { //user is validated .. 
+      //cookies----
+      if (this.rememberMe) {
+        this._cookieService.set('username',this.currentUser.userEmail);
+        this._cookieService.set('password', this.currentUser.stringPassword);
+        this._cookieService.set('remember','true');
       } else {
-        // alert("Username or Password is incorrect!");
-        this.credentialsValid = false;
-        //   const dialogRef = this.dialog.open(MaterialModalComponent, {
-        //     width: '250px',
-        //     data: { message: "Incorrect Credentials" }
-        //   });
-        console.log("Invalid Login credentials");
+        //delete any cookie with this username and password
+        this._cookieService.delete('username',this.currentUser.userEmail);
+        this._cookieService.delete('password',this.currentUser.stringPassword);
+        this._cookieService.delete('remember','true');
       }
-    });
+      //---------
+
+      this.currentUser = new User(this.currentUser.userEmail, this.currentUser.stringPassword);
+      this._loginServive.startNewSession(this.currentUser.userEmail, this.currentUser.stringPassword);
+              
+    } else {
+      // alert("Username or Password is incorrect!");
+      this.credentialsValid = false;
+      //   const dialogRef = this.dialog.open(MaterialModalComponent, {
+      //     width: '250px',
+      //     data: { message: "Incorrect Credentials" }
+      //   });
+      console.log("Invalid Login credentials");
+    }
+  });
+
   
-    
 
-   }
+  }
 
-   toggleForgotPasswordSection()
-   {
-     console.log("Toggling .......");
+  toggleForgotPasswordSection()
+  {
+    this.credentialsValid = true;
     this.passwordSectionIsCollapsed = false;
-   }
+  }
 
-   forgotPassword() { 
+  forgotPassword() { 
+     // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return;
+    }
+
      this.resettingPassword = true;
      if (this.currentUser.userEmail!="") {
       console.log("Here we go again.. you forgot your password AGAIN",this.currentUser.userEmail);

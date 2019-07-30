@@ -20,7 +20,7 @@ export class ResetPasswordComponent implements OnInit {
   sub:any;
   public passwordUpdated;
   public confirmPassword;
-  loginForm: FormGroup;
+  resetPasswordForm: FormGroup;
 
   constructor(private router: ActivatedRoute, private routerr:Router ,location: Location, private  resetPasswordService: ResetPasswordService, private formBuilder:FormBuilder) { 
     var userName = location.path().slice(location.path().search("=")+1); //we get this by slicing from the location that the first = is found,till end
@@ -28,20 +28,24 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(6)]],
+    this.resetPasswordForm = this.formBuilder.group({
+      pwd: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required]
-  }, {
+    }, {
       validator: MustMatch('pwd', 'confirmPassword')
-  });
+    });
   }
+  // convenience getter for easy access to form fields
+  get f() { return this.resetPasswordForm.controls; }
 
   submitNewPassword() {
-    if (this.confirmPassword=="" || this.currentUser.stringPassword == "") {
-      return 
+    // stop here if form is invalid
+    if (this.resetPasswordForm.invalid) {
+      console.log("Returning because invalid entry");
+      return;
     }
     var res;
-    console.log("you entered this password ", this.currentUser.stringPassword,"against this email",this.currentUser.userEmail);
+    
     this.resetPasswordService.sendUpdatedPassword(this.currentUser).subscribe(data =>{
       res = data;
       if (res == true){
@@ -51,6 +55,5 @@ export class ResetPasswordComponent implements OnInit {
         this.passwordUpdated = false;
       }
     } );
-    console.log("I am back in reset-password")
   }
 }
