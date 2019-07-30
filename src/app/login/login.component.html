@@ -37,7 +37,7 @@
                                                                <input class="box"  required type="password"[(ngModel)]="User.Password" placeholder="Password" name="Password"> -->
                                                                <label>
                                                                         <i class="iconlog fa fa-key"></i> 
-                                                                        <input  required type="password" (change)="passChange(Password)" [(ngModel)]="User.Password" placeholder=" " name="Password" [ngClass]="{'error': Wrongpass =='true'}"> 
+                                                                        <input  required type="password" (keydown)="onKeydown($event)" [(ngModel)]="User.Password" placeholder=" " name="Password" [ngClass]="{'error': Wrongpass =='true'}"> 
                                                                         <span>Password</span>
                                                                         <span class="strength" [ngClass]="{'weak': (passwordmsg=='weak' || passwordLengthMatch=='false'), 'strong': passwordmsg=='strong', 'medium': passwordmsg=='medium'}">{{passwordmsg}}</span>
                                                                </label>
@@ -67,6 +67,7 @@
                                                     <button class="boxbutton btn forgetbutton" *ngIf = "forgetClicked==='true'" (click)="cancel()">Cancel</button>
                                                     <p  *ngIf = "checkSend==='true'" class="linksent">Link Sent On Your Email</p>
                                                 </div>
+                                                <!-- <input style="background-color: burlywood;" name="Password" [(ngModel)]="User.Password" (keydown)="onKeydown($event)"> -->
                                       </div>    
                                         
                                 </div>

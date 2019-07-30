@@ -29,7 +29,7 @@ export class FrontPageComponent implements OnInit {
   EditInfo = new Usermodel();
   EditUser = new Usermodel();
   timer;
-  constructor(private Serviceobj: DataserviceService, private loginservice: LoginServiceService) { }
+  constructor(private Serviceobj: DataserviceService, private loginservice: LoginServiceService, private route: Router) { }
   ngOnInit() {
     this.model.choice = 'lilies';
     this.EditToggle = this.Serviceobj.getToggle();
@@ -58,6 +58,8 @@ export class FrontPageComponent implements OnInit {
     data => console.log('success', data),
     error => console.log('error', error)
   );
+  console.log('show');
+  this.route.navigate(['/showresult']);
 }
 onFileChanged(event) {
   const reader = new FileReader();

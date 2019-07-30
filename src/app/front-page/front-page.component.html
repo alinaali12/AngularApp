@@ -14,7 +14,7 @@
                 <div class="col-md-8 space">
                  
                   <div class="hexagon"><h1>Welcome</h1><p class="lead">Lead You To New Ways of Experience</p></div>
-                  <div>
+                  <div class="btndiv">
                     <button class="getstart" (click)= "showpage()">Getting Started</button>
                   </div>
                 </div>
@@ -33,7 +33,7 @@
 
                           <div class="row">
                               <div class="col-md-2"></div>
-                              <div class="col-md-8"><input type="file" name="image" (change)="onFileChanged($event)" *ngIf=" pageToggle==='show'"></div>
+                              <div class="col-md-8"><input required type="file" name="image" (change)="onFileChanged($event)" *ngIf=" pageToggle==='show'"></div>
                             </div>
                             <br>
 
@@ -45,7 +45,7 @@
                               
                               <div class="row">
                                   <div class="col-md-2" ><label *ngIf="EditToggle==='show'">Email</label></div>
-                                  <div class="col-md-8"><input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="text" placeholder="Enter Email" [value]='email' (input)='email=$event.target.value' value="{{EditUser.email}}"></div>
+                                  <div class="col-md-8"><input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="text" placeholder="someone@mail.com" [value]='email' (input)='email=$event.target.value' value="{{EditUser.email}}"></div>
                                 </div>
                                 <br>
                       
@@ -66,7 +66,7 @@
                                     </div>
                                     <br>
                                     <input type="button" value="Cancel" (click)= "cancel()" class=" btn btn-danger" style="float: right;" *ngIf=" pageToggle==='show'">
-                                    <input type="submit" [ngClass]="{'successactive': status=='clicked'}"  [routerLink] = "['/showresult']" class="btn btn-info pull-right" value="save user" *ngIf=" pageToggle==='show'">
+                                    <input type="submit" [ngClass]="{'successactive': status=='clicked'}"  class="btn btn-info pull-right" value="save user" *ngIf=" pageToggle==='show'">
                                     <input type="button" [ngClass]="{'successactive': status=='clicked'}" class="btn btn-warning pull-right" value=" Edit user" *ngIf=" EditToggle==='show'" (click)=saveChanges(EditUser) style="margin-bottom: 1%;">
                                    
                         

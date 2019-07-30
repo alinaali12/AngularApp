@@ -70,29 +70,6 @@ export class LoginComponent implements OnInit {
       }
       console.log(this.Valid);
   }
-  passChange() {
-  console.log(this.User.Password.length);
-  if (this.User.Password.length < 6 || this.User.Password.length > 20 ) {
-      this.passwordLengthMatch = 'false';
-      console.log('nogoodlength');
-  } else {
-    this.passwordLengthMatch = 'true';
-    this.Wrongpass = 'false';
-    const strong = new RegExp('^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,20}$');
-    const medium = new RegExp('^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,10}$');
-    const weak = new RegExp('(?=.{6}$)');
-    if (medium.test(this.User.Password)) {
-      this.passwordmsg = 'medium';
-    } else if (strong.test(this.User.Password)) {
-      this.passwordmsg = 'strong';
-    } else if (weak.test(this.User.Password)) {
-      this.passwordmsg = 'weak';
-    } else {
-      this.passwordmsg = 'outofrange';
-    }
-    console.log(this.passwordmsg);
-  }
-  }
   ForgetMethod() {
     this.Wronginput = 'false';
     this.Wrongpass = 'false';
@@ -124,4 +101,28 @@ export class LoginComponent implements OnInit {
   decryptData(data) {
      return CryptoJS.AES.decrypt (data, 'E546C8DF278CD5931069B522E695D4F2').toString(CryptoJS.enc.Utf8);
   }
+  onKeydown(event) {
+      console.log('key');
+      console.log(this.User.Password.length);
+      if (this.User.Password.length < 6 || this.User.Password.length > 20 ) {
+          this.passwordLengthMatch = 'false';
+          console.log('nogoodlength');
+      } else {
+        this.passwordLengthMatch = 'true';
+        this.Wrongpass = 'false';
+        const strong = new RegExp('^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,20}$');
+        const medium = new RegExp('^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,10}$');
+        const weak = new RegExp('(?=.{6}$)');
+        if (medium.test(this.User.Password)) {
+          this.passwordmsg = 'medium';
+        } else if (strong.test(this.User.Password)) {
+          this.passwordmsg = 'strong';
+        } else if (weak.test(this.User.Password)) {
+          this.passwordmsg = 'weak';
+        } else {
+          this.passwordmsg = 'outofrange';
+        }
+        console.log(this.passwordmsg);
+      }
+    }
 }

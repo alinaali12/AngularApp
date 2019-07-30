@@ -147,3 +147,16 @@ input[type=button]
   font-weight: bold;
   font-size: 20px;
 }
+@media only screen and (max-width:  414px) {
+  .hexagon {
+      display: none;
+  }
+  .getstart {
+    margin-left: 7%;
+    margin-top:  5%;  
+  }
+  .btndiv {
+    width: 180%;
+  }
+
+}

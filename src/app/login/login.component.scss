@@ -247,3 +247,19 @@ label {
   .medium {
       color:yellowgreen;;
   }
+  
+@media only screen and (max-width:  414px) {
+    .col-md-7 {
+        display: none;
+    }
+    .stylep {
+        margin-left: 0;
+    }
+    .disbutton {
+        padding-right: 45%;
+    }
+    .forget {
+        margin-right: -14%;
+    }
+ 
+  }

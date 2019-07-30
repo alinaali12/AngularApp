@@ -32,3 +32,13 @@ ul li a{
 .strength {
   margin-top: 10px;
 }
+@media only screen and (max-width: 414px) {
+
+  .navbar .navbar-header {
+   margin-left: 33.33%;
+  }
+  .navbar a{
+    text-align: center;
+  }
+  
+}
