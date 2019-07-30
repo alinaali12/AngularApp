@@ -5,7 +5,7 @@ import apiservice from '../Services/apiservices';
 import { Router } from '@angular/router';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { CookieService } from 'ngx-cookie-service';
-
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login-page',
@@ -15,21 +15,34 @@ import { CookieService } from 'ngx-cookie-service';
 export class LoginPageComponent implements OnInit {
   user = new UserData();
   rememberMe;
+  encryptMode: boolean;
   wrongemail:string="false";
   wrongpass:string="false";
   invalidemail:string="false";
  invalidd;
  remeber;
  encrpted;
-  constructor(private apiservice:apiservice,  private router: Router , private cookieService: CookieService) { }
+  conversionOutput: string;
+keySize = 256;
+ ivSize = 128;
+ iterations = 100;
+ transitmessage;
+message = "Hello World";
+
+
+  constructor(private apiservice:apiservice,  private router: Router , private cookieService: CookieService) {
+    this.encryptMode = true;
+   }
 
   ngOnInit() {
     this.getData();
     localStorage.clear();
+    this.encrption();
+
     if(this.cookieService.get('Email'))
-{
-this.rememberMe= true;
-}
+    {
+      this.rememberMe= true;
+    }
   }
   OnSubmit()
   {
@@ -68,9 +81,10 @@ this.rememberMe= true;
     console.log('tokeeennn' , localStorage.getItem('token'));
     if(localStorage.getItem('token')=="true" && this.rememberMe==true)
   {
+ 
     this.cookieService.set('Email', this.user.username);
-  //  this.encrpted = this.Encrdecr.set('123456$#@$^@1ERF' ,this.user.password);
-    this.cookieService.set('Password', this.encrpted);
+    this.Encrpt();
+   
   }
   if(this.rememberMe==undefined)
   {
@@ -83,7 +97,7 @@ this.rememberMe= true;
   {
    // this.rememberMe=true;
     this.user.username=this.cookieService.get('Email');
-    this.user.password=this.cookieService.get('Password');
+   this.Decrpt();
   }
   ValidateEmail()
   {
@@ -101,5 +115,52 @@ this.rememberMe= true;
   }
 
   }
- 
+  encrption()
+  {
+    this.Encrpt();
+    this.Decrpt();
+
+  }
+
+  Encrpt()
+  {
+  var salt = CryptoJS.lib.WordArray.random(128/8);
+  
+  var key = CryptoJS.PBKDF2(this.message, salt, {
+      keySize: this.keySize/32,
+      iterations: this.iterations
+    });
+
+  var iv = CryptoJS.lib.WordArray.random(128/8);
+  
+  var encrypted = CryptoJS.AES.encrypt(this.user.password, key, { 
+    iv: iv, 
+    padding: CryptoJS.pad.Pkcs7,
+    mode: CryptoJS.mode.CBC
+  });
+  this.transitmessage= salt.toString()+ iv.toString() + encrypted.toString();
+  this.cookieService.set('Password',  this.transitmessage);
 }
+Decrpt()
+{
+  this.transitmessage=this.cookieService.get('Password');
+  var salt = CryptoJS.enc.Hex.parse(this.transitmessage.substr(0, 32));
+  var iv = CryptoJS.enc.Hex.parse(this.transitmessage.substr(32, 32))
+  var encrypted = this.transitmessage.substring(64);
+  
+  var key = CryptoJS.PBKDF2(this.message, salt, {
+      keySize: this.keySize/32,
+      iterations: this.iterations
+    });
+
+  var decrypted = CryptoJS.AES.decrypt(encrypted, key, { 
+    iv: iv, 
+    padding: CryptoJS.pad.Pkcs7,
+    mode: CryptoJS.mode.CBC
+    
+  })
+  this.user.password=decrypted.toString(CryptoJS.enc.Utf8);
+  console.log('aaaaaaaaaaaaaaaaaaaa0', decrypted.toString(CryptoJS.enc.Utf8) );
+}
+}
+

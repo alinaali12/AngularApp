@@ -15,18 +15,36 @@
                      
                         
                     <form name="login" #login ="ngForm" (ngSubmit) = "OnSubmit(login.value)" ng-model="currentUser" class="card-body">
-                         <h3 class="text-style">Welcome Back :) </h3>
+                         <h2 class="text-style">Welcome Back :) </h2>
                         <p class="text-style1 popup"> To Keep Connected with us Please login with your<br/>personal information by email address and password</p>
-                        <p class="Errorr popuptext" *ngIf="wrongemail==='true'||wrongpass==='true'">Invalid Data</p>
+                    
                               <div class="form-group"  class="login">
+                                    <p class="Errorr popuptext" *ngIf="wrongemail==='true'||wrongpass==='true'">Invalid Data</p>
                               <div class="float-container">
                            <i class="iconlog fa fa-envelope"></i>  
                            <i class="fa iconset" [ngClass]="{'fa-check ': invalidd=='false', 'fa-times': invalidd=='true'}"></i>
-                           <input id="email" placeholder="Email " (change)="ValidateEmail()" type="email" #username="ngModel" name="Email" [(ngModel)]="user.username" [ngClass]="{'Error':wrongemail=='true' , 'setcolorr' : invalidd=='true'}" required ><br/><br/>
-                  
+                         
+                           <div class="user-input-wrp">
+                            <br/>
+                            <input (change)="ValidateEmail()" type="email" #username="ngModel" name="Email" [(ngModel)]="user.username" [ngClass]="{'Error':wrongemail=='true' , 'setcolorr' : invalidd=='true'}" required/>
+                            <span class="floating-label">Email Address</span>
+                          </div>
+
+                           <!-- <input id="email" placeholder="Email " (change)="ValidateEmail()" type="email" #username="ngModel" name="Email" [(ngModel)]="user.username" [ngClass]="{'Error':wrongemail=='true' , 'setcolorr' : invalidd=='true'}" required >
+                            <br/><br/> -->
+
                          
                         </div>
-                           <i class="iconlog fa fa-lock"></i>   <input type="password"  placeholder="Password" name="password"  [(ngModel)]="user.password"  [ngClass]="{'Error':wrongpass==='true'}" required><br/><br/>
+                           <i class="iconlogg fa fa-lock"></i> 
+                           <div class="user-input-wrp">
+                            <br/>
+                            <input type="password"  name="password"  [(ngModel)]="user.password"  [ngClass]="{'Error':wrongpass==='true'}" required/>
+                            <span class="floating-label">Password</span>
+                          </div>
+
+                           <!-- <input type="password"  placeholder="Password" name="password"  [(ngModel)]="user.password"  [ngClass]="{'Error':wrongpass==='true'}" required/>
+                           <span class="floating-label">Password</span> -->
+                           <!-- <input type="password"  placeholder="Password" name="password"  [(ngModel)]="user.password"  [ngClass]="{'Error':wrongpass==='true'}" required><br/><br/> -->
                         
                            <h5>Forgot Password</h5>
                             <input type="checkbox" class="remember-me" 
@@ -53,11 +71,12 @@
                     
                     </form> 
                  
-
+                    
                     </div>
                     </div>
 
 
     </div>
+  
 </body>
 

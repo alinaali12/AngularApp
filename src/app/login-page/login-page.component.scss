@@ -6,7 +6,7 @@
   padding-left: 9%;
   padding-right: 3%;
   padding-bottom: 3%;
-  height: 80%;	
+  height: 85%;	
   width: 100%;
 	background: rgb(220, 235, 236);
 	border: 0px solid rgb(220, 235, 236);
@@ -59,7 +59,8 @@ color:  rgb(90, 205, 240);
 h5{
   text-align: right;
   padding-bottom: 0%;
-  margin-bottom: 0%;
+  padding-top: 10px;
+  margin-top:20px;
   padding-right: 3%;
 }
 .popup .popuptext {
@@ -99,7 +100,7 @@ color: red;
 text-align: center;
 }
 input[type=email] {
-  width: 60%;
+  width: 80%;
   box-sizing: border-box;
   border: 0px solid ;
   border-radius: 4px;
@@ -107,14 +108,15 @@ input[type=email] {
   background-color: rgb(233, 246, 247);
   background-position: 10px 10px; 
   background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
+  padding: 12px 20px 12px 5px;
   color: black;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
+  margin-bottom: 20px;
 }
 
 input[type=email]:focus {
-  width: 80%;
+  width: 85%;
   border:0px solid none !important;
   
 }
@@ -124,12 +126,12 @@ input [type=email]:placeholder-shown
   transform: translate(0, 4px) scale(.75);
 }
 input[type=password]:focus{
-  width: 80%;
+  width: 85%;
   border:0px solid none !important;
 }
 input[type=password]
 {
-  width: 60%;
+  width: 80%;
   box-sizing: border-box;
   border: 0px solid ;
   border-radius: 4px;
@@ -138,12 +140,21 @@ input[type=password]
   background-color: rgb(233, 246, 247);
   background-position: 10px 10px; 
   background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
+  padding: 12px 20px 12px 5px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
  }
 
-
+ .iconlogg
+ {
+   color: rgb(148, 220, 241);
+   margin-right:10px;
+   width: 25px;
+   size: 25px;
+   font-size: 20px;
+   float: left;
+   margin-top: 30px;
+ }
 .iconlog
 {
   color: rgb(148, 220, 241);
@@ -152,7 +163,7 @@ input[type=password]
   size: 25px;
   font-size: 20px;
   float: left;
-  margin-top: 8px;
+  margin-top: 30px;
 }
 .col-md-4 {
   margin-top: 2%;
@@ -161,7 +172,9 @@ input[type=password]
 }
 .imageee
 {
-  border-radius: 4%;
+  padding-top: 40px;
+  margin-bottom: 10px;
+  border-radius: 3px;
 }
 .button{
 
@@ -230,11 +243,30 @@ input[type=password]
      margin-top: 0%;
     text-align: right;
   }
+  .container {
+    //how to add space between form group
+    //how to blur only the background image
+    //why is there no scroll bar
+    position: fixed;
+    padding: 0%;
+    margin: 0%;
+    top: 0%;
+    right: 0%;
+    max-width: 100%; 
+    // without max-width it doesn't work
+    height: 100%;
+    width: 100%;
+    background-image: url('/assets/backgroundimage.jpg');
+    overflow-y: scroll;
+    overflow-x: none;
+}
 
   .aaa
   {
 
     background-image: url('/assets/backgroundimage.jpg');
+    height: 100%;
+    width:100%;
   }
   .abcd
   {
@@ -272,3 +304,46 @@ input[type=password]
 // {
 //   position: relative;
 // }
+
+
+
+.user-input-wrp {
+	position: relative;
+  width: 80%;
+  margin-bottom: -2%;
+ 
+}
+.user-input-wrp .inputText{
+  margin-left:12%;
+  margin-bottom: 4%;
+  width: 100%;
+  padding: 5px;
+	outline: none;
+	border:none;
+	border-bottom: 1px solid #777;
+   box-shadow: none !important;
+  color: black !important;
+  width: 80%;
+}
+.user-input-wrp .inputText:focus{
+	border-color: blue;
+	border-width: medium medium 2px;
+}
+.user-input-wrp .floating-label {
+  margin-left: 25px;
+	position: absolute;
+	pointer-events: none;
+	top: 18px;
+	left: 10px;
+  transition: 0.4s ease all;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+.user-input-wrp input:focus ~ .floating-label,
+.user-input-wrp input:not(:focus):valid ~ .floating-label{
+	top: 0px;
+	left: 10px;
+	font-size: 13px;
+  opacity: 1;
+  margin-top: 4px;
+}

@@ -22,7 +22,6 @@ import { CheckAccessDirective } from './check-access.directive';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AuthGuard } from './auth.guard';
-import { EncrDecrServiceService } from '../app/encr-decr-service.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,7 @@ import { EncrDecrServiceService } from '../app/encr-decr-service.service';
     ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [LoginService, CookieService, DatePipe, AuthGuard, CookieService, EncrDecrServiceService],
+  providers: [LoginService, CookieService, DatePipe, AuthGuard, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

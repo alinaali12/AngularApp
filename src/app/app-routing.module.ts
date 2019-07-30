@@ -15,7 +15,7 @@ import { AuthGuard } from './auth.guard';
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: LoginPageComponent
 
   },  
   {
@@ -36,12 +36,6 @@ const routes: Routes = [
   {
     path:'errorpage',
     component:ErrorPageComponent
-  },
-  {
-    path:'home',
-    component: HomeComponent,
-   // canActivate:[AuthenticationGuard]
-
   },
   {
     path:'login',
