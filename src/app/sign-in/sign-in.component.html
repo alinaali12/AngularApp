@@ -1,0 +1,57 @@
+<!-- <div *ngIf="isLoginError" class="red-text center error-message">
+        <i class="material-icons">error</i> Incorrect username or password
+    </div>
+    <form #loginForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(UserName.value,Password.value)">
+       <div class="row">
+         <div class="input-field col s12">
+           <i class="material-icons prefix">account_circle</i>
+           <input type="text" #UserName ngModel name="UserName" placeholder="Username" required>
+         </div>
+       </div>
+     <div class="row">
+        
+          <div class="input-field col s12">
+            <i class="material-icons prefix">vpn_key</i>
+            <input type="password" #Password ngModel name="Password" placeholder="Password" required>
+
+            <div class="wrap-input100 validate-input" data-validate="Password is required"> 
+
+                <span class="focus-input100" data-symbol=&#xf190;></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              <button [disabled]="!loginForm.valid" class="btn-large btn-submit" type="submit">Login</button>
+            </div>
+         
+        
+          </div>
+    </form>  
+
+  -->
+
+
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+    
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <a >User Icon </a>
+        </div>
+    
+        <!-- Login Form -->
+        <form  #loginForm="ngForm" (ngSubmit)="OnSubmit(  Email.value,Password.value)">
+          <input type="text" id="email"  class="fadeIn second" #Email ngModel name="Email"  placeholder="email">
+          <input type="password" id="password" class="fadeIn third" #Password ngModel name="Password" placeholder="password">
+          <input type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+    
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+    
+      </div>
+    </div>

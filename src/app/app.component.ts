@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import{ freeApiService } from './services/freeapi.services';
-import {CookieService} from 'ngx-cookie-service';
 import{ UrlService } from './services/UrlService';
 import { databind } from './services/databind';
 import {LocalStorageService} from 'ngx-webstorage';
+import { UserService } from './services/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,13 +14,34 @@ import {LocalStorageService} from 'ngx-webstorage';
 })
 export class AppComponent  {
 
+  session: boolean = false;
   cookieName : string = 'Permission';
-  constructor(private urlSevice: UrlService, private cookieService: CookieService,private sharedService: databind, private localStorage : LocalStorageService){
+  constructor(private router: Router,private userservice: UserService,private urlSevice: UrlService,private sharedService: databind, private localStorage : LocalStorageService){
     
   }
   
   async ngOnInit(){
- /*  if (!this.cookieService.check(this.cookieName))
+    
+    if (sessionStorage.getItem('currentUser')!=null && sessionStorage.getItem('currentUser')!=undefined && this.userservice.running == true){
+      this.session = true;
+    }else{
+      this.session = false;
+      this.router.navigate(['/sign-in']);
+
+    }
+    this.userservice.watchStorage().subscribe((data: string) => {
+    if (data=="session expired")
+    {
+      this.router.navigate(['/sign-in']);
+
+      this.session = false;
+
+    }else if (data=="session started"){
+      this.session = true;
+    }
+    });
+
+    /*  if (!this.cookieService.check(this.cookieName))
        await this.urlSevice.geturl().then(value=>{ console.log(value), this.cookieService.set(this.cookieName,JSON.stringify(value))});
  
        this.sharedService.Urls = JSON.parse(this.cookieService.get(this.cookieName));

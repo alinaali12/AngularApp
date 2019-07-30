@@ -14,10 +14,15 @@ import { DispalyemployeeComponent } from './dispalyemployee/dispalyemployee.comp
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { UploadComponent } from './upload/upload.component';
-import {CookieService} from 'ngx-cookie-service'
+//import {CookieService} from 'ngx-cookie-service'
 import { UrlService } from './services/UrlService';
 import { databind } from './services/databind';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+import { ChangepageDirective } from './changepage.directive';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { UserService } from './services/user.service';
+import { AuthGuardService } from './guards/auth-guard.service';
+
 
 //  const appRoutes: Routes=[
 
@@ -31,7 +36,10 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
     DispalyemployeeComponent,
     UpdateUserComponent,
     DeleteUserComponent,
-    UploadComponent
+    UploadComponent,
+    ChangepageDirective,
+    SignInComponent
+
   
 
 
@@ -51,7 +59,7 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
 
     // RouterModule.forRoot(appRoutes)
   ],
-  providers: [freeApiService, CookieService, UrlService,databind ],
+  providers: [freeApiService, UrlService,databind , UserService],
   bootstrap: [AppComponent]
 })
 

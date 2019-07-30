@@ -6,11 +6,37 @@
     </li>
   </ul>
 </nav> -->
-<h1>Employee Registration</h1>
+<!-- <h1>Employee Registration</h1>
 <nav class="navbar navbar-light bg-primary">
   <a class="navbar-brand mb-0 h1 text-light" routerLink="/create-user" routerLinkActive="active">Create User</a>
   <a class="navbar-brand mb-0 h1 text-light" routerLink="/display-user" routerLinkActive="active">Display User List</a>
 
 </nav>
+
+<router-outlet></router-outlet> -->
+<nav class="navbar navbar-light">
+  <div *ngIf = "session" class="container">
+    <a class="navbar-brand" ></a>
+
+    <ul class="nav navbar-nav pull-xs-left">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/create-user">Create User</a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/display-user">Display User</a>
+
+      </li>
+     
+    </ul>
+
+  </div>
+  <div *ngIf = "session" style="background-color:lightblue">
+    <h3>Session Expires In {{this.userservice.time}}</h3>
+  </div>
+</nav>
+
+
 
 <router-outlet></router-outlet>
