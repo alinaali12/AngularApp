@@ -51,6 +51,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  margin-top:52px;
 }
 .space{
   margin-top: 10%;
@@ -157,6 +158,9 @@ input[type=button]
   }
   .btndiv {
     width: 180%;
+  }
+  body {
+    margin-top:65%;
   }
 
 }

@@ -1,6 +1,6 @@
 .center {
     display: block;
-  float: right;
+     float: right;
     width: 30%;
     height: 30%;
   }
@@ -24,21 +24,24 @@ ul li a{
     min-height : 75%;
   }
   .navbar {
-    position: relative;
-    min-height: 50px;
-    margin-bottom: 0px;
+    position: absolute;
+    // min-height: 50px;
+    // margin-bottom: 0px;
     border: 1px solid transparent;
+    top:0px;
+    width: 100%;
+    
 }
 .strength {
   margin-top: 10px;
 }
 @media only screen and (max-width: 414px) {
 
-  .navbar .navbar-header {
-   margin-left: 33.33%;
-  }
   .navbar a{
-    text-align: center;
+    text-align: left;
+  }
+  .navbar {
+    width: 180%;
   }
   
 }

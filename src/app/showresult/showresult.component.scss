@@ -29,6 +29,16 @@ background-color: blueviolet;
     margin-top: 20px;
   }
   .timer {
+    margin-top: 70px;
     font-weight: bold;
     font-size: 20px;
+  }
+  @media only screen and (max-width:  414px) {
+      .table {
+          margin-top:80%;
+      }
+      .timer {
+          margin-top: 75%;
+      }
+  
   }

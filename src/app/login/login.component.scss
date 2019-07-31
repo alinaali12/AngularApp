@@ -15,9 +15,11 @@ body {
     background-color: #cccccc;
     height: 700px;
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  
+   background-repeat: no-repeat;
+   background-size: cover;
     position: relative;
+    margin-top:55px;
   }
 h1 {
     text-align: center;
@@ -260,6 +262,9 @@ label {
     }
     .forget {
         margin-right: -14%;
+    }
+    body {
+        margin-top: 65%;
     }
  
   }
