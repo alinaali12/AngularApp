@@ -1,10 +1,10 @@
-<div>
+<div class="w-auto h-100">
   <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
     <h5 *ngIf="success">Your form is valid</h5>
 
     <label>
       Title:
-      <input type="text" formControlName="title" />
+      <input required type="text" formControlName="title" />
       <div *ngIf="submitted && messageForm.controls.title.errors" class="errors">
         <div *ngIf="messageForm.controls.title.errors.required">
           Title is required.
@@ -14,7 +14,7 @@
 
     <label>
       Director:
-      <input formControlName="director" />
+      <input required type="text" formControlName="director" />
       <div *ngIf="submitted && messageForm.controls.director.errors" class="errors">
         <div *ngIf="messageForm.controls.director.errors.required">
           Director is required.
@@ -24,7 +24,7 @@
 
     <label>
       Genre:
-      <input formControlName="genre" />
+      <input required type="text" formControlName="genre" />
       <div *ngIf="submitted && messageForm.controls.genre.errors" class="errors">
         <div *ngIf="messageForm.controls.genre.errors.required">
           Genre is required.
@@ -34,7 +34,7 @@
 
     <label>
       Release Date:
-      <input formControlName="releaseDate" />
+      <input required type="date" formControlName="releaseDate" />
       <div *ngIf="submitted && messageForm.controls.releaseDate.errors" class="errors">
         <div *ngIf="messageForm.controls.releaseDate.errors.required">
           Release Date is required.
@@ -53,11 +53,15 @@
     </label>
     <label>
       Poster:
-      <input type="file" (change)="onFileChange($event)" formControlName="poster" />
+      <input required type="file" (change)="onFileChange($event)" formControlName="poster" />
       <div *ngIf="submitted && messageForm.controls.poster.errors" class="errors">
         <div *ngIf="messageForm.controls.poster.errors.required">
           Poster is required.
         </div>
+        <div *ngIf="messageForm.controls.poster.errors.FileTypeValidatorDirective">
+          Poster is required or must be only image.
+        </div>
+
       </div>
     </label>
     <input type="submit" value="Create" class="cta" />

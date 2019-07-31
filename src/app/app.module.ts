@@ -18,10 +18,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { NavbarService } from './services/navbarService/navbar.service';
+import { FileTypeValidatorDirective } from './file-type-validator.directive';
+import { NoWhiteSpaceValidatorDirective } from './no-white-space-validator.directive';
 @NgModule({
   declarations: [AppComponent, MoviesComponent, NavComponent,
     HomeComponent, RankingComponent, PagePermissionDirective,
-    ErrorComponent, LoginComponent],
+    ErrorComponent, LoginComponent, FileTypeValidatorDirective, NoWhiteSpaceValidatorDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,

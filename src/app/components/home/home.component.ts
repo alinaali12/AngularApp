@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { DataService } from '../../services/dataService/data.service';
+import { FileTypeValidatorDirective } from 'src/app/file-type-validator.directive';
+import { NoWhiteSpaceValidatorDirective } from 'src/app/no-white-space-validator.directive';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,12 +15,12 @@ export class HomeComponent implements OnInit {
     private data: DataService
   ) {
     this.messageForm = formBuilder.group({
-      title: ['', Validators.required],
-      director: ['', Validators.required],
-      genre: ['', Validators.required],
-      releaseDate: ['', Validators.required],
-      description: ['', Validators.required],
-      poster: ['', Validators.required]
+      title: ['', [Validators.required, this.removeSpaces]],
+      director: ['', [Validators.required, this.removeSpaces]],
+      genre: ['', [Validators.required, this.removeSpaces]],
+      releaseDate: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      poster: ['', [Validators.required]]
     });
   }
   submitted = false;
@@ -56,6 +58,12 @@ export class HomeComponent implements OnInit {
 
     this.data.postMovie(movie).subscribe(() => { console.log('ok'); }
     );
+  }
+  removeSpaces(control: AbstractControl) {
+    if (control && control.value && !control.value.replace(/\s/g, '').length) {
+      control.setValue('');
+    }
+    return null;
   }
   onFileChange(event) {
     this.fileUpload(event.target);
