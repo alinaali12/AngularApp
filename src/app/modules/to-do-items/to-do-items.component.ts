@@ -18,6 +18,7 @@ export class ToDoItemsComponent implements OnInit {
   private itemsPerPage;
   private numbers = [];
   subscription: Subscription;
+  currentPage: number;
 
   constructor(private _apiService: ApiService) { 
     this.columns = ['Id','Title','IsComplete','Description','Priority','File'];
@@ -37,6 +38,9 @@ export class ToDoItemsComponent implements OnInit {
   }
 
   getDataForPagination(pageNo=1) {
+    //update UI 
+    this.currentPage = pageNo;
+
         //(currentPageNo: string="", pageCapacity:string="", orderByAttribute:string="", searchForWord:string = "", searchInAttribute:string =""  )
       this._apiService.getRecords(pageNo,this.itemsPerPage).subscribe((data)=>{
         this.todoItems = [];

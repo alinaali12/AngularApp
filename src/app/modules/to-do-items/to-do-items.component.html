@@ -29,7 +29,7 @@
 
 <h3 class="card-header">Todo Items</h3>
 <div class="card-body">
-    <h2>Pagination but without using the pagination function in Web API</h2>
+    <!-- <h2>Pagination but without using the pagination function in Web API</h2> -->
     <table class="table">
         <thead>
             <th  scope="col" *ngFor="let col of columns">
@@ -49,16 +49,22 @@
     </table>
 </div>
 <nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <li class="page-item disabled">
-            <a class="page-link" tabindex="-1">Previous</a>
+    <ul class="pagination" *ngIf="totalCount>0">
+        <li [ngClass]="{disabled:currentPage === 1}" class="page-item first-item">
+            <a (click)="loadPage(1)" class="page-link">First</a>
         </li>
-        <li *ngFor="let page of numbers">
-            <a class="page-link" (click)="loadPage(page+1)">{{page+1}}</a>
+        <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+            <a class="page-link" (click)="loadPage(currentPage-1)" >Previous</a>
+        </li>
+        <li *ngFor="let page of numbers" [ngClass]="{active: currentPage-1===page}" >
+            <a class="page-link" (click)="loadPage(page+1)" >{{page+1}}</a>
         </li>
        
-        <li class="page-item">
-            <a class="page-link">Next</a>
+        <li class="page-item" [ngClass]="{disabled:currentPage === totalPages}">
+            <a class="page-link" (click)="loadPage(currentPage+1)">Next</a>
+        </li>
+        <li [ngClass]="{disabled:currentPage === totalPages}" class="page-item first-item">
+            <a (click)="loadPage(totalPages)" class="page-link">Last</a>
         </li>
     </ul>
 </nav>
