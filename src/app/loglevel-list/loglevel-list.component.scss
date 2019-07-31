@@ -23,7 +23,21 @@
 //   table tr:nth-child(even) {
 //     background-color: #ffffff;
 //   }
+// .container
+// {
+//     margin-top: 5%;
+// }
 
+
+
+.Error
+{
+    border: 2px solid red;
+   
+}
+.txterror {
+    color:red;
+}
 .SetDateTime{
     text-align: center !important;
 }
@@ -77,6 +91,11 @@ tbody{
     width:150px;
     height: 1.1em;
 }
+// .searchpullright
+// {
+//     margin-top: 10%;
+//     margin-bottom: 2%;
+// }
 .collapse{
     text-align: left  !important;   
 }
@@ -90,7 +109,7 @@ tbody{
 .aligntable{
     float: right;
 }
-.aaaaa{
+.Countercheck{
     color: black;
 }
 .calenderstyling{
@@ -152,6 +171,28 @@ td#poster {
 td#description {
     @include fixedColumnSize(20px);
 }
+}
+@media only screen and (max-width : 768px)
+{
+    .searchpullright
+    {
+        margin-top:10%;
+    }
+  
+
+    .container{
+        margin-top:10%;
+    }
+}
+@media only screen and(max-width : 414px)
+{
+    .searchpullright
+    {
+        margin-top:105%;
+    }
+    .container{
+        margin-top: 75%;
+    }
 }
 
 // table, tr , td  {

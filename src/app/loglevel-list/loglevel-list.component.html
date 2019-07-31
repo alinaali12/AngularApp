@@ -4,11 +4,11 @@
 
 <div class ="marginn" >
     <nav>
-
-      <div class="pull-right">
+        <!-- <p class="Error" *ngIf="Invaliddate==='true'">Invalid Date</p> -->
+      <div class="pull-right searchpullright">
         Search
-        <input type="date" name="calenderrr" (change)="searchingWithCalender()" [(ngModel)]="Searchingcalender" >
-   
+        <input [ngClass]="{'Error':Invaliddate=='true'}" type="date" name="calenderrr" (change)="searchingWithCalender()" [(ngModel)]="Searchingcalender" >
+        <span class="txterror" *ngIf="Invaliddate=='true'">Invalid date</span>
     </div>
  
 </nav> 

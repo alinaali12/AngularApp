@@ -5,8 +5,40 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
+<nav class="navbar navbar-expand-lg navbar">
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> -->
+      <div class="navbar-nav barstyle">
+          <a [routerLink] = "['/logging']" (click)="checkout()" > <h4>Home </h4></a>
+          <a [routerLink] = "['/testpage1']"><h4> Test Page - 01 </h4></a>
+          <a [routerLink] = "['/testpage2']"> <h4>Test Page - 02 </h4></a>
+          <li class="abcc" (click)="logout()"> <a [routerLink]="['login']"  ><h5>Logout</h5></a>
+          <li class="Countercheck">{{counter}}</li>
+      <!-- </div> -->
+    </div>
+  </nav>
+
+
+  <router-outlet></router-outlet>
+
+
+
+
+<!-- <head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="col-md-12">
+
+
 <nav class ="marginn">
-  <ul class="navbar" class="bg-dark navbar-expand-sm navbar">
+  <ul class="nav navbar" class="bg-dark navbar-expand-sm navbar">
    
     <li><a [routerLink] = "['/logging']" (click)="checkout()" > <h4>ErrorLogging </h4></a></li>
     <li><a [routerLink] = "['/testpage1']"><h4> Test Page - 01 </h4></a></li>
@@ -15,4 +47,6 @@
     <li class="aaaaaa">{{counter}}</li>
   </ul>
 </nav>
-<router-outlet></router-outlet>
+</div>
+</body>
+<router-outlet></router-outlet> -->

@@ -1,46 +1,93 @@
-.navbar{
-    background-color: #0B5345 !important;
-    color: white;
-    padding: 4px;
-    padding-left: 10px;
+.barstyle
+{
+  background-color: #0B5345 !important;
+
+  width: 100%;
+}
+.Countercheck
+{
+  
+  margin-left: 643px;
+
+}
+.navbar-brand {
+  text-align: left;
+  background-color: #0B5345 !important;
+}
+.navbar {
  
+  background-color: #0B5345 !important;
+  color:white !important;
 }
-.aaaaaa
+.navbar a {
+   color:white !important;
+}
+h4{
+  padding-right: 50px;
+}
+h5{
+  padding-right: 50px;
+}
+.navbar-toggler
 {
-  text-align: right !important;
-  margin-left: 718px;
+  //background-color: white;
+  lighting-color: white;
 }
-.marginn
+@media only screen and (max-width: 414px)
 {
-    text-decoration-style: none;
-    color: #dddddd;
-    text-align: left;
+  .navbar{
+    position: absolute;
+    width:200%;
+  }
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
+
+
+
+// .navbar{
+//     background-color: #0B5345 !important;
+//     color: white;
+//    padding: 4px;
+//    padding-left: 10px;
+//   //  width: 100px;
+ 
+// }
+// .aaaaaa
+// {
+//   text-align: right !important;
+//   margin-left: 718px;
+// }
+// .marginn
+// {
+//     text-decoration-style: none;
+//     background-color: #0B5345 !important;
+//     text-align: left;
+//     width: 100%;
+// }
+// ul {
+//     list-style-type: none;
+//     margin: 0;
+//     padding: 0;
+//     overflow: hidden;
+//     background-color: #333;
+//   }
   
-  li {
-    float: left;
-  }
+//   li {
+//     float: left;
+//   }
   
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
+//   li a {
+//     display: block;
+//     color: white;
+//     text-align: center;
+//     padding: 14px 16px;
+//     text-decoration: none;
+//   }
   
-  li a:hover {
-    background-color: #111;
-  }
-  .abcc
-  {
-    float:right;
-    text-align: right;
-  }
+//   li a:hover {
+//     background-color: #111;
+//   }
+//   .abcc
+//   {
+//     float:right;
+//     text-align: right;
+//   }
