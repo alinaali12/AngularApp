@@ -33,6 +33,7 @@ export class ShowresultComponent implements OnInit {
   constructor(private dataservice: DataserviceService, private loginservice: LoginServiceService) { }
   timer;
   ngOnInit() {
+   this.getPageData(1);
    //  this.dataservice.getUsers().subscribe((userData) => this.Users = userData);
    this.dataservice.getUsers().subscribe(data => {
     this.Users = data;
