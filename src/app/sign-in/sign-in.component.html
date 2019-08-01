@@ -1,57 +1,124 @@
-<!-- <div *ngIf="isLoginError" class="red-text center error-message">
-        <i class="material-icons">error</i> Incorrect username or password
-    </div>
-    <form #loginForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(UserName.value,Password.value)">
-       <div class="row">
-         <div class="input-field col s12">
-           <i class="material-icons prefix">account_circle</i>
-           <input type="text" #UserName ngModel name="UserName" placeholder="Username" required>
-         </div>
-       </div>
-     <div class="row">
-        
-          <div class="input-field col s12">
-            <i class="material-icons prefix">vpn_key</i>
-            <input type="password" #Password ngModel name="Password" placeholder="Password" required>
 
-            <div class="wrap-input100 validate-input" data-validate="Password is required"> 
-
-                <span class="focus-input100" data-symbol=&#xf190;></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-              <button [disabled]="!loginForm.valid" class="btn-large btn-submit" type="submit">Login</button>
-            </div>
-         
-        
-          </div>
-    </form>  
-
-  -->
-
-
-    <div class="wrapper fadeInDown">
-      <div id="formContent">
+    <!-- <div class="wrapper fadeInDown">
+      <div id="formContent"> -->
         <!-- Tabs Titles -->
     
         <!-- Icon -->
-        <div class="fadeIn first">
-          <a >User Icon </a>
+        <!-- <div class="fadeIn first">
+          <a >Login Form</a>
         </div>
-    
+     -->
         <!-- Login Form -->
-        <form  #loginForm="ngForm" (ngSubmit)="OnSubmit(  Email.value,Password.value)">
+        <!-- <form  #loginForm="ngForm" (ngSubmit)="OnSubmit(  Email.value,Password.value)">
           <input type="text" id="email"  class="fadeIn second" #Email ngModel name="Email"  placeholder="email">
           <input type="password" id="password" class="fadeIn third" #Password ngModel name="Password" placeholder="password">
           <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
-    
+     -->
         <!-- Remind Passowrd -->
-        <div id="formFooter">
+        <!-- <div id="formFooter">
           <a class="underlineHover" href="#">Forgot Password?</a>
         </div>
     
       </div>
-    </div>
+    </div>  -->
+
+    <!-- ........................................................................................ -->
+     
+
+    <div class="container">
+      <div class="d-flex justify-content-center h-100">
+          <div class="card" style="width: 35rem;">
+          <img class="card-img-top" src="../../assets/images/login.png" alt="Card image cap">
+          </div>
+        <div class="card">
+    
+          <div class="card-header">
+             <h3>Sign In</h3>
+            <!-- <div class="d-flex justify-content-end social_icon">
+              <span><i class="fab fa-facebook-square"></i></span>
+              <span><i class="fab fa-google-plus-square"></i></span>
+              <span><i class="fab fa-twitter-square"></i></span>
+            </div> -->
+          </div>
+          
+          <!-- <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="password">
+          </div> -->
+  
+      
+
+          <div class="card-body" [ngStyle]="{'background-color':' #343a40'}">
+            <form   #loginForm="ngForm" (ngSubmit)="loginForm.valid && OnSubmit(  Email.value,Password.value)" novalidate>  
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+                <input ngModel type="email"
+                 [ngStyle]="{'border-top-right-radius': '0.3em','border-bottom-right-radius': '0.3em'}"
+                  class="form-control" #Email="ngModel" name="Email"  placeholder="Email" required email>
+        
+             
+                    <span class="input-group-text" [ngStyle]="{'border-radius': '1.2em',
+                    'border-color': 'transparent',
+                    'background': 'transparent'}">
+                      <i  [ngClass]="Email.invalid ? 'fas fa-times' : 'fas fa-check'  "  class="fas fa-check" [ngStyle]="{'color':Email.invalid ? '#dc3545' : '#56baed'}"></i>
+                    </span>
+
+                    <div *ngIf="loginForm.submitted && Email.invalid " class="invalid-feedback" [ngStyle]="{'display':'block'}">
+                        <div *ngIf="Email.errors?.required">Email is required</div>
+                        <div *ngIf="Email.errors?.email">Email must be a valid email address</div>
+
+                        </div>
+      
+                
+              </div>
+                   
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" >
+                    <i class="fas fa-key"></i>
+                  </span>
+                </div>
+                <input ngModel type="password" 
+                [ngStyle]="{'border-top-right-radius': '0.3em','border-bottom-right-radius': '0.3em'}" 
+                class="form-control" #Password="ngModel" [(ngModel)] = "password" name="Password" placeholder="password"
+                 required minlength="6">
+         
+                <span class="input-group-text" [ngStyle]="{'border-radius': '1.2em',
+                'border-color': 'transparent',
+                'background': 'transparent'}">
+                  <i [ngClass]="Password.invalid ? 'fas fa-times' : 'fas fa-check'  "  [ngStyle]="{'color':Password.invalid ? '#dc3545' : '#56baed'}" ></i>
+                </span>
+
+                <div *ngIf="loginForm.submitted && Password.value.length < 6" class="invalid-feedback" [ngStyle]="{'display':'block'}">
+                  <div *ngIf="Password.value.length  == 0">Password is required</div>
+                    <div *ngIf="Password.value.length > 0  && Password.value.length < 6">Password must be a atleast 6 characters</div>
+                  </div>
+             
+              </div>
+              
+
+              <div class="row align-items-center remember">
+                <input type="checkbox" [checked]="rememberme"  (change)="remembermechange()">Remember Me
+              </div>
+              <div class="form-group">
+                <input type="submit"  value="Login" class="btn float-left login_btn" [ngStyle]="{'padding': '10px'}">
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <!-- <div class="d-flex justify-content-center links">
+              Don't have an account?<a href="#">Sign Up</a>
+            </div> -->
+            <div class="d-flex justify-content-center">
+              <a href="#">Forgot your password?</a>
+            </div>
+          </div>
+        </div>
+      </div>  

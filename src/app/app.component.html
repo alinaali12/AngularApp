@@ -14,25 +14,27 @@
 </nav>
 
 <router-outlet></router-outlet> -->
-<nav class="navbar navbar-light">
-  <div *ngIf = "session" class="container">
-    <a class="navbar-brand" ></a>
 
-    <ul class="nav navbar-nav pull-xs-left">
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/create-user">Create User</a>
+<nav class="navbar navbar-light" [ngStyle]="{'background-image':'none'}">
+  <div *ngIf = "session" class="container" [ngStyle]="{'border':'thin solid #FFF'}">
 
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/display-user">Display User</a>
 
-      </li>
+    
+        <a class="nav-link" routerLink="/create-user" [ngStyle]="{'color':'#FFC312'}">Create User</a>
+
+    
+        <a class="nav-link" routerLink="/display-user" [ngStyle]="{'color':'#FFC312'}">Display User</a>
+
+        
+        <a class="nav-link"  [ngStyle]="{'color':'#FFC312'}" (click) = "logout()">Logout</a>
+
+   
      
-    </ul>
 
   </div>
-  <div *ngIf = "session" style="background-color:lightblue">
+  
+  <div  class = "container" *ngIf = "session" style="background-color:lightblue">
     <h3>Session Expires In {{this.userservice.time}}</h3>
   </div>
 </nav>

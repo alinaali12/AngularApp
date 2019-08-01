@@ -26,8 +26,8 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent},
 
-      { path: 'create-user', component: CreateEmployeeComponent,canActivate:[AuthGuardService] },
-  { path: 'display-user', component: DispalyemployeeComponent },
+      { path: 'create-user', component: CreateEmployeeComponent , canActivate:[AuthGuardService]},
+  { path: 'display-user', component: DispalyemployeeComponent, canActivate:[AuthGuardService] },
 
     
 ]

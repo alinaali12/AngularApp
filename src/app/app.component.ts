@@ -22,8 +22,11 @@ export class AppComponent  {
   
   async ngOnInit(){
     
-    if (sessionStorage.getItem('currentUser')!=null && sessionStorage.getItem('currentUser')!=undefined && this.userservice.running == true){
+    if (!(this.localStorage.retrieve('currentUser')!=null && this.localStorage.retrieve('currentUser')!=undefined )){
       this.session = true;
+      console.log(this.localStorage.retrieve('currentUser'))
+      this.router.navigate(['/create-user']);
+
     }else{
       this.session = false;
       this.router.navigate(['/sign-in']);
@@ -35,6 +38,7 @@ export class AppComponent  {
       this.router.navigate(['/sign-in']);
 
       this.session = false;
+      this.localStorage.clear();
 
     }else if (data=="session started"){
       this.session = true;
@@ -61,6 +65,14 @@ export class AppComponent  {
 
 
 
+}
+
+logout(){
+  this.userservice.storageSub.next("session expired");
+  this.localStorage.clear();
+  this.session = false;
+  this.userservice.reset();
+  this.userservice.stop();
 }
 
 }

@@ -48,6 +48,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
