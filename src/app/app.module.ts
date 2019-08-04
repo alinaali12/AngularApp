@@ -11,15 +11,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { StorageModule } from '@ngx-pwa/local-storage';
-import { PagePermissionDirective } from './page-permission.directive';
+import { PagePermissionDirective } from '../validation-directives/page-permission.directive';
 import { ErrorComponent } from './components/error/error.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { NavbarService } from './services/navbarService/navbar.service';
-import { FileTypeValidatorDirective } from './file-type-validator.directive';
-import { NoWhiteSpaceValidatorDirective } from './no-white-space-validator.directive';
+import { FileTypeValidatorDirective } from '../validation-directives/file-type-validator.directive';
+import { NoWhiteSpaceValidatorDirective } from '../validation-directives/no-white-space-validator.directive';
 @NgModule({
   declarations: [AppComponent, MoviesComponent, NavComponent,
     HomeComponent, RankingComponent, PagePermissionDirective,

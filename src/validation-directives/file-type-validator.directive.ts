@@ -15,15 +15,19 @@ export class FileTypeValidatorDirective {
   static validate(c: FormControl): { [key: string]: any } {
     if (c.value) {
       if (c.value[0]) {
-        return FileTypeValidatorDirective.checkExtension(c);
+        return this.checkExtension(c);
       }
     }
   }
 
   private static checkExtension(c: FormControl) {
-    // const valToLower = c.value[0].name.toLowerCase();
-    const regex = new RegExp('(.*?)\.(JPG|PNG|JPEG)$'); // add or remove required extensions here
-    const regexTest = regex.test(c.value[0].name);
+    const valToLower = c.value[0].name;
+    console.log('validator', valToLower);
+
+    console.log(typeof valToLower);
+
+    const regex = new RegExp('(.*?)\.(jpg|png|jpeg)$'); // add or remove required extensions here
+    const regexTest = regex.test(valToLower);
     return !regexTest ? { notSupportedFileType: true } : null;
   }
 

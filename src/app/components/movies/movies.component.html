@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let movie of movies | paginate:{itemsPerPage:5,currentPage:pageActual}">
+      <tr *ngFor="let movie of movies | paginate:{itemsPerPage:10,currentPage:pageActual}">
         <th scope="row">{{ movie.id }}</th>
         <td>{{ movie.title }}</td>
         <td>{{ movie.director }}</td>
@@ -33,7 +33,8 @@
         </td>
 
         <!-- <td id="poster">{{ movie.poster }}</td> -->
-        <td><button (click)="delete(movie.id)">Delete</button></td>
+        <td><button (click)="delete(movie.id)">Delete</button>
+          <button (click)="download(movie.id)">Download</button></td>
       </tr>
     </tbody>
   </table>

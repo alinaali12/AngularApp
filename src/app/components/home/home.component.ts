@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { DataService } from '../../services/dataService/data.service';
-import { FileTypeValidatorDirective } from 'src/app/file-type-validator.directive';
-import { NoWhiteSpaceValidatorDirective } from 'src/app/no-white-space-validator.directive';
+import { FileTypeValidatorDirective } from 'src/validation-directives/file-type-validator.directive';
+import { NoWhiteSpaceValidatorDirective } from 'src/validation-directives/no-white-space-validator.directive';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

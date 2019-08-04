@@ -46,4 +46,7 @@ export class DataService {
   deleteMovie(id: number) {
     return this.http.delete<Movie>(this.baseUrl + '/Movies' + '/' + id);
   }
+  downloadPoster(id: number) {
+    return this.http.get(this.baseUrl + '/Movies/download/' + id);
+  }
 }
