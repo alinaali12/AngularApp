@@ -59,22 +59,38 @@ export class MoviesComponent implements OnInit {
 
   }
   download(id: number) {
-    let data;
-    this.dataService.downloadPoster(id).subscribe(res => {
-      data = res;
+    // let data;
+    this.dataService.downloadPoster(id).subscribe((res: any) => {
       console.log(res);
-      const bytes = new Uint8Array(data.byteArray); // pass your byte response to this constructor
-
-      const blob = new Blob([bytes], { type: data.contentType }); // change resultByte to bytes
-
+      const bytes = new Uint8Array(res.byteArray); // pass your byte response to this constructor
+      const type = res.contentType.substring(1);
+      const blob = this.base64ToBlob(res.file, 'image/' + type);
       const link = document.createElement('a');
       link.href = window.URL.createObjectURL(blob);
-      link.download = data.fileName + data.contentType;
+
+      link.download = res.fileName + res.contentType; // filename
       link.click();
+
 
     }, error => {
       console.log('error');
     });
 
+  }
+  base64ToBlob(b64Data, contentType = '', sliceSize = 512) {
+    console.log(b64Data);
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
+    return new Blob(byteArrays, { type: contentType });
   }
 }
