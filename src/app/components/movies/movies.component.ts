@@ -63,11 +63,11 @@ export class MoviesComponent implements OnInit {
     this.dataService.downloadPoster(id).subscribe(res => {
       data = res;
       console.log(res);
-      var bytes = new Uint8Array(data.byteArray); // pass your byte response to this constructor
+      const bytes = new Uint8Array(data.byteArray); // pass your byte response to this constructor
 
-      var blob = new Blob([bytes], { type: data.contentType });// change resultByte to bytes
+      const blob = new Blob([bytes], { type: data.contentType }); // change resultByte to bytes
 
-      var link = document.createElement('a');
+      const link = document.createElement('a');
       link.href = window.URL.createObjectURL(blob);
       link.download = data.fileName + data.contentType;
       link.click();
