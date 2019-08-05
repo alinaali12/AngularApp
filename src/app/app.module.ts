@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { NavComponent } from './components/nav/nav.component';
-import { HomeComponent } from './components/home/home.component';
+import { CreateComponent } from './components/create/create.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +23,7 @@ import { NoWhiteSpaceValidatorDirective } from '../validation-directives/no-whit
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 @NgModule({
   declarations: [AppComponent, MoviesComponent, NavComponent,
-    HomeComponent, RankingComponent, PagePermissionDirective,
+    CreateComponent, RankingComponent, PagePermissionDirective,
     ErrorComponent, LoginComponent, FileTypeValidatorDirective, NoWhiteSpaceValidatorDirective],
   imports: [
     BrowserModule,

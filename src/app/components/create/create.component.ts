@@ -3,16 +3,18 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { DataService } from '../../services/dataService/data.service';
 import { FileTypeValidatorDirective } from 'src/validation-directives/file-type-validator.directive';
 import { NoWhiteSpaceValidatorDirective } from 'src/validation-directives/no-white-space-validator.directive';
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-create',
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class CreateComponent implements OnInit {
 
   constructor(
     formBuilder: FormBuilder,
-    private data: DataService
+    private data: DataService,
+    private router: Router
   ) {
     this.messageForm = formBuilder.group({
       title: ['', [Validators.required, this.removeSpaces]],
@@ -30,6 +32,7 @@ export class HomeComponent implements OnInit {
 
   messageForm: FormGroup;
   poster;
+  isPosted = false;
   ngOnInit() { }
   onSubmit() {
     this.submitted = true;
@@ -56,8 +59,10 @@ export class HomeComponent implements OnInit {
     };
     // console.log(this.poster);
 
-    this.data.postMovie(movie).subscribe(() => { console.log('ok'); }
-    );
+    this.data.postMovie(movie).subscribe(() => {
+      console.log('ok');
+      this.isPosted = true;
+    });
   }
   removeSpaces(control: AbstractControl) {
     if (control && control.value && !control.value.replace(/\s/g, '').length) {

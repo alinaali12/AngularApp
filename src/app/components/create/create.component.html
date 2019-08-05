@@ -53,7 +53,7 @@
     </label>
     <label>
       Poster:
-      <input required type="file" (change)="onFileChange($event)" formControlName="poster" />
+      <input required type="file" accept="image/*" (change)="onFileChange($event)" formControlName="poster" />
       <div *ngIf="submitted && messageForm.controls.poster.errors" class="errors">
         <div *ngIf="messageForm.controls.poster.errors.required">
           Poster is required.
@@ -64,8 +64,16 @@
 
       </div>
     </label>
-    <input type="submit" value="Create" class="cta" />
+    <input [disabled]="!messageForm.valid" type=" submit" value="Create" class="cta" />
   </form>
+  <div *ngIf="isPosted;else notPosted" class="alert alert-success" role="alert">
+    Record Created..
+  </div>
+  <!-- <ng-template #notPosted>
+    <div class="alert alert-danger" role="alert">
+      Error..
+    </div>
+  </ng-template> -->
 
   <!-- <div *ngIf="submitted" class="results">
     <strong>Title: </strong>
