@@ -119,8 +119,13 @@ export class LoginComponent implements OnInit {
       this.retrievedEmail = localStorage.getItem('email');
       this.retrievedpassword = localStorage.getItem('password');
       this.retrievedRememberMeCB = localStorage.getItem('rememberMeCheckbox');
-      this.loginForm.value.email = this.retrievedEmail;
-      this.loginForm.value.password = this.retrievedpassword;
+      // this.loginForm.value.email = this.retrievedEmail;
+      // this.loginForm.value.password = this.retrievedpassword;
+
+      this.loginForm.value.email.push(this.retrievedEmail);
+      this.loginForm.value.password.push(this.retrievedpassword);
+
+
 
 
     } else {
