@@ -1,6 +1,6 @@
 <div>
   <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
-    <h5 *ngIf="success">Your form is valid</h5>
+
 
     <label>
       Title:
@@ -64,35 +64,16 @@
 
       </div>
     </label>
-    <input [disabled]="!messageForm.valid" type=" submit" value="Create" class="cta" />
+    <button type=" submit" value="Create" class="cta">Create</button>
+    <h5 *ngIf="success" class="text-success">Your form is valid</h5>
+    <div *ngIf="isPosted;else notPosted" class="alert alert-success" role="alert">
+      Record Created..
+    </div>
   </form>
-  <div *ngIf="isPosted;else notPosted" class="alert alert-success" role="alert">
-    Record Created..
-  </div>
+
   <!-- <ng-template #notPosted>
     <div class="alert alert-danger" role="alert">
       Error..
     </div>
   </ng-template> -->
-
-  <!-- <div *ngIf="submitted" class="results">
-    <strong>Title: </strong>
-    <span>{{ messageForm.controls.title.value }}</span>
-
-    <strong>Director: </strong>
-    <span>{{ messageForm.controls.director.value }}</span>
-
-    <strong>Genre: </strong>
-    <span>{{ messageForm.controls.genre.value }}</span>
-
-    <strong>Release Date: </strong>
-
-    <span>{{ messageForm.controls.releaseDate.value }}</span>
-
-    <strong>Descrition: </strong>
-    <span>{{ messageForm.controls.description.value }}</span>
-
-    <strong>Poster: </strong>
-    <span>{{ messageForm.controls.poster.value }}</span>
-  </div> -->
 </div>

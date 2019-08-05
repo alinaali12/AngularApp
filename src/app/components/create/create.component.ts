@@ -57,7 +57,6 @@ export class CreateComponent implements OnInit {
       description,
       poster
     };
-    // console.log(this.poster);
 
     this.data.postMovie(movie).subscribe(() => {
       console.log('ok');
@@ -78,35 +77,20 @@ export class CreateComponent implements OnInit {
     const reader = new FileReader();
 
     if (event.files && event.files.length) {
-      const [file] = event.files;
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.poster = `${file.name}$${reader.result}`;
-      };
-      // console.log(reader.result);
+
+      const [file, size] = event.files;
+      /*less than 10mb file will be uploaded */
+      if (size < 10000000) {
+
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          this.poster = `${file.name}$${reader.result}`;
+        };
+
+      }
 
     }
   }
-
-  // DownloadUserFile(file) {
-  //   this.fileUser.fileNames = file;
-  //   console.log( this.fileUser.fileNames);
-  //   this.dataservice.downloadFile(this.fileUser).subscribe(data => {
-  //     this.filebase64 = data.fileNames;
-  //     console.log('downloaduser', data);
-  //     const name = this.filebase64.split(',');
-  //     const ext = this.filebase64.split('.');
-  //     console.log('base', name[0]);
-  //     console.log('name', name[1]);
-  //     console.log('extension', ext[1]);
-  //     const obj = this.base64ToBlob(name[0], ext[1]);
-  //     const url = window.URL.createObjectURL(obj);
-  //     const link = document.createElement('a');
-  //     link.href = url;
-  //     link.download = name[1];
-  //     link.click();
-  //   });
-  // }
 
   base64ToBlob(b64Data, contentType = '', sliceSize = 512) {
     console.log(b64Data);
