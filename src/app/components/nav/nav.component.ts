@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
     const islogin = sessionStorage.getItem('isLogin').toString();
 
     // const isRemembered = localStorage.getItem('OkRememberedMe').toString();
-    console.log('log out login', islogin);
+    // console.log('log out login', islogin);
     // console.log('log out isRemembered', isRemembered);
     this.nav.hide();
     this.router.navigateByUrl('/');

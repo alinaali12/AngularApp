@@ -20,6 +20,7 @@ import { BnNgIdleService } from 'bn-ng-idle';
 import { NavbarService } from './services/navbarService/navbar.service';
 import { FileTypeValidatorDirective } from '../validation-directives/file-type-validator.directive';
 import { NoWhiteSpaceValidatorDirective } from '../validation-directives/no-white-space-validator.directive';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 @NgModule({
   declarations: [AppComponent, MoviesComponent, NavComponent,
     HomeComponent, RankingComponent, PagePermissionDirective,
@@ -34,7 +35,8 @@ import { NoWhiteSpaceValidatorDirective } from '../validation-directives/no-whit
       IDBNoWrap: true,
     }),
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    SlimLoadingBarModule
   ],
   providers: [AdminGuard, BnNgIdleService, NavbarService],
   bootstrap: [AppComponent]

@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
       description,
       poster
     };
-    console.log(this.poster);
+    // console.log(this.poster);
 
     this.data.postMovie(movie).subscribe(() => { console.log('ok'); }
     );
@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
       reader.onload = () => {
         this.poster = `${file.name}$${reader.result}`;
       };
-      console.log(reader.result);
+      // console.log(reader.result);
 
     }
   }

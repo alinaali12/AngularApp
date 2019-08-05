@@ -22,9 +22,9 @@ export class FileTypeValidatorDirective {
 
   private static checkExtension(c: FormControl) {
     const valToLower = c.value[0].name;
-    console.log('validator', valToLower);
+    // console.log('validator', valToLower);
 
-    console.log(typeof valToLower);
+    // console.log(typeof valToLower);
 
     const regex = new RegExp('(.*?)\.(jpg|png|jpeg)$'); // add or remove required extensions here
     const regexTest = regex.test(valToLower);

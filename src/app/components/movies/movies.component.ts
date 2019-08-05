@@ -40,13 +40,13 @@ export class MoviesComponent implements OnInit {
     });
   }
   pageChanged(event: any) {
-    console.log(event);
+    // console.log(event);
     this.config.currentPage = event;
   }
   sort(sort: string) {
     this.dataService.getMovies(1, this.count, sort).subscribe(data => {
       this.movies = Object.keys(data).map(k => data[k]);
-      console.log(this.movies);
+      // console.log(this.movies);
 
     });
   }
@@ -61,7 +61,7 @@ export class MoviesComponent implements OnInit {
   download(id: number) {
     // let data;
     this.dataService.downloadPoster(id).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       const bytes = new Uint8Array(res.byteArray); // pass your byte response to this constructor
       const type = res.contentType.substring(1);
       const blob = this.base64ToBlob(res.file, 'image/' + type);
@@ -78,7 +78,7 @@ export class MoviesComponent implements OnInit {
 
   }
   base64ToBlob(b64Data, contentType = '', sliceSize = 512) {
-    console.log(b64Data);
+
     const byteCharacters = atob(b64Data);
     const byteArrays = [];
     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {

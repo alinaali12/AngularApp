@@ -1,7 +1,15 @@
 import { DataService } from './services/dataService/data.service';
 import { Component, OnInit } from '@angular/core';
-import { BnNgIdleService } from 'bn-ng-idle';
 import { NavbarService } from './services/navbarService/navbar.service';
+import {
+  NavigationCancel,
+  Event,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router
+} from '@angular/router';
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +19,27 @@ import { NavbarService } from './services/navbarService/navbar.service';
 })
 export class AppComponent implements OnInit {
   title = 'AngularApp';
-  constructor(private dataService: DataService, public nav: NavbarService) {
+  constructor(private dataService: DataService, public nav: NavbarService,
+    // tslint:disable-next-line: align
+    private loadingBar: SlimLoadingBarService, private router: Router) {
+    this.router.events.subscribe((event: Event) => {
+      this.navigationInterceptor(event);
+    });
 
+  }
+  private navigationInterceptor(event: Event): void {
+    if (event instanceof NavigationStart) {
+      this.loadingBar.start();
+    }
+    if (event instanceof NavigationEnd) {
+      this.loadingBar.complete();
+    }
+    if (event instanceof NavigationCancel) {
+      this.loadingBar.stop();
+    }
+    if (event instanceof NavigationError) {
+      this.loadingBar.stop();
+    }
   }
   ngOnInit() {
     this.getAllPages();
@@ -21,7 +48,7 @@ export class AppComponent implements OnInit {
   }
 
   showHideNavbar() {
-    console.log('nav show/hide', this.nav.visible);
+    // console.log('nav show/hide', this.nav.visible);
 
     // const rememberMeCheck = localStorage.getItem('rememberMe');
     const loggedInCheck = sessionStorage.getItem('isLogin');

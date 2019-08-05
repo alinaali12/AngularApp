@@ -17,7 +17,7 @@ export class AdminGuard implements CanActivate {
 
     // const isRemembered = localStorage.getItem('OkRememberedMe').toString();
 
-    console.log('login', islogin);
+    // console.log('login', islogin);
     // console.log('isRemembered', isRemembered);
 
     if (islogin === 'true') {
