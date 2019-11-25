@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     this.success = true;
     const { email } = this.loginForm.value;
     let { password } = this.loginForm.value;
-    password = this.encryptData(password);
+    // password = this.encryptData(password);
     console.log(password);
 
 
@@ -68,28 +68,48 @@ export class LoginComponent implements OnInit {
       email, password
     };
     console.log('sign in clicked');
-
-    this.dataService.getAuthorization(login).subscribe((data) => {
-      console.log('login success');
-
-      this.authCheck = data; console.log(data);
-      sessionStorage.setItem('isLogin', data.toString());
+    if (login.email === 'admin@gmail.com' && login.password === 'admin') {
+      // this.authCheck = 1;
+      // sessionStorage.setItem('isLogin', this.authCheck.toString());
       // localStorage.setItem('rememberMe', this.RememberMe.toString());
 
-      console.log(sessionStorage.getItem('isLogin').toString());
-      this.storeCredentials();
+      // console.log(sessionStorage.getItem('isLogin').toString());
+      // this.storeCredentials();
       this.router.navigateByUrl('/movies');
       this.nav.show();
 
 
-      this.bnIdle.startWatching(6000).subscribe((res) => {
-        if (res) {
-          console.log('session expired');
-          confirm('session expired');
-        }
-      });
+      // this.bnIdle.startWatching(6000).subscribe((res) => {
+      //   if (res) {
+      //     console.log('session expired');
+      //     confirm('session expired');
+      //   }
+      // });
 
-    });
+    }
+
+    // this.dataService.getAuthorization(login).subscribe((data) => {
+    //   console.log('login success');
+
+    //   this.authCheck = data; console.log(data);
+    //   sessionStorage.setItem('isLogin', data.toString());
+    //   // localStorage.setItem('rememberMe', this.RememberMe.toString());
+
+    //   console.log(sessionStorage.getItem('isLogin').toString());
+    //   this.storeCredentials();
+    //   this.router.navigateByUrl('/movies');
+    //   this.nav.show();
+
+
+    //   this.bnIdle.startWatching(6000).subscribe((res) => {
+    //     if (res) {
+    //       console.log('session expired');
+    //       confirm('session expired');
+    //     }
+    //   });
+
+    // });
+
   }
   public findInvalidControls() {
     const invalid = [];

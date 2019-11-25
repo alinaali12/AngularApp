@@ -34,10 +34,70 @@ export class MoviesComponent implements OnInit {
 
   }
   getAllMovies() {
-    this.dataService.getAllMovies().subscribe((data: any) => {
-      this.movies = data.data;
-      this.count = data.count;
-    });
+    // this.dataService.getAllMovies().subscribe((data: any) => {
+    //   this.movies = data.data;
+    //   this.count = data.count;
+    // });
+    //   id?: number;
+    // title: string;
+    // director: string;
+
+    // genre: string;
+    // releaseDate: string;
+
+    // description: string;
+    // poster: string;
+
+    this.movies = [
+      {
+        id: 1, title: 'The Lion King', director: ' Roger Allers, Rob Minkoff ', genre: 'Animation, Adventure, Drama',
+        releaseDate: '1994', description: 'A Lion cub crown prince is tricked by a treacherous uncle into thinking he caused his father\'s death and flees into exile in despair, only to learn in adulthood his identity and his responsibilities.', poster: 'sdada'
+      }, {
+        id: 2, title: 'The Shawshank Redemption', director: 'Frank Darabont', genre: 'action',
+        releaseDate: '1994', description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', poster: 'sdada'
+      }, {
+        id: 3, title: 'Pulp Fiction ', director: 'Robert Zemeckis', genre: 'Drama, Romance',
+        releaseDate: '1994', description: 'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.', poster: 'sdada'
+      }, {
+        id: 4, title: 'The Lion King', director: ' Roger Allers, Rob Minkoff ', genre: 'Animation, Adventure, Drama',
+        releaseDate: '1994', description: 'A Lion cub crown prince is tricked by a treacherous uncle into thinking he caused his father\'s death and flees into exile in despair, only to learn in adulthood his identity and his responsibilities.', poster: 'sdada'
+      }, {
+        id: 5, title: 'The Shawshank Redemption', director: 'Frank Darabont', genre: 'action',
+        releaseDate: '1994', description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', poster: 'sdada'
+      }, {
+        id: 6, title: 'Pulp Fiction ', director: 'Robert Zemeckis', genre: 'Drama, Romance',
+        releaseDate: '1994', description: 'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.', poster: 'sdada'
+      }, {
+        id: 7, title: 'The Lion King', director: ' Roger Allers, Rob Minkoff ', genre: 'Animation, Adventure, Drama',
+        releaseDate: '1994', description: 'A Lion cub crown prince is tricked by a treacherous uncle into thinking he caused his father\'s death and flees into exile in despair, only to learn in adulthood his identity and his responsibilities.', poster: 'sdada'
+      }, {
+        id: 8, title: 'The Shawshank Redemption', director: 'Frank Darabont', genre: 'action',
+        releaseDate: '1994', description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', poster: 'sdada'
+      }, {
+        id: 9, title: 'Pulp Fiction ', director: 'Robert Zemeckis', genre: 'Drama, Romance',
+        releaseDate: '1994', description: 'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.', poster: 'sdada'
+      }, {
+        id: 10, title: 'The Lion King', director: ' Roger Allers, Rob Minkoff ', genre: 'Animation, Adventure, Drama',
+        releaseDate: '1994', description: 'A Lion cub crown prince is tricked by a treacherous uncle into thinking he caused his father\'s death and flees into exile in despair, only to learn in adulthood his identity and his responsibilities.', poster: 'sdada'
+      }, {
+        id: 12, title: 'The Shawshank Redemption', director: 'Frank Darabont', genre: 'action',
+        releaseDate: '1994', description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', poster: 'sdada'
+      }, {
+        id: 13, title: 'Pulp Fiction ', director: 'Robert Zemeckis', genre: 'Drama, Romance',
+        releaseDate: '1994', description: 'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.', poster: 'sdada'
+      }, {
+        id: 11, title: 'The Lion King', director: ' Roger Allers, Rob Minkoff ', genre: 'Animation, Adventure, Drama',
+        releaseDate: '1994', description: 'A Lion cub crown prince is tricked by a treacherous uncle into thinking he caused his father\'s death and flees into exile in despair, only to learn in adulthood his identity and his responsibilities.', poster: 'sdada'
+      }, {
+        id: 14, title: 'The Shawshank Redemption', director: 'Frank Darabont', genre: 'action',
+        releaseDate: '1994', description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', poster: 'sdada'
+      }, {
+        id: 15, title: 'Pulp Fiction ', director: 'Robert Zemeckis', genre: 'Drama, Romance',
+        releaseDate: '1994', description: 'The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.', poster: 'sdada'
+      }
+
+    ];
+
   }
   pageChanged(event: any) {
     // console.log(event);

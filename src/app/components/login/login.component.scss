@@ -47,58 +47,58 @@
 //     }
 // }
 // .error {
-    //     border: 2px solid red;
-    // }
+//     border: 2px solid red;
+// }
 
-    // .has-error {
-    //     color: red;
-    //     background-color: red;
-    // }
+// .has-error {
+//     color: red;
+//     background-color: red;
+// }
 
-    // .has-success {
-    //     color: black;
-    //     background-color: green;
-    // }
+// .has-success {
+//     color: black;
+//     background-color: green;
+// }
 
-    // .checkbox-round {
-    //     border-radius: 50%;
-    //     outline: none;
-    //     cursor: pointer;
-    // }
+// .checkbox-round {
+//     border-radius: 50%;
+//     outline: none;
+//     cursor: pointer;
+// }
 
-    // .checkbox-round:checked {
-    //     background-color: gray;
-    // }
+// .checkbox-round:checked {
+//     background-color: gray;
+// }
 
-input:focus~.floating-label,
-input:not(:focus):valid~.floating-label {
-    top: 8px;
-    bottom: 10px;
-    left: 20px;
-    font-size: 11px;
-    opacity: 1;
-}
+// input:focus~.floating-label,
+// input:not(:focus):valid~.floating-label {
+//     top: 8px;
+//     bottom: 10px;
+//     left: 20px;
+//     font-size: 11px;
+//     opacity: 1;
+// }
 
-.inputText {
-    font-size: 14px;
-    width: 200px;
-    height: 35px;
-}
+// .inputText {
+//     font-size: 14px;
+//     width: 200px;
+//     height: 35px;
+// }
 
-.floating-label {
-    position: absolute;
-    pointer-events: none;
-    left: 20px;
-    top: 18px;
-    transition: 0.2s ease all;
-}
+// .floating-label {
+//     position: absolute;
+//     pointer-events: none;
+//     left: 20px;
+//     top: 18px;
+//     transition: 0.2s ease all;
+// }
 
 
-.ng-valid,
-.ng-valid.required {
-    background-color: lightgreen;
-}
+// .ng-valid,
+// .ng-valid.required {
+//     background-color: lightgreen;
+// }
 
-.ng-invalid:not(form) {
-    background-color: lightcoral;
-}
+// .ng-invalid:not(form) {
+//     background-color: lightcoral;
+// }

@@ -9,9 +9,9 @@ import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'movies', component: MoviesComponent, canActivate: [AdminGuard] },
-  { path: 'ranking', component: RankingComponent, canActivate: [AdminGuard] },
-  { path: 'create', component: CreateComponent, canActivate: [AdminGuard] },
+  { path: 'movies', component: MoviesComponent },
+  { path: 'ranking', component: RankingComponent },
+  { path: 'create', component: CreateComponent },
   { path: 'error', component: ErrorComponent },
   { path: 'login', component: LoginComponent }
 
